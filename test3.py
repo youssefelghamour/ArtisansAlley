@@ -6,10 +6,12 @@ from models.country import Country
 from models.city import City
 from models.review import Review
 from models.engine.db_storage import DBStorage
+from models import *
+
 
 # Initialize the storage engine
-storage = DBStorage()
-storage.reload()
+#storage = DBStorage()
+#storage.reload()
 """
 # Create and save a country
 country = Country(name="Morocco")
