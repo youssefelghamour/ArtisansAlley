@@ -2,6 +2,7 @@
 ''' Product Class '''
 from sqlalchemy import String, Column, Integer, ForeignKey
 from models.base_model import BaseModel, Base
+from sqlalchemy.orm import relationship
 from models.order import Order
 
 
@@ -15,4 +16,5 @@ class Product(BaseModel, Base):
     price = Column(Integer, nullable=False, default=0)
     artisan_id = Column(String(60), ForeignKey('artisans.id'), nullable=False)
     craft_id = Column(String(60), ForeignKey('crafts.id'), nullable=False)
-    
+    reviews = relationship("Review", cascade="all, delete-orphan",
+                          backref="product")

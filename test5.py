@@ -4,17 +4,17 @@ from models.artisan import Artisan
 from models.customer import Customer
 from models.country import Country
 from models.city import City
+from models.product import Product
 from models.review import Review
 from models.craft import Craft
-from models.product import Product
 from models.order import Order
 from models.engine.db_storage import DBStorage
 from models import *
 
 
 # Initialize the storage engine
-storage = DBStorage()
-storage.reload()
+#storage = DBStorage()
+#storage.reload()
 
 # Create and save a country
 country = Country(name="Morocco")
@@ -34,10 +34,6 @@ artisan_2.save()
 customer = Customer(first_name="first", last_name="customer", email="fc@xx.com", password='123', address="98 st")
 customer.save()
 
-# Create and save a review for the artisan by the customer
-review = Review(text="the first review all good", customer_id=customer.id)
-review.save()
-
 # creation of 3 various Crafts
 craft_1 = Craft(name="woodwork")
 craft_1.save()
@@ -54,6 +50,12 @@ product_1 = Product(name="door", artisan_id=artisan_1.id, craft_id=craft_1.id, p
 product_1.save()
 product_2 = Product(name="pot", artisan_id=artisan_2.id, craft_id=craft_2.id, price=50, description="some text")
 product_2.save()
+
+# Create a review for the products by the customer
+review_1 = Review(text="the review for the first product1", customer_id=customer.id, product_id=product_1.id)
+review_1.save()
+review_2 = Review(text="the review for the second product1", customer_id=customer.id, product_id=product_2.id)
+review_2.save()
 
 # creation of 2 orders
 order_1 = Order(customer_id=customer.id)
