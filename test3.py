@@ -12,7 +12,6 @@ from models import *
 # Initialize the storage engine
 #storage = DBStorage()
 #storage.reload()
-"""
 # Create and save a country
 country = Country(name="Morocco")
 country.save()
@@ -32,7 +31,6 @@ customer.save()
 # Create and save a review for the artisan by the customer
 review = Review(text="the first review all good", customer_id=customer.id)
 review.save()
-"""
 print("****************************************************************")
 
 # Query and print all entities

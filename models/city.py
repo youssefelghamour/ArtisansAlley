@@ -13,5 +13,3 @@ class City(BaseModel, Base):
     country_id = Column(String(60), ForeignKey('countries.id'), nullable=False)
     artisans = relationship("Artisan", cascade="all, delete-orphan",
                           backref="city")
-    customers = relationship("Customer", cascade="all, delete-orphan",
-                          backref="city")
