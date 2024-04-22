@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisans Alley</title>
+    <!-- normalize css -->
+    <link rel = "stylesheet" href = "../static/styles/home_normalize.css">
+    <!-- fontawesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- custom css -->
+    <link rel = "stylesheet" href = "../static/styles/home_style.css">
+    <!-- logo icon -->
+    <link rel="icon" href="../static/images/logo.png" />
+</head>
+<body>
+    <div class = "holder">
+        <!-- header -->
+        <header id = "header">
+
+            <!-- top navbar -->
+            <nav class = "top-navbar flex">
+                <div class = "container flex">
+                    <!-- logo -->
+                    <div class="logo"></div>
+                    <a href = "#" class = "navbar-brand flex">
+                        <span class = "brand-text">Artisans Alley</span>
+                    </a>
+                    <!-- end of logo -->
+                    <ul class = "navbar-nav-right flex">
+                            <a href = "{{ url_for('explore_artisans') }}" class = "nav-link">Artisans</a>
+                            <a href = "{{ url_for('explore_products') }}" class = "nav-link">Products</a>
+                            <a href = "{{ url_for('artisan_sign_up') }}" class = "nav-link">Sell With Us</a>
+                            <a href = "{{ url_for('about') }}" class = "nav-link">About</a>
+                            <a href = "{{ url_for('sign_in') }}" class = "nav-link">Sing In</a>
+                    </ul>
+                    <!-- hamburger menu icon -->
+                    <button type = "button" class = "navbar-toggler">
+                        <i class = "fa fa-bars"></i>
+                    </button>
+                    <!-- end of hamburger menu icon -->
+                </div>
+            </nav>
+            <!-- end of top navbar -->
+
+            <!-- header banner -->
+            <div class = "header-banner">
+                <div class = "container flex">
+                    <div class = "header-banner-left flex">
+                        <h1>A Digital Gateway to Traditional Crafts</h1>
+                        <p class = "text">Welcome to the digital home of local makers and artisans, The place to find unique and beautiful items to treat yourself, enhance your home decor, or find a memorable gift.</p>
+                        <a href = "#" class = "btn btn-lg">Explore Products</a>
+                    </div>
+                    <div class = "header-banner-right">
+                        <img src = "../static/images/header-banner-1.jpg" alt = "">
+                    </div>
+                </div>
+            </div>
+            <!-- end of header banner -->
+
+        </header>
+        <!-- end of header -->
+
+        <!-- popular section -->
+        <section id="popular">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Search Products by Crafts</h2>
+                </div>
+                <div class="btns-group flex">
+                    <button type="button" class="btn-item active">Carpentry</button>
+                    <button type="button" class="btn-item">Pottery</button>
+                    <button type="button" class="btn-item">Rugs</button>
+                    <button type="button" class="btn-item">Jewellery</button>
+                </div>
+                <div class="section-title">
+                    <h2>Popular Products</h2>
+                </div>
+                <ul class="popular-grid grid">
+                    <li class="popular-item">
+                        <div class="item-img">
+                            <img src="../static/images/popular-1.jfif">
+                            <button type="button" class="view-icon">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="item-info">
+                            <span class="name">Handmade Wooden Chair</span>
+                            <span class="price">$ 99.99</span>
+                        </div>
+                    </li>
+
+                    <li class="popular-item">
+                        <div class="item-img">
+                            <img src="../static/images/popular-1.jfif">
+                            <button type="button" class="view-icon">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="item-info">
+                            <span class="name">Handmade Wooden Chair</span>
+                            <span class="price">$ 99.99</span>
+                        </div>
+                    </li>
+        
+                    <li class="popular-item">
+                        <div class="item-img">
+                            <img src="../static/images/popular-2.jfif">
+                            <button type="button" class="view-icon">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="item-info">
+                            <span class="name">Traditional Rug</span>
+                            <span class="price">$ 250</span>
+                        </div>
+                    </li>
+
+                    <li class="popular-item">
+                        <div class="item-img">
+                            <img src="../static/images/popular-1.jfif">
+                            <button type="button" class="view-icon">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="item-info">
+                            <span class="name">Handmade Wooden Chair</span>
+                            <span class="price">$ 99.99</span>
+                        </div>
+                    </li>
+        
+                    <li class="popular-item">
+                        <div class="item-img">
+                            <img src="../static/images/popular-3.jfif">
+                            <button type="button" class="view-icon">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="item-info">
+                            <span class="name">Egyptian Necklace</span>
+                            <span class="price">$ 159.99</span>
+                        </div>
+                    </li>
+
+                    <li class="popular-item">
+                        <div class="item-img">
+                            <img src="../static/images/popular-1.jfif">
+                            <button type="button" class="view-icon">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="item-info">
+                            <span class="name">Handmade Wooden Chair</span>
+                            <span class="price">$ 99.99</span>
+                        </div>
+                    </li>
+
+                    <li class="popular-item">
+                        <div class="item-img">
+                            <img src="../static/images/popular-1.jfif">
+                            <button type="button" class="view-icon">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="item-info">
+                            <span class="name">Handmade Wooden Chair</span>
+                            <span class="price">$ 99.99</span>
+                        </div>
+                    </li>
+        
+                    <li class="popular-item">
+                        <div class="item-img">
+                            <img src="../static/images/popular-4.jfif">
+                            <button type="button" class="view-icon">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="item-info">
+                            <span class="name">Moroccan Jellaba</span>
+                            <span class="price">$ 39</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <a href = "{{ url_for('explore_products') }}" class = "btn btn-sm">Show More</a>
+            </div>
+        </section>
+        <!-- end of popular section -->
+
+        <!-- collection section -->
+        <section id = "collection">
+            <div class = "container">
+                <div class = "section-title">
+                    <h2>Meet Our Talented Artisans</h2>
+                    <p class = "text">
+                        Explore the world of artisanal craftsmanship! Discover our talented artisans and their unique products!</p>
+                </div>
+
+                <div class = "collection-grid grid">
+                    <div class = "collection-item">
+                        <div class = "item-img">
+                            <img src = "../static/images/avatar.png">
+                        </div>
+                        <div class = "item-info">
+                            <span class = "name">name</span>
+                        </div>
+                    </div>
+
+                    <div class = "collection-item">
+                        <div class = "item-img">
+                            <img src = "../static/images/avatar.png">
+                        </div>
+                        <div class = "item-info">
+                            <span class = "name">name</span>
+                        </div>
+                    </div>
+
+                    <div class = "collection-item">
+                        <div class = "item-img">
+                            <img src = "../static/images/avatar.png">
+                        </div>
+                        <div class = "item-info">
+                            <span class = "name">name</span>
+                        </div>
+                    </div>
+
+                    <div class = "collection-item">
+                        <div class = "item-img">
+                            <img src = "../static/images/avatar.png">
+                        </div>
+                        <div class = "item-info">
+                            <span class = "name">name</span>
+                        </div>
+                    </div>
+
+                    <div class = "collection-item">
+                        <div class = "item-img">
+                            <img src = "../static/images/avatar.png">
+                        </div>
+                        <div class = "item-info">
+                            <span class = "name">name</span>
+                        </div>
+                    </div>
+
+                    <div class = "collection-item">
+                        <div class = "item-img">
+                            <img src = "../static/images/avatar.png">
+                        </div>
+                        <div class = "item-info">
+                            <span class = "name">name</span>
+                        </div>
+                    </div>
+
+                    <div class = "collection-item">
+                        <div class = "item-img">
+                            <img src = "../static/images/avatar.png">
+                        </div>
+                        <div class = "item-info">
+                            <span class = "name">name</span>
+                        </div>
+                    </div>
+
+                    <div class = "collection-item">
+                        <div class = "item-img">
+                            <img src = "../static/images/avatar.png">
+                        </div>
+                        <div class = "item-info">
+                            <span class = "name">name</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a href = "{{ url_for('explore_artisans') }}" class = "btn btn-sm">Show More</a>
+            </div>
+        </section>
+        <!-- end of collection section -->
+
+        <!-- subscribe form -->
+        <section id = "subs" class = "flex">
+            <div class = "container flex">
+                <h3>Search A Product</h3>
+                <input type = "search" placeholder="Egyptian Wooden Pyramid" class = "form-control">
+                <button type = "submit" class = "btn-sm">Search</button>
+            </div>
+        </section>
+        <!-- end of subscribe form -->
+
+        <!-- about us section -->
+        <section id = "about-us">
+            <div class = "about-us-left">
+                <h4>Login</h4>
+                <!-- Login form can be added here -->
+                <form>
+                    <label for="username">Username:</label><br>
+                    <input type="text" id="username" name="username"><br>
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password"><br><br>
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+            <div class = "about-us-right">
+                <h4>About Us</h4>
+                <p class = "text">At Artisans Alley, our passion lies in connecting discerning customers with skilled artisans worldwide. We believe in celebrating craftsmanship and supporting local communities by providing a platform for artisans to showcase their talents. Through our project, we aim to foster appreciation for handmade goods and promote sustainable, ethical shopping practices. Join us on this journey to discover the beauty of artisanal creations and make a positive impact on the world.</p>
+                <a href = "{{ url_for('about') }}" class = "btn btn-sm">Learn More</a>
+            </div>
+        </section>
+        <!-- end of about us section -->
+
+        <!-- footer -->
+        <footer id = "footer">
+            <div class = "container grid">
+                <div class = "footer-item one">
+                    <a href = "#" class = "navbar-brand"><span class = "brand-text">Artisans Alley</span></a>
+                    <p class = "text">Welcome to the digital home of local makers and artisans, The place to find unique and beautiful items to treat yourself, enhance your home decor, or find a memorable gift.</p>
+                </div>
+
+                <div class = "footer-item">
+                    <ul class = "footer-links">
+                        <li><a href = "#">Home</a></li>
+                        <li><a href = "{{ url_for('explore_artisans') }}">Artisans</a></li>
+                        <li><a href = "{{ url_for('explore_products') }}">Products</a></li>
+                        <li><a href = "{{ url_for('artisan_sign_up') }}">Sell With Us</a></li>
+                        <li><a href = "{{ url_for('sign_in') }}">Sign In</a></li>
+                        <li><a href = "{{ url_for('about') }}">About</a></li>
+                    </ul>
+                </div>
+
+                <div class = "footer-item four">
+                    <h4>Contact Us</h4>
+                    <span>   ArtisansAlley@gmail.com   </span>
+                    <ul class = "footer-social-links flex">
+                        <li><a href = "#">
+                            <i class = "fab fa-facebook-f"></i>
+                        </a></li>
+                        <li><a href = "#">
+                            <i class = "fab fa-twitter"></i>
+                        </a></li>
+                        <li><a href = "#">
+                            <i class = "fab fa-instagram"></i>
+                        </a></li>
+                        <li><a href = "#">
+                            <i class = "fab fa-pinterest"></i>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <!-- end of footer -->
+    </div>
+    
+
+
+
+    <script src = "../static/scripts/home.js"></script>
+</body>
+</html>

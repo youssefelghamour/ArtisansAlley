@@ -24,7 +24,7 @@ def app_teardown(exception):
 @app.route('/', strict_slashes=False)
 def home():
     """ displays the home page """
-    return "Home Page\n"
+    return render_template('home.html')
 
 
 @app.route('/sell_with_us', strict_slashes=False)
@@ -40,7 +40,7 @@ def customer_sign_up():
 
 
 @app.route('/sign_in', strict_slashes=False)
-def sing_in():
+def sign_in():
     """ displays the Sign in page """
     return "Sign in Page\n"
 
