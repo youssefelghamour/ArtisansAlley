@@ -2,15 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artisans Alley</title>
-    <!-- normalize css -->
-    <link rel = "stylesheet" href = "../static/styles/home_normalize.css">
-    <!-- fontawesome cdn link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom css -->
-    <link rel = "stylesheet" href = "../static/styles/home_style.css">
+    <link rel = "stylesheet" href = "../static/styles/home.css">
     <!-- logo icon -->
     <link rel="icon" href="../static/images/logo.png" />
 </head>
@@ -23,12 +18,13 @@
             <nav class = "top-navbar flex">
                 <div class = "container flex">
                     <!-- logo -->
-                    <div class="logo"></div>
                     <a href = "#" class = "navbar-brand flex">
+                        <div class="logo"></div>
                         <span class = "brand-text">Artisans Alley</span>
                     </a>
                     <!-- end of logo -->
                     <ul class = "navbar-nav-right flex">
+                            <a href = "#" class = "nav-link active">Home</a>
                             <a href = "{{ url_for('explore_artisans') }}" class = "nav-link">Artisans</a>
                             <a href = "{{ url_for('explore_products') }}" class = "nav-link">Products</a>
                             <a href = "{{ url_for('artisan_sign_up') }}" class = "nav-link">Sell With Us</a>
@@ -91,16 +87,16 @@
                         </div>
                     </li>
 
-                    <li class="popular-item">
+                    <li class="products-item">
                         <div class="item-img">
-                            <img src="../static/images/popular-1.jpg">
+                            <img src="../static/images/product-6.jpg">
                             <button type="button" class="view-icon">
                                 <i class="fa fa-eye"></i>
                             </button>
                         </div>
                         <div class="item-info">
-                            <span class="name">Handmade Wooden Chair</span>
-                            <span class="price">$ 99.99</span>
+                            <span class="name">Ottoman Turkish Turban</span>
+                            <span class="price">$ 18.99</span>
                         </div>
                     </li>
         
@@ -117,16 +113,16 @@
                         </div>
                     </li>
 
-                    <li class="popular-item">
+                    <li class="products-item">
                         <div class="item-img">
-                            <img src="../static/images/popular-1.jpg">
+                            <img src="../static/images/product-5.jpg">
                             <button type="button" class="view-icon">
                                 <i class="fa fa-eye"></i>
                             </button>
                         </div>
                         <div class="item-info">
-                            <span class="name">Handmade Wooden Chair</span>
-                            <span class="price">$ 99.99</span>
+                            <span class="name">Brass Pot</span>
+                            <span class="price">$ 99.56</span>
                         </div>
                     </li>
         
@@ -145,27 +141,27 @@
 
                     <li class="popular-item">
                         <div class="item-img">
-                            <img src="../static/images/popular-1.jpg">
+                            <img src="../static/images/product-7.jpg">
                             <button type="button" class="view-icon">
                                 <i class="fa fa-eye"></i>
                             </button>
                         </div>
                         <div class="item-info">
-                            <span class="name">Handmade Wooden Chair</span>
-                            <span class="price">$ 99.99</span>
+                            <span class="name">Fruit Bowl</span>
+                            <span class="price">$ 26.35</span>
                         </div>
                     </li>
 
                     <li class="popular-item">
                         <div class="item-img">
-                            <img src="../static/images/popular-1.jpg">
+                            <img src="../static/images/product-8.jpg">
                             <button type="button" class="view-icon">
                                 <i class="fa fa-eye"></i>
                             </button>
                         </div>
                         <div class="item-info">
-                            <span class="name">Handmade Wooden Chair</span>
-                            <span class="price">$ 99.99</span>
+                            <span class="name">Handmade Fanoos Lantern</span>
+                            <span class="price">$ 24.49</span>
                         </div>
                     </li>
         
@@ -329,29 +325,11 @@
                 <div class = "footer-item four">
                     <h4>Contact Us</h4>
                     <span>   ArtisansAlley@gmail.com   </span>
-                    <ul class = "footer-social-links flex">
-                        <li><a href = "#">
-                            <i class = "fab fa-facebook-f"></i>
-                        </a></li>
-                        <li><a href = "#">
-                            <i class = "fab fa-twitter"></i>
-                        </a></li>
-                        <li><a href = "#">
-                            <i class = "fab fa-instagram"></i>
-                        </a></li>
-                        <li><a href = "#">
-                            <i class = "fab fa-pinterest"></i>
-                        </a></li>
-                    </ul>
                 </div>
             </div>
         </footer>
         <!-- end of footer -->
     </div>
     
-
-
-
-    <script src = "../static/scripts/home.js"></script>
 </body>
 </html>

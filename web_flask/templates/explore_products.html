@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Products</title>
+    <!-- css -->
+    <link rel = "stylesheet" href = "../static/styles/explore_products.css">
+    <!-- logo icon -->
+    <link rel="icon" href="../static/images/logo.png" />
+</head>
+<body>
+    <!-- header -->
+    <header id = "header">
+        <!-- top navbar -->
+        <nav class = "top-navbar flex">
+            <div class = "container flex">
+                <!-- logo -->
+                <a href = "#" class = "navbar-brand flex">
+                    <div class="logo"></div>
+                    <span class = "brand-text">Artisans Alley</span>
+                </a>
+                <!-- end of logo -->
+                <ul class = "navbar-nav-right flex">
+                        <a href = "{{ url_for('home') }}" class = "nav-link">Home</a>
+                        <a href = "{{ url_for('explore_artisans') }}" class = "nav-link">Artisans</a>
+                        <a href = "#" class = "nav-link active" >Products</a>
+                        <a href = "{{ url_for('artisan_sign_up') }}" class = "nav-link">Sell With Us</a>
+                        <a href = "{{ url_for('about') }}" class = "nav-link">About</a>
+                        <a href = "{{ url_for('sign_in') }}" class = "nav-link">Sing In</a>
+                </ul>
+            </div>
+        </nav>
+        <!-- end of top navbar -->
+    </header>
+    <!-- end of header -->
+
+    <!-- products section -->
+    <section id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Search Products by Crafts</h2>
+            </div>
+
+            <div class="btns-group flex">
+                <button type="button" class="btn-item active">All</button>
+                <button type="button" class="btn-item">Carpentry</button>
+                <button type="button" class="btn-item">Pottery</button>
+                <button type="button" class="btn-item">Rugs</button>
+                <button type="button" class="btn-item">Jewellery</button>
+            </div>
+
+            <ul class="products-grid grid">
+                <li class="products-item">
+                    <div class="item-img">
+                        <img src="../static/images/popular-1.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Handmade Wooden Chair</span>
+                        <span class="price">$ 99.99</span>
+                    </div>
+                </li>
+
+                <li class="products-item">
+                    <div class="item-img">
+                        <img src="../static/images/product-5.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Brass Pot</span>
+                        <span class="price">$ 99.56</span>
+                    </div>
+                </li>
+    
+                <li class="products-item">
+                    <div class="item-img">
+                        <img src="../static/images/popular-2.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Traditional Rug</span>
+                        <span class="price">$ 250</span>
+                    </div>
+                </li>
+
+                <li class="products-item">
+                    <div class="item-img">
+                        <img src="../static/images/product-6.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Ottoman Turkish Turban</span>
+                        <span class="price">$ 18.99</span>
+                    </div>
+                </li>
+    
+                <li class="products-item">
+                    <div class="item-img">
+                        <img src="../static/images/popular-3.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Egyptian Necklace</span>
+                        <span class="price">$ 159.99</span>
+                    </div>
+                </li>
+
+                <li class="popular-item">
+                    <div class="item-img">
+                        <img src="../static/images/product-7.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Fruit Bowl</span>
+                        <span class="price">$ 26.35</span>
+                    </div>
+                </li>
+
+                <li class="popular-item">
+                    <div class="item-img">
+                        <img src="../static/images/product-8.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Handmade Fanoos Lantern</span>
+                        <span class="price">$ 24.49</span>
+                    </div>
+                </li>
+    
+                <li class="products-item">
+                    <div class="item-img">
+                        <img src="../static/images/popular-4.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Moroccan Jellaba</span>
+                        <span class="price">$ 39</span>
+                    </div>
+                </li>
+
+                <li class="products-item">
+                    <div class="item-img">
+                        <img src="../static/images/popular-1.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Handmade Wooden Chair</span>
+                        <span class="price">$ 99.99</span>
+                    </div>
+                </li>
+
+                <li class="products-item">
+                    <div class="item-img">
+                        <img src="../static/images/product-5.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Brass Pot</span>
+                        <span class="price">$ 99.56</span>
+                    </div>
+                </li>
+    
+                <li class="products-item">
+                    <div class="item-img">
+                        <img src="../static/images/popular-2.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Traditional Rug</span>
+                        <span class="price">$ 250</span>
+                    </div>
+                </li>
+
+                <li class="products-item">
+                    <div class="item-img">
+                        <img src="../static/images/product-6.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Ottoman Turkish Turban</span>
+                        <span class="price">$ 18.99</span>
+                    </div>
+                </li>
+    
+                <li class="products-item">
+                    <div class="item-img">
+                        <img src="../static/images/popular-3.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Egyptian Necklace</span>
+                        <span class="price">$ 159.99</span>
+                    </div>
+                </li>
+
+                <li class="popular-item">
+                    <div class="item-img">
+                        <img src="../static/images/product-7.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Fruit Bowl</span>
+                        <span class="price">$ 26.35</span>
+                    </div>
+                </li>
+
+                <li class="popular-item">
+                    <div class="item-img">
+                        <img src="../static/images/product-8.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Handmade Fanoos Lantern</span>
+                        <span class="price">$ 24.49</span>
+                    </div>
+                </li>
+    
+                <li class="products-item">
+                    <div class="item-img">
+                        <img src="../static/images/popular-4.jpg">
+                        <button type="button" class="view-icon">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <span class="name">Moroccan Jellaba</span>
+                        <span class="price">$ 39</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- end of products section -->
+
+    <!-- footer -->
+    <footer id = "footer">
+        <div class = "container grid">
+            <div class = "footer-item one">
+                <a href = "#" class = "navbar-brand"><span class = "brand-text">Artisans Alley</span></a>
+                <p class = "text">Welcome to the digital home of local makers and artisans, The place to find unique and beautiful items to treat yourself, enhance your home decor, or find a memorable gift.</p>
+            </div>
+
+            <div class = "footer-item">
+                <ul class = "footer-links">
+                    <li><a href = "#">Home</a></li>
+                    <li><a href = "{{ url_for('explore_artisans') }}">Artisans</a></li>
+                    <li><a href = "{{ url_for('explore_products') }}">Products</a></li>
+                    <li><a href = "{{ url_for('artisan_sign_up') }}">Sell With Us</a></li>
+                    <li><a href = "{{ url_for('sign_in') }}">Sign In</a></li>
+                    <li><a href = "{{ url_for('about') }}">About</a></li>
+                </ul>
+            </div>
+
+            <div class = "footer-item four">
+                <h4>Contact Us</h4>
+                <span>   ArtisansAlley@gmail.com   </span>
+            </div>
+        </div>
+    </footer>
+    <!-- end of footer -->
+    
+</body>
+</html>
