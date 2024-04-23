@@ -36,7 +36,7 @@ def artisan_sign_up():
 @app.route('/sign_up', strict_slashes=False)
 def customer_sign_up():
     """ displays the Sign-up page for the customer """
-    return "Customer Sign-up page\n"
+    return render_template('signup.html')
 
 
 @app.route('/sign_in', strict_slashes=False)
