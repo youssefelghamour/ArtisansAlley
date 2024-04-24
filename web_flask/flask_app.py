@@ -66,7 +66,7 @@ def artisan():
 @app.route('/product', strict_slashes=False)
 def product():
     """ displays the Product Page """
-    return "Product Page\n"
+    return render_template('product.html')
 
 
 @app.route('/about', strict_slashes=False)

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Product's Name</title>
+		<link rel = "stylesheet" href = "../static/styles/home.css">
+        <link rel = "stylesheet" href = "../static/styles/explore_products.css">
+		<link rel="stylesheet" href="../static/styles/product.css">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+		<link rel="icon" href="../static/images/logo.png" />
+	</head>
+	<body>
+
+		<!-- header -->
+		<header id = "header">
+
+			<!-- top navbar -->
+			<nav class = "top-navbar flex">
+				<div class = "container flex">
+					<!-- logo -->
+					<a href = "{{ url_for('home') }}" class = "navbar-brand flex">
+						<div class="logo"></div>
+						<span class = "brand-text">Artisans Alley</span>
+					</a>
+					<!-- end of logo -->
+					<ul class = "navbar-nav-right flex">
+						<a href = "{{ url_for('home') }}" class = "nav-link">Home</a>
+						<a href = "{{ url_for('explore_artisans') }}" class = "nav-link">Artisans</a>
+						<a href = "{{ url_for('explore_products') }}" class = "nav-link">Products</a>
+						<a href = "{{ url_for('artisan_sign_up') }}" class = "nav-link">Sell With Us</a>
+						<a href = "{{ url_for('about') }}" class = "nav-link">About</a>
+						<a href = "{{ url_for('sign_in') }}" class = "nav-link">Sign In</a>
+					</ul>
+					<!-- hamburger menu icon -->
+					<button type = "button" class = "navbar-toggler">
+						<i class = "fa fa-bars"></i>
+					</button>
+					<!-- end of hamburger menu icon -->
+				</div>
+			</nav>
+		</header>
+		<!-- end of header -->
+
+		<!-- form -->
+        <div class="product-container">
+            <div class="product-image">
+                <img src="../static/images/popular-3.jpg" alt="Product Image">
+            </div>
+            <div class="product-details">
+                <h1>Craft</h1>
+                <h2 class="product_name">Product Name</h2>
+                <h1>Artisan</h1>
+                <p class="price">$99.99</p>
+                <p class="description">Transport yourself to ancient Egypt with our exquisite handmade necklace, crafted with care by skilled artisans. Each bead whispers tales of the Nile's mysteries, while the intricate design pays homage to the timeless beauty of Egyptian artistry. Elevate your style with this timeless piece that echoes the elegance of a bygone era.</p>
+                <button class="order-button">Order Now</button>
+            </div>
+        </div>
+		<!-- end of form -->
+
+        <!-- products section -->
+        <section id="products">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Similar Products</h2>
+                </div>
+
+                <ul class="products-grid grid">
+                    <li class="products-item">
+                        <div class="item-img">
+                            <img src="../static/images/popular-1.jpg">
+                        </div>
+                        <div class="item-info">
+                            <span class="name">Handmade Wooden Chair</span>
+                            <span class="price">$ 99.99</span>
+                        </div>
+                    </li>
+
+                    <li class="products-item">
+                        <div class="item-img">
+                            <img src="../static/images/product-5.jpg">
+                        </div>
+                        <div class="item-info">
+                            <span class="name">Brass Pot</span>
+                            <span class="price">$ 99.56</span>
+                        </div>
+                    </li>
+        
+                    <li class="products-item">
+                        <div class="item-img">
+                            <img src="../static/images/popular-2.jpg">
+                        </div>
+                        <div class="item-info">
+                            <span class="name">Traditional Rug</span>
+                            <span class="price">$ 250</span>
+                        </div>
+                    </li>
+
+                    <li class="products-item">
+                        <div class="item-img">
+                            <img src="../static/images/product-6.jpg">
+                        </div>
+                        <div class="item-info">
+                            <span class="name">Ottoman Turkish Turban</span>
+                            <span class="price">$ 18.99</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- end of products section -->
+
+		<!-- footer -->
+		<footer id = "footer">
+			<div class = "container grid">
+				<div class = "footer-item one">
+					<a href = "#" class = "navbar-brand"><span class = "brand-text">Artisans Alley</span></a>
+					<p class = "text">Welcome to the digital home of local makers and artisans, The place to find unique and beautiful items to treat yourself, enhance your home decor, or find a memorable gift.</p>
+				</div>
+
+				<div class = "footer-item">
+					<ul class = "footer-links">
+						<li><a href = "{{ url_for('home') }}">Home</a></li>
+						<li><a href = "{{ url_for('explore_artisans') }}">Artisans</a></li>
+						<li><a href = "{{ url_for('explore_products') }}">Products</a></li>
+						<li><a href = "{{ url_for('artisan_sign_up') }}">Sell With Us</a></li>
+						<li><a href = "{{ url_for('sign_in') }}">Sign In</a></li>
+						<li><a href = "{{ url_for('about') }}">About</a></li>
+					</ul>
+				</div>
+
+				<div class = "footer-item four">
+					<h4>Contact Us</h4>
+					<span>   ArtisansAlley@gmail.com   </span>
+				</div>
+			</div>
+		</footer>
+		<!-- end of footer -->
+	</body>
+</html>

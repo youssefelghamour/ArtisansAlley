@@ -306,6 +306,7 @@ button{
     display: flex; /* Set popular-item to flex container */
     flex-direction: column;
     max-width: 270px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 .item-img{
     position: relative;
