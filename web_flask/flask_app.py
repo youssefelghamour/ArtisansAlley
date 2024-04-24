@@ -30,7 +30,7 @@ def home():
 @app.route('/sell_with_us', strict_slashes=False)
 def artisan_sign_up():
     """ displays the Sign-up page for artisan """
-    return "Sell with us Page\n"
+    return render_template('sell_with_us.html')
 
 
 @app.route('/sign_up', strict_slashes=False)

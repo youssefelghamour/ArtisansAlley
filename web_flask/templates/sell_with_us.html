@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../static/styles/home.css">
+    <link rel="stylesheet" href="../static/styles/sign_up.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../static/images/logo.png" />
+</head>
+<body>
+
+<!-- header -->
+<header id="header">
+
+    <!-- top navbar -->
+    <nav class="top-navbar flex">
+        <div class="container flex">
+            <!-- logo -->
+            <a href="#" class="navbar-brand flex">
+                <div class="logo"></div>
+                <span class="brand-text">Artisans Alley</span>
+            </a>
+            <!-- end of logo -->
+            <ul class="navbar-nav-right flex">
+                <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+                <a href="{{ url_for('explore_artisans') }}" class="nav-link">Artisans</a>
+                <a href="{{ url_for('explore_products') }}" class="nav-link">Products</a>
+                <a href="{{ url_for('artisan_sign_up') }}" class="nav-link">Sell With Us</a>
+                <a href="{{ url_for('about') }}" class="nav-link">About</a>
+                <a href="#" class="nav-link active">Sign Up</a>
+            </ul>
+            <!-- hamburger menu icon -->
+            <button type="button" class="navbar-toggler">
+                <i class="fa fa-bars"></i>
+            </button>
+            <!-- end of hamburger menu icon -->
+        </div>
+    </nav>
+</header>
+<!-- end of header -->
+
+<!-- form -->
+<div class="form-container">
+    <h2>Sign Up</h2>
+    <form action="/register" method="post">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <select id="country" name="country" required>
+                <option value="" disabled selected>Select your country</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <!-- Add more options for other countries -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="city">City:</label>
+            <select id="city" name="city" required>
+                <option value="" disabled selected>Select your city</option>
+                <!-- Options for cities will be populated dynamically based on the selected country -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="craft">Craft:</label>
+            <select id="craft" name="craft" required>
+                <option value="" disabled selected>Select your craft</option>
+                <option value="Woodworking">Woodworking</option>
+                <option value="Pottery">Pottery</option>
+                <option value="Jewelry Making">Jewelry Making</option>
+                <!-- Add more options for other crafts -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Sign Up">
+        </div>
+        <div>
+            <label>Already have an Account?</label>
+            <a href="{{ url_for('sign_in') }}" class="nav-link-sign">Sign In</a>
+        </div>
+    </form>
+</div>
+<!-- end of form -->
+
+
+<!-- footer -->
+<footer id="footer">
+    <div class="container grid">
+        <div class="footer-item one">
+            <a href="#" class="navbar-brand"><span class="brand-text">Artisans Alley</span></a>
+            <p class="text">Welcome to the digital home of local makers and artisans, The place to find unique and beautiful items to treat yourself, enhance your home decor, or find a memorable gift.</p>
+        </div>
+
+        <div class="footer-item">
+            <ul class="footer-links">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('explore_artisans') }}">Artisans</a></li>
+                <li><a href="{{ url_for('explore_products') }}">Products</a></li>
+                <li><a href="{{ url_for('artisan_sign_up') }}">Sell With Us</a></li>
+                <li><a href="{{ url_for('sign_in') }}">Sign In</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-item four">
+            <h4>Contact Us</h4>
+            <span>   ArtisansAlley@gmail.com   </span>
+        </div>
+    </div>
+</footer>
+<!-- end of footer -->
+
+<script>
+    // JavaScript to populate city options based on the selected country
+    document.getElementById('country').addEventListener('change', function() {
+        var country = this.value;
+        var cityDropdown = document.getElementById('city');
+        cityDropdown.innerHTML = ''; // Clear previous options
+        if (country === 'USA') {
+            // Add options for USA cities
+            var cities = ['New York', 'Los Angeles', 'Chicago'];
+            cities.forEach(function(city) {
+                var option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                cityDropdown.appendChild(option);
+            });
+        } else if (country === 'Canada') {
+            // Add options for Canada cities
+            var cities = ['Toronto', 'Vancouver', 'Montreal'];
+            cities.forEach(function(city) {
+                var option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                cityDropdown.appendChild(option);
+            });
+        }
+        // Add more conditions for other countries and their cities
+    });
+</script>
+
+</body>
+</html>
+
