@@ -48,7 +48,7 @@ def sign_in():
 @app.route('/explore_artisans', strict_slashes=False)
 def explore_artisans():
     """ displays the Explore Artisans Page for Shops """
-    return "Explore Artisans Page\n"
+    return render_template('explore_artisans.html')
 
 
 @app.route('/explore_products', strict_slashes=False)

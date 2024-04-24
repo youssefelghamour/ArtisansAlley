@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Explore Artisans</title>
+		<!-- css -->
+		<link rel = "stylesheet" href = "../static/styles/explore_products.css">
+		<!-- logo icon -->
+		<link rel="icon" href="../static/images/logo.png" />
+	</head>
+	<body>
+		<!-- header -->
+		<header id = "header">
+			<!-- top navbar -->
+			<nav class = "top-navbar flex">
+				<div class = "container flex">
+					<!-- logo -->
+					<a href = "{{ url_for('home') }}" class = "navbar-brand flex">
+						<div class="logo"></div>
+						<span class = "brand-text">Artisans Alley</span>
+					</a>
+					<!-- end of logo -->
+					<ul class = "navbar-nav-right flex">
+						<a href = "{{ url_for('home') }}" class = "nav-link">Home</a>
+						<a href = "#" class = "nav-link active">Artisans</a>
+						<a href = "{{ url_for('explore_products') }}" class = "nav-link">Products</a>
+						<a href = "{{ url_for('artisan_sign_up') }}" class = "nav-link">Sell With Us</a>
+						<a href = "{{ url_for('about') }}" class = "nav-link">About</a>
+						<a href = "{{ url_for('sign_in') }}" class = "nav-link">Sign In</a>
+					</ul>
+				</div>
+			</nav>
+			<!-- end of top navbar -->
+		</header>
+		<!-- end of header -->
+
+		<!-- products section -->
+		<section id="products">
+			<div class="container">
+				<section class="filters">
+					<div class="crafts">
+						<h3>Crafts</h3>
+						<h4>&nbsp;</h4>
+						<div class="popover">
+							<ul>
+								<li><input type="checkbox"><h2>All</h2></li>
+								<li><input type="checkbox"><h2>Carpentry</h2></li>
+								<li><input type="checkbox"><h2>Rugs</h2></li>
+								<li><input type="checkbox"><h2>Clothes</h2></li>
+								<li><input type="checkbox"><h2>Jewellery</h2></li>
+							</ul>
+						</div>
+						<div class="location">
+							<h3>Country</h3>
+							<h4>&nbsp;</h4>
+							<div class="popover">
+								<ul>
+									<li>
+										<h2>Arizona:</h2>
+										<ul>
+											<li><input type="checkbox"><h2>City_1</h2></li>
+											<li><input type="checkbox"><h2>City_2</h2></li>
+										</ul>
+									</li>
+									<li>
+										<h2>California:</h2>
+										<ul>
+											<li><input type="checkbox"><h2>City_1</h2></li>
+											<li><input type="checkbox"><h2>City_2</h2></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<button class="button">Search</button>
+				</section>
+
+				<ul class="products-grid grid">
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+
+					<li class="products-item">
+						<div class="item-img">
+							<img src="../static/images/avatar.png">
+						</div>
+						<div class="item-info">
+							<span class="name">Name</span>
+						</div>
+					</li>
+				</ul>
+					</div>
+		</section>
+		<!-- end of products section -->
+
+		<!-- footer -->
+		<footer id = "footer">
+			<div class = "container grid">
+				<div class = "footer-item one">
+					<a href = "#" class = "navbar-brand"><span class = "brand-text">Artisans Alley</span></a>
+					<p class = "text">Welcome to the digital home of local makers and artisans, The place to find unique and beautiful items to treat yourself, enhance your home decor, or find a memorable gift.</p>
+				</div>
+
+				<div class = "footer-item">
+					<ul class = "footer-links">
+						<li><a href = "#">Home</a></li>
+						<li><a href = "{{ url_for('explore_artisans') }}">Artisans</a></li>
+						<li><a href = "{{ url_for('explore_products') }}">Products</a></li>
+						<li><a href = "{{ url_for('artisan_sign_up') }}">Sell With Us</a></li>
+						<li><a href = "{{ url_for('sign_in') }}">Sign In</a></li>
+						<li><a href = "{{ url_for('about') }}">About</a></li>
+					</ul>
+				</div>
+
+				<div class = "footer-item four">
+					<h4>Contact Us</h4>
+					<span>   ArtisansAlley@gmail.com   </span>
+				</div>
+			</div>
+		</footer>
+		<!-- end of footer -->
+	</body>
+</html>
