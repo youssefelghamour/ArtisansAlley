@@ -123,31 +123,27 @@
 <!-- end of footer -->
 
 <script>
-    // JavaScript to populate city options based on the selected country
     document.getElementById('country').addEventListener('change', function() {
-        var country = this.value;
-        var cityDropdown = document.getElementById('city');
-        cityDropdown.innerHTML = ''; // Clear previous options
+        let country = this.value;
+        let cityDropdown = document.getElementById('city');
+        cityDropdown.innerHTML = '';
         if (country === 'USA') {
-            // Add options for USA cities
-            var cities = ['New York', 'Los Angeles', 'Chicago'];
+            let cities = ['New York', 'Los Angeles', 'Chicago'];
             cities.forEach(function(city) {
-                var option = document.createElement('option');
+                let option = document.createElement('option');
                 option.value = city;
                 option.textContent = city;
                 cityDropdown.appendChild(option);
             });
         } else if (country === 'Canada') {
-            // Add options for Canada cities
-            var cities = ['Toronto', 'Vancouver', 'Montreal'];
+            let cities = ['Toronto', 'Vancouver', 'Montreal'];
             cities.forEach(function(city) {
-                var option = document.createElement('option');
+                let option = document.createElement('option');
                 option.value = city;
                 option.textContent = city;
                 cityDropdown.appendChild(option);
             });
         }
-        // Add more conditions for other countries and their cities
     });
 </script>
 
