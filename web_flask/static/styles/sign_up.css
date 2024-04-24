@@ -32,7 +32,7 @@ h2 {
     margin-bottom: 8px;
     display: block;
 }
-.form-group input, select {
+.form-group input, select, textarea {
     width: 100%;
     padding: 15px;
     border: 1px solid #ccc;

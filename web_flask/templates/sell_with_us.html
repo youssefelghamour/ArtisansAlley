@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Sell_With_Us</title>
     <link rel="stylesheet" href="../static/styles/home.css">
     <link rel="stylesheet" href="../static/styles/sign_up.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
     <nav class="top-navbar flex">
         <div class="container flex">
             <!-- logo -->
-            <a href="#" class="navbar-brand flex">
+            <a href = "{{ url_for('home') }}" class = "navbar-brand flex">
                 <div class="logo"></div>
                 <span class="brand-text">Artisans Alley</span>
             </a>
@@ -27,9 +27,9 @@
                 <a href="{{ url_for('home') }}" class="nav-link">Home</a>
                 <a href="{{ url_for('explore_artisans') }}" class="nav-link">Artisans</a>
                 <a href="{{ url_for('explore_products') }}" class="nav-link">Products</a>
-                <a href="{{ url_for('artisan_sign_up') }}" class="nav-link">Sell With Us</a>
+                <a href="#" class="nav-link active">Sell With Us</a>
                 <a href="{{ url_for('about') }}" class="nav-link">About</a>
-                <a href="#" class="nav-link active">Sign Up</a>
+                <a href="{{ url_for('sign_in') }}" class="nav-link">Sign Up</a>
             </ul>
             <!-- hamburger menu icon -->
             <button type="button" class="navbar-toggler">
@@ -43,7 +43,7 @@
 
 <!-- form -->
 <div class="form-container">
-    <h2>Sign Up</h2>
+    <h2>Sell With Us</h2>
     <form action="/register" method="post">
         <div class="form-group">
             <label for="username">Username:</label>
@@ -78,6 +78,10 @@
                 <option value="Jewelry Making">Jewelry Making</option>
                 <!-- Add more options for other crafts -->
             </select>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
@@ -121,7 +125,6 @@
     </div>
 </footer>
 <!-- end of footer -->
-
 <script>
     document.getElementById('country').addEventListener('change', function() {
         let country = this.value;
@@ -146,7 +149,6 @@
         }
     });
 </script>
-
 </body>
 </html>
 
