@@ -11,7 +11,7 @@ body {
     width: 1000px;
     background-color: #fff;
     border-radius: 25px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);*/
     margin: 15px auto;
 }
 
@@ -39,15 +39,18 @@ body {
 }
 
 .price {
-    font-size: 18px;
+    font-size: 25px;
     color: #0056b3;
     margin-top: 15px;
     margin-bottom: 15px;
+    font-weight: 500;
 }
 
 .description {
-    font-size: 16px;
+    font-size: 15px;
     margin-bottom: 20px;
+    margin-top: 35px;
+    text-align: justify;
 }
 
 .order-button {
@@ -59,8 +62,51 @@ body {
     color: #fff;
     border: none;
     cursor: pointer;
+    border-radius: 15px;
 }
 
 .order-button:hover {
     background-color: #0056b3;
+}
+
+
+#reviews {
+    margin-top: 50px;
+}
+
+.reviews-section-title{
+    text-align: left;
+    color: var(--primary);
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+
+.reviews-section-title h2{
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.review {
+    /*border: 1px solid #ddd;*/
+    border-radius: 10px;
+    padding: 15px 20px 15px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.09);
+}
+
+.review-date{
+    color: darkgrey;
+}
+
+.user-info {
+    margin-bottom: 10px;
+}
+
+.user-info p {
+    margin: 5px 0;
+}
+
+.user-review {
+    font-size: 16px;
+    line-height: 1.5;
 }
