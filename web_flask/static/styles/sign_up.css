@@ -1,3 +1,6 @@
+/*#header{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}*/
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -55,6 +58,23 @@ h2 {
 .form-group input[type="password"]:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Sign-in-up redirection */
+.nav-link-sign{
+    color: #455bc9;
+    font-weight: 600;
+    margin-left: 10px;
+}
+.nav-link-sign.active{
+    color: var(--primary);
+}
+.nav-link-sign:hover{
+    color: var(--primary);
+}
+
+.sell-with-us{
+    margin-top: 15px;
 }
 
 #footer {

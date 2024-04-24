@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sign Up</title>
+		<link rel = "stylesheet" href = "../static/styles/home.css">
+		<link rel="stylesheet" href="../static/styles/sign_up.css">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+		<link rel="icon" href="../static/images/logo.png" />
+	</head>
+	<body>
+
+		<!-- header -->
+		<header id = "header">
+
+			<!-- top navbar -->
+			<nav class = "top-navbar flex">
+				<div class = "container flex">
+					<!-- logo -->
+					<a href = "#" class = "navbar-brand flex">
+						<div class="logo"></div>
+						<span class = "brand-text">Artisans Alley</span>
+					</a>
+					<!-- end of logo -->
+					<ul class = "navbar-nav-right flex">
+						<a href = "{{ url_for('home') }}" class = "nav-link">Home</a>
+						<a href = "{{ url_for('explore_artisans') }}" class = "nav-link">Artisans</a>
+						<a href = "{{ url_for('explore_products') }}" class = "nav-link">Products</a>
+						<a href = "{{ url_for('artisan_sign_up') }}" class = "nav-link">Sell With Us</a>
+						<a href = "{{ url_for('about') }}" class = "nav-link">About</a>
+						<a href = "#" class = "nav-link active">Sign In</a>
+					</ul>
+					<!-- hamburger menu icon -->
+					<button type = "button" class = "navbar-toggler">
+						<i class = "fa fa-bars"></i>
+					</button>
+					<!-- end of hamburger menu icon -->
+				</div>
+			</nav>
+		</header>
+		<!-- end of header -->
+
+		<!-- form -->
+		<div class="form-container">
+			<h2>Sign In</h2>
+			<form action="/register" method="post">
+				<div class="form-group">
+					<label for="email">Email:</label>
+					<input type="email" id="email" name="email" required>
+				</div>
+				<div class="form-group">
+					<label for="password">Password:</label>
+					<input type="password" id="password" name="password" required>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Sign In">
+				</div>
+				<div>
+					<label>Don't have an Account?</label>
+					<a href = "{{ url_for('customer_sign_up') }}" class="nav-link-sign">Sign Up</a>
+				</div>
+                <div class="sell-with-us">
+					<label>Sell With Us</label>
+					<a href = "{{ url_for('artisan_sign_up') }}" class="nav-link-sign">Create Your Shop</a>
+				</div>
+			</form>
+		</div>
+		<!-- end of form -->
+
+
+		<!-- footer -->
+		<footer id = "footer">
+			<div class = "container grid">
+				<div class = "footer-item one">
+					<a href = "#" class = "navbar-brand"><span class = "brand-text">Artisans Alley</span></a>
+					<p class = "text">Welcome to the digital home of local makers and artisans, The place to find unique and beautiful items to treat yourself, enhance your home decor, or find a memorable gift.</p>
+				</div>
+
+				<div class = "footer-item">
+					<ul class = "footer-links">
+						<li><a href = "{{ url_for('home') }}">Home</a></li>
+						<li><a href = "{{ url_for('explore_artisans') }}">Artisans</a></li>
+						<li><a href = "{{ url_for('explore_products') }}">Products</a></li>
+						<li><a href = "{{ url_for('artisan_sign_up') }}">Sell With Us</a></li>
+						<li><a href = "{{ url_for('sign_in') }}">Sign In</a></li>
+						<li><a href = "{{ url_for('about') }}">About</a></li>
+					</ul>
+				</div>
+
+				<div class = "footer-item four">
+					<h4>Contact Us</h4>
+					<span>   ArtisansAlley@gmail.com   </span>
+				</div>
+			</div>
+		</footer>
+		<!-- end of footer -->
+	</body>
+</html>

@@ -178,9 +178,6 @@ button{
 .nav-link{
     transition: var(--trans);
 }
-.nav-link#clicked{
-    color: var(--primary);
-}
 .nav-link.active{
     color: var(--primary);
 }

@@ -36,13 +36,13 @@ def artisan_sign_up():
 @app.route('/sign_up', strict_slashes=False)
 def customer_sign_up():
     """ displays the Sign-up page for the customer """
-    return render_template('signup.html')
+    return render_template('sign_up.html')
 
 
 @app.route('/sign_in', strict_slashes=False)
 def sign_in():
     """ displays the Sign in page """
-    return "Sign in Page\n"
+    return render_template('sign_in.html')
 
 
 @app.route('/explore_artisans', strict_slashes=False)
