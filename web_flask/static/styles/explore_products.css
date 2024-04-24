@@ -94,6 +94,9 @@ button{
 
 
 /* header */
+#header{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
 .header-top{
     height: 30px;
     background-color: var(--secondary);
@@ -239,6 +242,8 @@ button{
     display: flex; /* Set popular-item to flex container */
     flex-direction: column;
     max-width: 270px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 .item-img{
     position: relative;
@@ -259,19 +264,6 @@ button{
 .item-img:hover::after{
     opacity: 1;
 }
-.view-icon{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    opacity: 0;
-    transition: var(--trans);
-}
-.item-img:hover .view-icon{
-    opacity: 1;
-    z-index: 2;
-}
 .item-info{
     margin-top: auto; /* Push item-info to the bottom */
     text-align: center;
@@ -291,6 +283,118 @@ button{
     margin: 25px auto 0 auto;
 }
 
+
+/* filter */
+.container .filters {
+    position: relative;
+    background: white;
+    height: 70px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 60px;
+}
+.button {
+    position: absolute;
+    height: 50px;
+    background-color: #eee;
+    font-weight: 500;
+    transition: var(--trans);
+    width: 170px;
+    font-size: 15px;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.button:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
+.filters div {
+    display: inline-grid;
+}
+.filters h2 {
+    margin-left: 15%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 15px;
+}
+.filters h3 {
+    margin-left: 15%;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+.filters h4 {
+    height: 16px;
+    margin-left: 15%;
+    margin-top: 0;
+    font-weight: 400;
+    font-size: 14px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 160px;
+    margin-bottom: 10px;
+}
+.crafts {
+    height: 100%;
+    width: 25%;
+    margin-top: 21px;
+}
+
+.popover {
+    visibility: hidden;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    background: #FAFAFA;
+    padding-bottom: 15px;
+    height: 300px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    max-height: 300px;
+    z-index: 1;
+    height: fit-content;
+}
+
+.popover::-webkit-scrollbar{
+    width: 0px;
+}
+
+.crafts .popover {
+    margin-top: 0%;
+}
+.popover ul {
+    list-style-type: none;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-top: 20px;
+}
+.popover ul li{
+    padding: 4px;
+    padding-left: 10px;
+}
+
+.popover ul h2{
+    margin-top: 1.5%;
+    margin-bottom: 5%;
+    margin-left: 0px;
+}
+
+.crafts:hover .popover {
+    visibility: visible;
+}
+
+.crafts ul li input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.crafts ul li h2 {
+    display: inline;
+    margin: 0;
+}
 
 
 
