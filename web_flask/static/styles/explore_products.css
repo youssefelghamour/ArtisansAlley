@@ -411,6 +411,13 @@ button{
 #footer .container{
     align-items: flex-start;
 }
+.footer-grid{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
 .footer-item > h4{
     font-size: 15px;
     margin-bottom: 25px;

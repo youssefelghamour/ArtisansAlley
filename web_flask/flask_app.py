@@ -72,7 +72,7 @@ def product():
 @app.route('/about', strict_slashes=False)
 def about():
     """ displays the About Page """
-    return "About Page\n"
+    return render_template('about.html')
 
 
 if __name__ == "__main__":

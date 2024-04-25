@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Sign In</title>
+		<title>About</title>
 		<link rel = "stylesheet" href = "../static/styles/home.css">
-		<link rel="stylesheet" href="../static/styles/sign_up.css">
+        <link rel = "stylesheet" href = "../static/styles/about.css">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 		<link rel="icon" href="../static/images/logo.png" />
 	</head>
@@ -28,8 +28,8 @@
 						<a href = "{{ url_for('explore_artisans') }}" class = "nav-link">Artisans</a>
 						<a href = "{{ url_for('explore_products') }}" class = "nav-link">Products</a>
 						<a href = "{{ url_for('artisan_sign_up') }}" class = "nav-link">Sell With Us</a>
-						<a href = "{{ url_for('about') }}" class = "nav-link">About</a>
-						<a href = "#" class = "nav-link active">Sign In</a>
+						<a href = "#" class = "nav-link active">About</a>
+						<a href = "{{ url_for('sign_in') }}" class = "nav-link">Sign In</a>
 					</ul>
 					<!-- hamburger menu icon -->
 					<button type = "button" class = "navbar-toggler">
@@ -41,32 +41,20 @@
 		</header>
 		<!-- end of header -->
 
-		<!-- form -->
-		<div class="form-container">
-			<h2>Sign In</h2>
-			<form action="/register" method="post">
-				<div class="form-group">
-					<label for="email">Email:</label>
-					<input type="email" id="email" name="email" required>
-				</div>
-				<div class="form-group">
-					<label for="password">Password:</label>
-					<input type="password" id="password" name="password" required>
-				</div>
-				<div class="form-group">
-					<input type="submit" value="Sign In">
-				</div>
-				<div>
-					<label>Don't have an Account?</label>
-					<a href = "{{ url_for('customer_sign_up') }}" class="nav-link-sign">Sign Up</a>
-				</div>
-                <div class="sell-with-us">
-					<label>Sell With Us</label>
-					<a href = "{{ url_for('artisan_sign_up') }}" class="nav-link-sign">Create Your Shop</a>
-				</div>
-			</form>
-		</div>
-		<!-- end of form -->
+
+        <!-- About section -->
+        <div class="about-container">
+            <div class="about-details">
+                <h1>About Us</h1>
+                <h2 class="about_name">Artisans Alley</h2>
+                <p class="description">Artisans Alley is the culmination of a shared passion for craftsmanship, community, and creativity. We embarked on this project with a simple yet profound purpose: to provide a platform where artisans can thrive and where customers can discover the beauty of handmade goods.</p>
+                <p class="description">In a world where mass production often dominates, we wanted to create a space where the unique stories behind each handcrafted piece could be celebrated. Our goal is to empower artisans by giving them a platform to showcase their skills, share their stories, and connect with a global audience of appreciative customers.</p>
+                <p class="description">At the heart of Artisans Alley is a commitment to preserving and promoting traditional craftsmanship while also embracing innovation and modern design. We believe that handmade goods carry a special authenticity and charm that simply can't be replicated by machines.</p>
+                <p class="description">By creating Artisans Alley, we aim to foster a sense of community among artisans and customers alike – a place where people can come together to celebrate creativity, support local economies, and experience the joy of owning something truly special. We're passionate about creating a more sustainable and equitable future for artisans, customers, and the planet.</p>
+                <p class="description">Thank you for joining us on this journey as we work to make the world a more beautiful and connected place, one handcrafted creation at a time.</p>
+            </div>
+        </div>
+        <!-- About section -->
 
 
 		<!-- footer -->
@@ -83,7 +71,7 @@
 						<li><a href = "{{ url_for('explore_artisans') }}">Artisans</a></li>
 						<li><a href = "{{ url_for('explore_products') }}">Products</a></li>
 						<li><a href = "{{ url_for('artisan_sign_up') }}">Sell With Us</a></li>
-						<li><a href = "{{ url_for('about') }}">About</a></li>
+						<li><a href = "#">About</a></li>
 					</ul>
 				</div>
 
