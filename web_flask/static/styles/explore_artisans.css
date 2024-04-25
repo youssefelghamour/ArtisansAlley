@@ -342,16 +342,15 @@ button{
     max-width: 160px;
     margin-bottom: 10px;
 }
-.crafts {
+.crafts, .location {
     height: 100%;
     width: 25%;
     margin-top: 21px;
-    margin-left: 0;
 }
 
-.crafts .popover {
+.popover {
     visibility: hidden;
-    width: 250px;
+    width: 100%;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     background: #FAFAFA;
@@ -392,6 +391,10 @@ button{
     visibility: visible;
 }
 
+.location:hover .popover {
+    visibility: visible;
+}
+
 .crafts ul li input[type="checkbox"] {
     margin-right: 10px;
 }
@@ -401,9 +404,9 @@ button{
     margin: 0;
 }
 
-.location {
-    margin-top: -66px;
-    margin-left: 200px;
+.location ul li h2 {
+    display: inline;
+    margin-left: 5px;
 }
 
 /* footer */
