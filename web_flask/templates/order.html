@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Cart</title>
+		<link rel = "stylesheet" href = "../static/styles/home.css">
+        <link rel = "stylesheet" href = "../static/styles/product.css">
+        <link rel = "stylesheet" href = "../static/styles/order.css">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+		<link rel="icon" href="../static/images/logo.png" />
+	</head>
+	<body>
+
+		<!-- header -->
+		<header id = "header">
+
+			<!-- top navbar -->
+			<nav class = "top-navbar flex">
+				<div class = "container flex">
+					<!-- logo -->
+					<a href = "{{ url_for('home') }}" class = "navbar-brand flex">
+						<div class="logo"></div>
+						<span class = "brand-text">Artisans Alley</span>
+					</a>
+					<!-- end of logo -->
+					<ul class = "navbar-nav-right flex">
+						<a href = "{{ url_for('home') }}" class = "nav-link">Home</a>
+						<a href = "{{ url_for('explore_artisans') }}" class = "nav-link">Artisans</a>
+						<a href = "{{ url_for('explore_products') }}" class = "nav-link">Products</a>
+						<a href = "{{ url_for('artisan_sign_up') }}" class = "nav-link">Sell With Us</a>
+						<a href = "{{ url_for('about') }}" class = "nav-link">About</a>
+						<a href = "{{ url_for('sign_in') }}" class = "nav-link">Sign In</a>
+					</ul>
+					<!-- hamburger menu icon -->
+					<button type = "button" class = "navbar-toggler">
+						<i class = "fa fa-bars"></i>
+					</button>
+					<!-- end of hamburger menu icon -->
+				</div>
+			</nav>
+		</header>
+		<!-- end of header -->
+
+
+        <!-- About section -->
+		<section id="cart">
+			<div class="container">
+				<div class="order-info">
+					<h2 class="customer-name">Customer Name</h2>
+					<div class="cart-info">
+						<h1>Cart</h1>
+						<h3>Order #0135</h3>
+					</div>
+					<h4 class="date">Friday 26/04/2024</h4>
+				</div>
+				<div class="order-items">
+					<!-- Product 1 -->
+					<div class="order-item">
+						<img src="../static/images/popular-2.jpg" alt="Product Image">
+						<div class="item-details">
+							<h2>Persian Style Rug, Traditional Mid-century, Rugs 8x10</h2>
+							<div class="price-line">
+								<p class="prc">Price: </p>
+								<p class="product-price">$230.50</p>
+							</div>
+						</div>
+						<button class="remove-btn">Remove</button>
+					</div>
+					<!-- Product 2 -->
+					<div class="order-item">
+						<img src="../static/images/product-5.jpg" alt="Product Image">
+						<div class="item-details">
+							<h2>Handmade Brass Pot</h2>
+							<div class="price-line">
+								<p class="prc">Price: </p>
+								<p class="product-price">$19.99</p>
+							</div>
+						</div>
+						<button class="remove-btn">Remove</button>
+					</div>
+					<!-- Product 3 -->
+					<div class="order-item">
+						<img src="../static/images/popular-3.jpg" alt="Product Image">
+						<div class="item-details">
+							<h2>Unique Egyptian Beaded Collar Necklace With Sacred Scarabs</h2>
+							<div class="price-line">
+								<p class="prc">Price: </p>
+								<p class="product-price">$157.32</p>
+							</div>
+						</div>
+						<button class="remove-btn">Remove</button>
+					</div>
+					<!-- Add more product items as needed -->
+				</div>
+				<div class="order-summary">
+					<div class="total-line">
+						<p>Total Items:</p>
+						<p class="total-items">3</p>
+					</div>
+					<div class="total-line">
+						<p>Total Price:</p>
+						<p class="total-price">$407.81</p>
+					</div>
+					<button class="checkout-btn">Checkout</button>
+				</div>
+			</div>
+		</section>
+        <!-- About section -->
+
+
+		<!-- footer -->
+		<footer id = "footer">
+			<div class = "container footer-grid">
+				<div class = "footer-item one">
+					<a href = "#" class = "navbar-brand"><span class = "brand-text">Artisans Alley</span></a>
+					<p class = "text">Welcome to the digital home of local makers and artisans, The place to find unique and beautiful items to treat yourself, enhance your home decor, or find a memorable gift.</p>
+				</div>
+
+				<div class = "footer-item">
+					<ul class = "footer-links">
+						<li><a href = "{{ url_for('home') }}">Home</a></li>
+						<li><a href = "{{ url_for('explore_artisans') }}">Artisans</a></li>
+						<li><a href = "{{ url_for('explore_products') }}">Products</a></li>
+						<li><a href = "{{ url_for('artisan_sign_up') }}">Sell With Us</a></li>
+						<li><a href = "{{ url_for('about') }}">About</a></li>
+					</ul>
+				</div>
+
+				<div class = "footer-item four">
+					<h4>Contact Us</h4>
+					<span>   ArtisansAlley@gmail.com   </span>
+				</div>
+			</div>
+		</footer>
+		<!-- end of footer -->
+	</body>
+</html>

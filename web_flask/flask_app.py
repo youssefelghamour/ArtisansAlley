@@ -75,5 +75,11 @@ def about():
     return render_template('about.html')
 
 
+@app.route('/order', strict_slashes=False)
+def order():
+    """ displays the order Page """
+    return render_template('order.html')
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

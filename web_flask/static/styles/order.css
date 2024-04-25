@@ -1,0 +1,135 @@
+.order-info {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5px;
+    margin-left: 21px;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.cart-info {
+    text-align: center;
+}
+
+.cart-info h1 {
+    font-size: 27px;
+    color: #0056b3;
+}
+
+.cart-info h3 {
+    font-size: 15px;
+    color: darkgrey;
+    font-weight: 300;
+}
+
+.customer-name {
+    font-size: 20px;
+    color: black;
+    font-weight: 500;
+}
+
+.date {
+    font-size: 15px;
+    font-weight: 100;
+    color: grey;
+}
+
+.order-items {
+    flex: 70%;
+}
+
+.order-item {
+    display: flex;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.09);
+    border-radius: 20px;
+}
+
+.order-item img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.item-details {
+    flex-grow: 1;
+    margin-left: 30px;
+}
+
+h2 {
+    color: black;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.remove-btn {
+    color: red;
+    font-weight: 500;
+    margin-right: 15px;
+}
+
+.price-line {
+    display: flex;
+    align-items: center;
+}
+
+.total-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.prc {
+    font-size: 15px;
+}
+
+.product-price {
+    font-size: 15px;
+    margin-left: 15px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #292929;
+}
+
+.total {
+    font-size: 10px;
+    margin-left: 15px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.total-items,
+.total-price {
+    font-size: 22px;
+    margin-left: 15px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    color: #0056b3;
+}
+
+.order-summary {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 40px 0 40px 0;
+    width: 30%; /* Set width to make it rectangular */
+    margin-left: auto; /* Align to the right */
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.checkout-btn:hover {
+    background-color: var(--secondary);
+}
