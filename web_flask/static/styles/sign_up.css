@@ -39,6 +39,7 @@ h2 {
     border-radius: 6px;
     box-sizing: border-box;
     font-size: 16px;
+    resize: none;
 }
 .form-group input[type="submit"] {
     background-color: #d2985e;

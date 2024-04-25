@@ -57,6 +57,8 @@ class BaseModel:
     def to_dict(self):
         """ returns a dictionary containing all keys/values of the instance """
         res = self.__dict__.copy()
+        if '_sa_instance_state' in res:
+            del res['_sa_instance_state']
         res['created_at'] = res['created_at'].isoformat()
         res['updated_at'] = res['updated_at'].isoformat()
         res['__class__'] = self.__class__.__name__
