@@ -30,7 +30,8 @@ def home():
 @app.route('/sell_with_us', strict_slashes=False)
 def artisan_sign_up():
     """ displays the Sign-up page for artisan """
-    return render_template('sell_with_us.html')
+    countries = storage.all(Country).values()
+    return render_template('sell_with_us.html', countries=countries)
 
 
 @app.route('/sign_up', strict_slashes=False)
@@ -48,7 +49,8 @@ def sign_in():
 @app.route('/explore_artisans', strict_slashes=False)
 def explore_artisans():
     """ displays the Explore Artisans Page for Shops """
-    return render_template('explore_artisans.html')
+    countries = storage.all(Country).values()
+    return render_template('explore_artisans.html', countries=countries)
 
 
 @app.route('/explore_products', strict_slashes=False)

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../static/styles/sign_up.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../static/images/logo.png" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 
@@ -57,9 +58,9 @@
             <label for="country">Country:</label>
             <select id="country" name="country" required>
                 <option value="" disabled selected>Select your country</option>
-                <option value="USA">USA</option>
-                <option value="Canada">Canada</option>
-                <!-- Add more options for other countries -->
+		{% for country in countries %}
+		<option value="{{ country.id }}">{{ country.name }}</option>
+		{% endfor %}
             </select>
         </div>
         <div class="form-group">
@@ -125,29 +126,20 @@
 </footer>
 <!-- end of footer -->
 <script>
-    document.getElementById('country').addEventListener('change', function() {
-        let country = this.value;
-        let cityDropdown = document.getElementById('city');
-        cityDropdown.innerHTML = '';
-        if (country === 'USA') {
-            let cities = ['New York', 'Los Angeles', 'Chicago'];
-            cities.forEach(function(city) {
-                let option = document.createElement('option');
-                option.value = city;
-                option.textContent = city;
-                cityDropdown.appendChild(option);
-            });
-        } else if (country === 'Canada') {
-            let cities = ['Toronto', 'Vancouver', 'Montreal'];
-            cities.forEach(function(city) {
-                let option = document.createElement('option');
-                option.value = city;
-                option.textContent = city;
-                cityDropdown.appendChild(option);
-            });
-        }
-    });
+	document.getElementById('country').addEventListener('change', function() {
+			let countryId = this.value;
+			$.get(`http://localhost:5001/api/v1/countries/${countryId}/cities`, function (data) {
+					let cities = data;
+					let cityDropdown = document.getElementById('city');
+					cityDropdown.innerHTML = '<option value="" disabled selected>Select your city</option>';
+					cities.forEach(function(city) {
+							let option = document.createElement('option');
+							option.value = city.name;
+							option.text = city.name;
+							cityDropdown.appendChild(option);
+						})
+				})
+		})
 </script>
 </body>
 </html>
-
