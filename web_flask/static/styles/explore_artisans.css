@@ -285,6 +285,13 @@ button{
 #popular .btn-sm {
     margin: 25px auto 0 auto;
 }
+.artisans {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
 
 
 /* filter */

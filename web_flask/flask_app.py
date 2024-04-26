@@ -50,7 +50,8 @@ def sign_in():
 def explore_artisans():
     """ displays the Explore Artisans Page for Shops """
     countries = storage.all(Country).values()
-    return render_template('explore_artisans.html', countries=countries)
+    artisans = storage.all(Artisan).values()
+    return render_template('explore_artisans.html', countries=countries, artisans=artisans)
 
 
 @app.route('/explore_products', strict_slashes=False)
