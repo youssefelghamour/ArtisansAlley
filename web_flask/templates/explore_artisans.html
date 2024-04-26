@@ -65,7 +65,7 @@
 								<li>
 									<h2>{{ country.name }}</h2>
 									<ul>{% for city in country.cities %}
-										<li><input type="checkbox"><h2>{{ city.name }}</h2></li>
+										<li><input type="checkbox" data-id="{{ city.id }}" data-name="{{ city.name }}"><h2>{{ city.name }}</h2></li>
 									{% endfor %}
 									</ul>
 								</li>

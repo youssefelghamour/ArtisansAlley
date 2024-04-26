@@ -108,3 +108,59 @@ def update_artisan(artisan_id):
     storage.save()
 
     return make_response(jsonify(artisan.to_dict()), 200)
+
+
+@app_views.route('/artisans_search', methods=['POST'], strict_slashes=False)
+def artisans_search():
+    """
+    Retrieves all Artisan objects depending of the JSON in the body
+    of the request
+    """
+    # check if the data in the requset i JSON
+    if request.get_json() is None:
+        abort(400, description="Not a JSON")
+
+    # convert the data to a python dictionary
+    data = request.get_json()
+
+    # get the list of ids of the checked cities & crafts
+    if data and len(data):
+        cities = data.get('cities', None)
+        # crafts = data.get('crafts', None)
+
+    # in case no city is selected, display all the artisans
+    if not data or not len(data) or (
+            not cities):
+        artisans = storage.all(Artisan).values()
+        list_artisans = []
+        for artisan in artisans:
+            list_artisans.append(artisan.to_dict())
+        return jsonify(list_artisans)
+
+    list_artisans = []
+
+    # get the artisans in the selected cities
+    if cities:
+        city_obj = [storage.get(City, c_id) for c_id in cities]
+        for city in city_obj:
+            if city:
+                for artisan in city.artisans:
+                    if artisan not in list_artisans:
+                        list_artisans.append(artisan)
+
+    # get the artisans with the selected crafts
+    """if crafts:
+        if not list_artisans:
+            list_artisans = storage.all(Artisan).values()
+        crafts_obj = [storage.get(Craft, c_id) for c_id in crafts]
+        list_artisans = [artisan for artisan in list_artisans
+                       if all([cr in artisan.crafts
+                               for cr in crafts_obj])]
+    """
+
+    artisans = []
+    for artis in list_artisans:
+        artis = artis.to_dict()
+        artisans.append(artis)
+
+    return jsonify(artisans)
