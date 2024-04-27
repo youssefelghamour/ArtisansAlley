@@ -31,7 +31,8 @@ def home():
 def artisan_sign_up():
     """ displays the Sign-up page for artisan """
     countries = storage.all(Country).values()
-    return render_template('sell_with_us.html', countries=countries)
+    crafts = storage.all(Craft).values()
+    return render_template('sell_with_us.html', countries=countries, crafts=crafts)
 
 
 @app.route('/sign_up', strict_slashes=False)
@@ -51,13 +52,15 @@ def explore_artisans():
     """ displays the Explore Artisans Page for Shops """
     countries = storage.all(Country).values()
     artisans = storage.all(Artisan).values()
-    return render_template('explore_artisans.html', countries=countries, artisans=artisans)
+    crafts = storage.all(Craft).values()
+    return render_template('explore_artisans.html', countries=countries, artisans=artisans, crafts=crafts)
 
 
 @app.route('/explore_products', strict_slashes=False)
 def explore_products():
     """ displays the Explore Products Page """
-    return render_template('explore_products.html')
+    crafts = storage.all(Craft).values()
+    return render_template('explore_products.html', crafts=crafts)
 
 
 @app.route('/artisan', strict_slashes=False)

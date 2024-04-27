@@ -9,6 +9,7 @@ from models.customer import Customer
 from models.country import Country
 from models.city import City
 from models.review import Review
+from models.craft import Craft
 
 
 class DBStorage:
@@ -21,7 +22,8 @@ class DBStorage:
             'Customer': Customer,
             'Country': Country,
             'City': City,
-            'Review': Review
+            'Review': Review,
+            'Craft': Craft
             }
 
     def __init__(self):

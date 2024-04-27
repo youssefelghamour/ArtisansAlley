@@ -74,10 +74,9 @@
             <label for="craft">Craft:</label>
             <select id="craft" name="craft" required>
                 <option value="" disabled selected>Select your craft</option>
-                <option value="Woodworking">Woodworking</option>
-                <option value="Pottery">Pottery</option>
-                <option value="Jewelry Making">Jewelry Making</option>
-                <!-- Add more options for other crafts -->
+		{% for craft in crafts%}
+		<option value="{{ craft.name }}">{{ craft.name }}</option>
+		{% endfor %}
             </select>
         </div>
         <div class="form-group">

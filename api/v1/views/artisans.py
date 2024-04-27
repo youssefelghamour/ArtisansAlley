@@ -4,6 +4,7 @@ from api.v1.views import app_views
 from flask import jsonify, abort, make_response, request
 from models.city import City
 from models.artisan import Artisan
+from models.craft import Craft
 from models import storage
 import json
 
@@ -126,11 +127,11 @@ def artisans_search():
     # get the list of ids of the checked cities & crafts
     if data and len(data):
         cities = data.get('cities', None)
-        # crafts = data.get('crafts', None)
+        crafts = data.get('crafts', None)
 
     # in case no city is selected, display all the artisans
     if not data or not len(data) or (
-            not cities):
+            not cities and not crafts):
         artisans = storage.all(Artisan).values()
         list_artisans = []
         for artisan in artisans:
@@ -149,18 +150,19 @@ def artisans_search():
                         list_artisans.append(artisan)
 
     # get the artisans with the selected crafts
-    """if crafts:
+    if crafts:
         if not list_artisans:
             list_artisans = storage.all(Artisan).values()
         crafts_obj = [storage.get(Craft, c_id) for c_id in crafts]
         list_artisans = [artisan for artisan in list_artisans
                        if all([cr in artisan.crafts
                                for cr in crafts_obj])]
-    """
 
     artisans = []
     for artis in list_artisans:
-        artis = artis.to_dict()
-        artisans.append(artis)
+        artisan_data = artis.to_dict()
+        if crafts:
+            artisan_data['crafts'] = [craft.to_dict() for craft in artisan_data['crafts']]
+        artisans.append(artisan_data)
 
     return jsonify(artisans)

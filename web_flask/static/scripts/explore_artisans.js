@@ -1,7 +1,7 @@
 const $ = window.$;
 $(document).ready(function () {
     const selectedCities = {};
-    //const selectedCrafts = {};
+    const selectedCrafts = {};
     
     $('div.location input[type="checkbox"]').change(function () {
         const cityId = $(this).data('id');
@@ -15,7 +15,7 @@ $(document).ready(function () {
         $('div.location > h4').text(Object.values(selectedCities).join(', '));
     });
 
-    /*$('div.crafts input[type="checkbox"]').change(function () {
+    $('div.crafts input[type="checkbox"]').change(function () {
         const craftId = $(this).data('id');
         const craftName = $(this).data('name');
     
@@ -24,8 +24,8 @@ $(document).ready(function () {
         } else {
           delete selectedCrafts[craftId];
         }
-        $('div.location > h4').text(Object.values(selectedCrafts).join(', '));
-    });*/
+        $('div.crafts > h4').text(Object.values(selectedCrafts).join(', '));
+    });
 
     $.ajax({
         url: 'http://localhost:5001/api/v1/artisans/',
@@ -52,8 +52,8 @@ $(document).ready(function () {
 
     $('button').on('click', function () {
         const cities = Object.keys(selectedCities);
-        // const crafts = Object.keys(selectedCrafts);
-        const reqData = { cities };
+        const crafts = Object.keys(selectedCrafts);
+        const reqData = { 'cities': cities, 'crafts': crafts };
         $.ajax({
             url: 'http://localhost:5001/api/v1/artisans_search/',
             type: 'POST',

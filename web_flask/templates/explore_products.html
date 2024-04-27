@@ -8,6 +8,10 @@
     <link rel = "stylesheet" href = "../static/styles/explore_products.css">
     <!-- logo icon -->
     <link rel="icon" href="../static/images/logo.png" />
+    <!-- Import JQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- Import JavaScript file -->
+    <script type="text/javascript" src="../static/scripts/explore_products.js"></script>
 </head>
 <body>
     <!-- header -->
@@ -44,11 +48,9 @@
                     <h4>&nbsp;</h4>
                     <div class="popover">
                         <ul>
-                            <li><input type="checkbox"><h2>All</h2></li>
-                            <li><input type="checkbox"><h2>Carpentry</h2></li>
-                            <li><input type="checkbox"><h2>Rugs</h2></li>
-                            <li><input type="checkbox"><h2>Clothes</h2></li>
-                            <li><input type="checkbox"><h2>Jewellery</h2></li>
+				{% for craft in crafts %}
+				<li><input type="checkbox" data-id="{{ craft.id }}" data-name="{{ craft.name }}"><h2>{{ craft.name }}</h2></li>
+				{% endfor %}
                         </ul>
                     </div>
                 </div>

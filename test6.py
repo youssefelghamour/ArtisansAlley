@@ -51,13 +51,33 @@ for k, v in countries.items():
 # Create Artisans
 
 artisans_data = [
-    {"name": "Artisan1", "description": "Description1", "email": "artisan1@example.com", "password": "password1", "city_id": "fe8553d5-afa7-488e-b95c-5447878db179"},
-    {"name": "Artisan2", "description": "Description2", "email": "artisan2@example.com", "password": "password2", "city_id": "fb832959-1928-47cb-87af-28269eb09cca"}
+    {"name": "Artisan1", "description": "Description1", "email": "artisan1@example.com", "password": "password1", "city_id": "ddde22a5-a672-427f-b09a-ae68d5b711ed"},
+    {"name": "Artisan2", "description": "Description2", "email": "artisan2@example.com", "password": "password2", "city_id": "e5004cf3-b958-414d-b74b-4a898b1ad692"}
 ]
 
-for artisan_data in artisans_data:
-    new_artisan = Artisan(**artisan_data)
-    new_artisan.save()
+new_artisan = Artisan(**artisans_data[0])
+new_artisan.save()
+craft = storage.get(Craft, "35160659-24a7-4eac-91d4-4ca937f39beb")
+new_artisan.crafts.append(craft)
+new_artisan.save()
+
+new_artisan = Artisan(**artisans_data[1])
+new_artisan.save()
+craft = storage.get(Craft, "4f655db6-d774-46cf-93cb-9a32ec1d1238")
+new_artisan.crafts.append(craft)
+new_artisan.save()
+
+
+# *******************************************************************************
+# create Crafts
+
+crafts = ["Rugs", "Carpentry", "Pottery", "Jewellery", "Metal Crafts", "Glass Crafts", "Painting", "Paper Crafts", "Woodworking", "Sewing", "Leatherworking"]
+
+"""
+for craftName in crafts:
+    craft = Craft(name=craftName)
+    craft.save()
+"""
 
 
 storage.save()
