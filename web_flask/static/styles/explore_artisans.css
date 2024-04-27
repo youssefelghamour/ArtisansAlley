@@ -292,6 +292,44 @@ button{
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
 }
+.craft-name {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    background-color: burlywood;
+    max-width: 181px;
+    padding: 6px;
+    text-align: -webkit-center;
+    border-radius: 11px;
+    color: white;
+    display: block;
+    margin: 0 auto;
+}
+.craft-name h4 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 160px;
+    font-size: 13px;
+    font-weight: 100;
+}
+.craft-name h4::after {
+    content: attr(data-tooltip); /* Display the value of the 'data-tooltip' attribute */
+    position: absolute;
+    bottom: -200%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: lightgray;
+    color: black;
+    padding: 5px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.craft-name h4:hover::after {
+    opacity: 1; /* Show tooltip on hover */
+}
 
 
 /* filter */

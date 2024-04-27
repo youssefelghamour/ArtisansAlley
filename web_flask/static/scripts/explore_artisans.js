@@ -62,17 +62,22 @@ $(document).ready(function () {
             success: function (response) {
             $('section.artisans').empty();
             response.forEach(function (artisan) {
+                const newSection = $('<section class="craft-name"><h4 data-tooltip="Full craft name"></h4></section>');
+                const craftsHtml = artisan.crafts ? artisan.crafts.map(craft => `${craft.name}`).join(', ') : '';
+                newSection.find('h4').html(craftsHtml); // Set HTML content of <h4> element
+                newSection.find('h4').attr('data-tooltip', craftsHtml);
                 $('section.artisans').append(`
-                        <ul>
-                            <li class="products-item">
-                                <div class="item-img">
-                                    <img src="../static/images/avatar.png">
-                                </div>
-                                <div class="item-info">
-                                    <span class="name">${artisan.name}</span>
-                                </div>
-                            </li>
-                        </ul>`);
+                    <ul>
+                        <li class="products-item">
+                            <div class="item-img">
+                                <img src="../static/images/avatar.png">
+                            </div>
+                            <div class="item-info">
+                                <span class="name">${artisan.name}</span>
+                            </div>
+                        </li>
+                    </ul>`);
+                $('section.artisans .item-info').last().append(artisan.crafts ? newSection : '');
             });
             }
         });

@@ -49,22 +49,34 @@ for k, v in countries.items():
 
 # ****************************************************************************
 # Create Artisans
-
+"""
 artisans_data = [
-    {"name": "Artisan1", "description": "Description1", "email": "artisan1@example.com", "password": "password1", "city_id": "ddde22a5-a672-427f-b09a-ae68d5b711ed"},
-    {"name": "Artisan2", "description": "Description2", "email": "artisan2@example.com", "password": "password2", "city_id": "e5004cf3-b958-414d-b74b-4a898b1ad692"}
+    {"name": "Artisan1", "description": "Description1", "email": "artisan1@example.com", "password": "password1", "city_id": "20956c78-2a65-478b-af3e-72545c458492"},
+    {"name": "Artisan2", "description": "Description2", "email": "artisan2@example.com", "password": "password2", "city_id": "24523026-5267-423c-aa6f-b2a23b2aa12e"}
 ]
 
 new_artisan = Artisan(**artisans_data[0])
 new_artisan.save()
-craft = storage.get(Craft, "35160659-24a7-4eac-91d4-4ca937f39beb")
+craft = storage.get(Craft, "0c87cff9-5b56-4d38-a59c-57fc16745dab")
 new_artisan.crafts.append(craft)
 new_artisan.save()
 
 new_artisan = Artisan(**artisans_data[1])
 new_artisan.save()
-craft = storage.get(Craft, "4f655db6-d774-46cf-93cb-9a32ec1d1238")
+craft = storage.get(Craft, "12a2140d-7850-4830-a8cb-df91c810164d")
 new_artisan.crafts.append(craft)
+new_artisan.save()
+"""
+artisans_data = [
+    {"name": "Artisan3", "description": "Description3", "email": "artisan3@example.com", "password": "password3", "city_id": "24523026-5267-423c-aa6f-b2a23b2aa12e"}
+]
+
+new_artisan = Artisan(**artisans_data[0])
+new_artisan.save()
+craft1 = storage.get(Craft, "0c87cff9-5b56-4d38-a59c-57fc16745dab")
+new_artisan.crafts.append(craft1)
+craft2 = storage.get(Craft, "12a2140d-7850-4830-a8cb-df91c810164d")
+new_artisan.crafts.append(craft2)
 new_artisan.save()
 
 

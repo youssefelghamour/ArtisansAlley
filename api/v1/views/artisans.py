@@ -155,7 +155,7 @@ def artisans_search():
             list_artisans = storage.all(Artisan).values()
         crafts_obj = [storage.get(Craft, c_id) for c_id in crafts]
         list_artisans = [artisan for artisan in list_artisans
-                       if all([cr in artisan.crafts
+                       if any([cr in artisan.crafts
                                for cr in crafts_obj])]
 
     artisans = []
