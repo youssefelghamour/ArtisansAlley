@@ -23,7 +23,7 @@ $(document).ready(function () {
         success: function (response) {
             response.forEach(function (product) {
                 $('ul.products-grid').append(`
-                <li class="products-item">
+                <li class="products-item" data-product-id="${product.id}">
                     <div class="item-img">
                         <img src="../static/images/popular-1.jpg">
                     </div>
@@ -48,7 +48,7 @@ $(document).ready(function () {
             $('ul.products-grid').empty();
             response.forEach(function (product) {
                 $('ul.products-grid').append(`
-                    <li class="products-item">
+                    <li class="products-item" data-product-id="${product.id}">
                     <div class="item-img">
                         <img src="../static/images/popular-1.jpg">
                     </div>
@@ -60,6 +60,13 @@ $(document).ready(function () {
             });
             }
         });
+    });
+
+    $(document).on('click', '.products-item', function() {
+        // Get the product_id from the data-product-id when the product li is clicked
+        const product_id = $(this).data('product-id');
+        // Redirect the user to the product page with the specified product ID
+        window.location.href = `/product/${product_id}`;
     });
 
 });
