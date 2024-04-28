@@ -10,6 +10,7 @@ from models.country import Country
 from models.city import City
 from models.review import Review
 from models.craft import Craft
+from models.order import Order
 from models.product import Product
 
 
@@ -54,7 +55,7 @@ class DBStorage:
         objects_dict = {}
 
         if cls is None:
-            classes_to_query = [User, State, City, Place, Review, Amenity]
+            classes_to_query = [Artisan, City, Country, Craft, Customer, Order, Product, Review]
         else:
             classes_to_query = [cls]
 

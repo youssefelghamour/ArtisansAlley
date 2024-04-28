@@ -21,7 +21,7 @@ class Artisan(BaseModel, Base):
 
     name = Column(String(128), nullable=False)
     description = Column(String(1024), nullable=False)
-    email = Column(String(128), nullable=False)
+    email = Column(String(128), unique=True, nullable=False)
     password = Column(String(128), nullable=False)
     city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
     crafts = relationship("Craft", secondary='artisan_craft',

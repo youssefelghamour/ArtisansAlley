@@ -11,7 +11,7 @@ class Customer(BaseModel, Base):
 
     first_name = Column(String(128), nullable=True)
     last_name = Column(String(128), nullable=True)
-    email = Column(String(128), nullable=False)
+    email = Column(String(128), unique=True, nullable=False)
     password = Column(String(128), nullable=False)
     address = Column(String(128), nullable=False)
     reviews = relationship("Review", cascade="all, delete-orphan",
