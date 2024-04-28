@@ -43,15 +43,16 @@ def customer_sign_up():
     form = SignUpForm()
     # If all the fields that the user inputted are correct based on the SignUpForm validators
     if form.validate_on_submit():
-        """
+        
         # Create a new customer with the data
         new_customer = Customer(first_name = form.first_name.data,
                                 last_name = form.last_name.data,
                                 email = form.email.data,
-                                password = form.password1.data
+                                address = form.address.data,
+                                password = form.password.data
                                 )
         new_customer.save()
-        """
+        
         return redirect(url_for('sign_in'))
     # Otherwise, If the data inputted had errors (ex: name too long)
     """ # You can uncomment this to print them in the terminal if you want, but they're displayed on the page
