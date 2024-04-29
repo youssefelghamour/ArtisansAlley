@@ -23,6 +23,7 @@ class Artisan(BaseModel, Base):
     description = Column(String(1024), nullable=False)
     email = Column(String(128), unique=True, nullable=False)
     password_hash = Column(String(128), nullable=False)
+    picture = Column(String(1000), default="../static/images/avatar.png", nullable=False)
     city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
     crafts = relationship("Craft", secondary='artisan_craft',
                           viewonly=False, backref='artisan_crafts')

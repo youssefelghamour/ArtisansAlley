@@ -39,7 +39,7 @@ $(document).ready(function () {
                         <ul>
                             <li class="products-item">
                                 <div class="item-img">
-                                    <img src="../static/images/avatar.png">
+                                    <img src="${artisan.picture}">
                                 </div>
                                 <div class="item-info">
                                     <span class="name">${artisan.name}</span>
@@ -70,7 +70,7 @@ $(document).ready(function () {
                     <ul>
                         <li class="products-item">
                             <div class="item-img">
-                                <img src="../static/images/avatar.png">
+                                <img src="${artisan.picture}">
                             </div>
                             <div class="item-info">
                                 <span class="name">${artisan.name}</span>

@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from models import storage
-from wtforms import StringField, PasswordField, SubmitField, SelectField
+from wtforms import StringField, PasswordField, SubmitField, FileField
 from wtforms.validators import DataRequired, Length, EqualTo, Email, ValidationError
 from wtforms_sqlalchemy.fields import QuerySelectField
 from models.customer import Customer
@@ -43,4 +43,5 @@ class SellWithUsForm(FlaskForm):
     description = StringField('Description', validators=[DataRequired(), Length(min=2, max=600)])
     password = PasswordField(label='password', validators=[DataRequired(), Length(min=6, max=40)])
     password2 = PasswordField(label='password2', validators=[EqualTo('password')])
+    picture = FileField('Picture', validators=[DataRequired()])
     submit = SubmitField(label='Sign Up')

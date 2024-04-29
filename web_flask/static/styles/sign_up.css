@@ -69,6 +69,11 @@ h2 {
     text-align: center;
     color: rgb(117, 118, 118);
 }
+#artisan_picture {
+    border: none;
+    color: darkgrey;
+    padding-left: 0;
+}
 
 
 /* Sign-in-up redirection */

@@ -45,7 +45,7 @@
 <!-- form -->
 <div class="form-container">
     <h2>Sell With Us</h2>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <div class="form-group">
             <label for="username">Username:</label>
@@ -100,6 +100,13 @@
             <label for="password">Confirm your Password:</label>
             {{ form.password2 }}
             {% for error in form.password2.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            <label for="password">Add Image</label>
+            {{ form.picture }}
+            {% for error in form.picture.errors %}
                 <span class="error">{{ error }}</span>
             {% endfor %}
         </div>

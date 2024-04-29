@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Flask app """
-from flask import Flask, flash, get_flashed_messages, render_template, redirect, url_for
+from flask import Flask, flash, get_flashed_messages, render_template, redirect, url_for, request
 from models import storage
 from models.artisan import Artisan
 from models.customer import Customer
@@ -13,6 +13,7 @@ from models.order import Order
 from .forms import SignUpForm
 from .forms import SellWithUsForm
 from flask_bcrypt import Bcrypt
+from werkzeug.utils import secure_filename
 
 
 app = Flask(__name__)
@@ -40,12 +41,22 @@ def artisan_sign_up():
     form = SellWithUsForm()
 
     if form.validate_on_submit():
+        # Store the image
+        file = form.picture.data
+        # Formats the name of the file (ex: from "logo 15.jpg" to "logol_15.jpg")
+        file_name = secure_filename(file.filename)
+        # Store it in /web_flask/static/images/
+        file_path = "./web_flask/static/images/{}".format(file_name)
+        file.save(file_path)
+        # The value of the picture attribute will be the path so it can be accessed from the JS and HTML files with artisan.picture
+        new_file_path = "../static/images/{}".format(file_name)
         new_artisan = Artisan(
             name=form.name.data,
             email=form.email.data,
             description=form.description.data,
             city_id=form.city.data.id,
-            password=form.password.data
+            password=form.password.data,
+            picture=new_file_path
         )
         new_artisan.crafts.append(form.craft.data)
         new_artisan.save()
