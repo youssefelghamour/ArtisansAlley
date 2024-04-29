@@ -117,12 +117,6 @@ def explore_products():
     return render_template('explore_products.html', crafts=crafts)
 
 
-@app.route('/artisan', strict_slashes=False)
-def artisan():
-    """ displays the Artisan shop Page """
-    return "Artisan Shop Page\n"
-
-
 @app.route('/product/<product_id>', strict_slashes=False)
 def product(product_id):
     """ displays the Product Page """
@@ -130,6 +124,18 @@ def product(product_id):
     craft = storage.get(Craft, retrieved_product.craft_id)
     artisan = storage.get(Artisan, retrieved_product.artisan_id)
     return render_template('product.html', product=retrieved_product, craft=craft, artisan=artisan)
+
+
+@app.route('/artisan/<artisan_id>', strict_slashes=False)
+def artisan(artisan_id):
+    """ displays the artisan Page """
+    """
+    retrieved_artisan = storage.get(Artisan, artisan_id)
+    crafts = storage.get(Craft, retrieved_artisan.crafts)
+    products = storage.get(Product, retrieved_artisan.products)
+    return render_template('artisan.html', products=products, crafts=crafts, artisan=retrieved_artisan)
+    """
+    return render_template('artisan.html')
 
 
 @app.route('/about', strict_slashes=False)

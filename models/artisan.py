@@ -27,6 +27,7 @@ class Artisan(BaseModel, Base):
     city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
     crafts = relationship("Craft", secondary='artisan_craft',
                           viewonly=False, backref='artisan_crafts')
+    products = relationship("Product", backref="artisan")
     
     
     @property

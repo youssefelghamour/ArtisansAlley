@@ -37,7 +37,7 @@ $(document).ready(function () {
             response.forEach(function (artisan) {
                 $('section.artisans').append(`
                         <ul>
-                            <li class="products-item">
+                            <li class="products-item" data-artisan-id="${artisan.id}">
                                 <div class="item-img">
                                     <img src="${artisan.picture}">
                                 </div>
@@ -68,7 +68,7 @@ $(document).ready(function () {
                 newSection.find('h4').attr('data-tooltip', craftsHtml);
                 $('section.artisans').append(`
                     <ul>
-                        <li class="products-item">
+                        <li class="products-item" data-artisan-id="${artisan.id}">
                             <div class="item-img">
                                 <img src="${artisan.picture}">
                             </div>
@@ -81,6 +81,13 @@ $(document).ready(function () {
             });
             }
         });
+    });
+
+    $(document).on('click', '.products-item', function() {
+        // Get the product_id from the data-product-id when the product li is clicked
+        const artisan_id = $(this).data('artisan-id');
+        // Redirect the user to the product page with the specified product ID
+        window.location.href = `/artisan/${artisan_id}`;
     });
 
 });
