@@ -246,6 +246,7 @@ button{
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     border-radius: 25px;
+    height: -webkit-fill-available;
 }
 .item-img{
     position: relative;

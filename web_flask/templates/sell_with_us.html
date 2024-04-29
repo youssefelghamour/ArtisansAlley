@@ -45,50 +45,66 @@
 <!-- form -->
 <div class="form-container">
     <h2>Sell With Us</h2>
-    <form action="/register" method="post">
+    <form method="post">
+        {{ form.hidden_tag() }}
         <div class="form-group">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            {{ form.name }}
+            {% for error in form.name.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            {{ form.email }}
+            {% for error in form.email.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
         </div>
         <div class="form-group">
             <label for="country">Country:</label>
-            <select id="country" name="country" required>
-                <option value="" disabled selected>Select your country</option>
-		{% for country in countries %}
-		<option value="{{ country.id }}">{{ country.name }}</option>
-		{% endfor %}
-            </select>
+            {{ form.country }}
+            {% for error in form.country.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
         </div>
         <div class="form-group">
             <label for="city">City:</label>
-            <select id="city" name="city" required>
-                <option value="" disabled selected>Select your city</option>
-                <!-- Options for cities will be populated dynamically based on the selected country -->
-            </select>
+            {{ form.city }}
+            {% for error in form.city.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
         </div>
         <div class="form-group">
             <label for="craft">Craft:</label>
-            <select id="craft" name="craft" required>
-                <option value="" disabled selected>Select your craft</option>
-		{% for craft in crafts%}
-		<option value="{{ craft.name }}">{{ craft.name }}</option>
-		{% endfor %}
-            </select>
+            {{ form.craft }}
+            {% for error in form.craft.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
         </div>
         <div class="form-group">
             <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="4" required></textarea>
+            {{ form.description }}
+            {% for error in form.description.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            {{ form.password }}
+            {% for error in form.password.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
         </div>
         <div class="form-group">
-            <input type="submit" value="Sign Up">
+            <label for="password">Confirm your Password:</label>
+            {{ form.password2 }}
+            {% for error in form.password2.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.submit }}
         </div>
         <div>
             <label>Already have an Account?</label>
@@ -133,7 +149,7 @@
 					cityDropdown.innerHTML = '<option value="" disabled selected>Select your city</option>';
 					cities.forEach(function(city) {
 							let option = document.createElement('option');
-							option.value = city.name;
+							option.value = city.id;
 							option.text = city.name;
 							cityDropdown.appendChild(option);
 						})

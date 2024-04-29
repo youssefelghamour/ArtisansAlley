@@ -22,7 +22,17 @@ class Artisan(BaseModel, Base):
     name = Column(String(128), nullable=False)
     description = Column(String(1024), nullable=False)
     email = Column(String(128), unique=True, nullable=False)
-    password = Column(String(128), nullable=False)
+    password_hash = Column(String(128), nullable=False)
     city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
     crafts = relationship("Craft", secondary='artisan_craft',
                           viewonly=False, backref='artisan_crafts')
+    
+    
+    @property
+    def password(self):
+        return self.password_hash
+
+    @password.setter
+    def password(self, text_password):
+        from web_flask.flask_app import bcrypt
+        self.password_hash = bcrypt.generate_password_hash(text_password).decode('utf-8')

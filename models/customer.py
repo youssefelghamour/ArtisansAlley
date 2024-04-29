@@ -20,7 +20,7 @@ class Customer(BaseModel, Base):
 
     @property
     def password(self):
-        return self.password
+        return self.password_hash
 
     @password.setter
     def password(self, text_password):

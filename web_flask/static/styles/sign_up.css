@@ -65,6 +65,11 @@ h2 {
     font-size: 14px;
     margin-top: 6px;
 }
+.alert {
+    text-align: center;
+    color: rgb(117, 118, 118);
+}
+
 
 /* Sign-in-up redirection */
 .nav-link-sign{

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Flask app """
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, flash, get_flashed_messages, render_template, redirect, url_for
 from models import storage
 from models.artisan import Artisan
 from models.customer import Customer
@@ -11,6 +11,7 @@ from models.review import Review
 from models.craft import Craft
 from models.order import Order
 from .forms import SignUpForm
+from .forms import SellWithUsForm
 from flask_bcrypt import Bcrypt
 
 
@@ -31,12 +32,28 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/sell_with_us', strict_slashes=False)
+@app.route('/sell_with_us', methods=['GET', 'POST'], strict_slashes=False)
 def artisan_sign_up():
     """ displays the Sign-up page for artisan """
     countries = storage.all(Country).values()
     crafts = storage.all(Craft).values()
-    return render_template('sell_with_us.html', countries=countries, crafts=crafts)
+    form = SellWithUsForm()
+
+    if form.validate_on_submit():
+        new_artisan = Artisan(
+            name=form.name.data,
+            email=form.email.data,
+            description=form.description.data,
+            city_id=form.city.data.id,
+            password=form.password.data
+        )
+        new_artisan.crafts.append(form.craft.data)
+        new_artisan.save()
+
+        flash('Account created successfully. You can now sign in.')
+        return redirect(url_for('sign_in'))
+
+    return render_template('sell_with_us.html', form=form, countries=countries, crafts=crafts)
 
 
 @app.route('/sign_up', methods=['GET', 'POST'], strict_slashes=False)
@@ -55,6 +72,7 @@ def customer_sign_up():
                                 )
         new_customer.save()
         
+        flash('Account created successfully. You can now sign in.')
         return redirect(url_for('sign_in'))
     # Otherwise, If the data inputted had errors (ex: name too long)
     """ # You can uncomment this to print them in the terminal if you want, but they're displayed on the page
@@ -68,7 +86,8 @@ def customer_sign_up():
 @app.route('/sign_in', strict_slashes=False)
 def sign_in():
     """ displays the Sign in page """
-    return render_template('sign_in.html')
+    flash_messages = get_flashed_messages(with_categories=True)
+    return render_template('sign_in.html', flash_messages=flash_messages)
 
 
 @app.route('/explore_artisans', strict_slashes=False)
