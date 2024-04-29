@@ -11,10 +11,12 @@ from models.review import Review
 from models.craft import Craft
 from models.order import Order
 from .forms import SignUpForm
+from flask_bcrypt import Bcrypt
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'just a random key'
+bcrypt = Bcrypt(app)
 
 
 @app.teardown_appcontext
