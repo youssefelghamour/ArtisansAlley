@@ -18,7 +18,7 @@ body {
 .artisan_name{
     font-size: 40px;
     color: #d2985e;
-    margin-bottom: 20px;
+    margin-bottom: 2px;
 }
 
 .artisan-image img {
@@ -32,12 +32,17 @@ body {
     margin-left: 35px;
     margin-right: 35px;
     max-height: 280px;
+    width: 500px;
+}
+
+.artisan-details h1 {
+    font-size: 15px;
 }
 
 .description {
     font-size: 15px;
     margin-bottom: 20px;
-    margin-top: 35px;
+    margin-top: 20px;
     text-align: justify;
 }
 
@@ -58,4 +63,33 @@ body {
 
 .order-button:hover {
     background-color: #0056b3;
+}
+
+.craft-name {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    background-color: burlywood;
+    max-width: 181px;
+    text-align: -webkit-center;
+    border-radius: 11px;
+    color: white;
+    display: block;
+    margin: 0 auto;
+    height: 26px;
+    margin-bottom: 15px;
+}
+.craft-name h4 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 160px;
+    font-size: 13px;
+    font-weight: 100;
+    padding-bottom: 6px;
+    padding-top: 4px;
+}
+.item-info .price {
+    color: #292929;
+    font-size: large;
 }

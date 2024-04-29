@@ -129,13 +129,8 @@ def product(product_id):
 @app.route('/artisan/<artisan_id>', strict_slashes=False)
 def artisan(artisan_id):
     """ displays the artisan Page """
-    """
     retrieved_artisan = storage.get(Artisan, artisan_id)
-    crafts = storage.get(Craft, retrieved_artisan.crafts)
-    products = storage.get(Product, retrieved_artisan.products)
-    return render_template('artisan.html', products=products, crafts=crafts, artisan=retrieved_artisan)
-    """
-    return render_template('artisan.html')
+    return render_template('artisan.html', artisan=retrieved_artisan)
 
 
 @app.route('/about', strict_slashes=False)

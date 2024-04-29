@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Artisan's Name</title>
+		<title>{{ artisan.name }}</title>
 		<link rel = "stylesheet" href = "../static/styles/home.css">
         <link rel = "stylesheet" href = "../static/styles/explore_products.css">
 		<link rel="stylesheet" href="../static/styles/artisan.css">
@@ -44,14 +44,19 @@
 
 		<!-- product -->
         <div class="artisan-container">
-            <div class="product-image">
-                <img src="../static/images/artisan-1.jpg" alt="Artisan Image">
+            <div class="artisan-image">
+                <img src="{{ artisan.picture }}" alt="Artisan Image">
                 <!--<button class="update-button">Update Your picture</button>-->
             </div>
             <div class="artisan-details">
-                <h2 class="artisan_name">Khalil Omari</h2>
+                <h2 class="artisan_name">{{ artisan.name }}</h2>
+                <h1 class="artisan_crafts">
+                    {% for craft in artisan.crafts %}
+                        {{ craft.name }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </h1>
 				<!--<p class="description">description</p>-->
-                <p class="description">I am craftsman blending tradition with modern touches. Welcome! Step inside to explore creations crafted with care, each ready to find a special place in your home.</p>
+                <p class="description">{{ artisan.description }}</p>
             </div>
         </div>
 		<!-- end of artisan -->
@@ -61,45 +66,22 @@
         <section id="products">
             <div class="container">
                 <ul class="products-grid grid">
+                    {% for product in artisan.products %}
                     <li class="products-item">
                         <div class="item-img">
-                            <img src="../static/images/popular-1.jpg">
+                            <img src="{{ product.picture }}">
                         </div>
                         <div class="item-info">
-                            <span class="name">Handmade Wooden Chair</span>
-                            <span class="price">$ 99.99</span>
+                            <span class="name">{{ product.name }}</span>
+                            {% for crft in artisan.crafts %}
+                                {% if crft.id == product.craft_id %}
+                                    <section class="craft-name"><h4 class="craft-name">{{ crft.name }}</h4></section>
+                                {% endif %}
+                            {% endfor %}
+                            <span class="price">${{ product.price }}</span>
                         </div>
                     </li>
-
-                    <li class="products-item">
-                        <div class="item-img">
-                            <img src="../static/images/product-5.jpg">
-                        </div>
-                        <div class="item-info">
-                            <span class="name">Brass Pot</span>
-                            <span class="price">$ 99.56</span>
-                        </div>
-                    </li>
-        
-                    <li class="products-item">
-                        <div class="item-img">
-                            <img src="../static/images/popular-2.jpg">
-                        </div>
-                        <div class="item-info">
-                            <span class="name">Traditional Rug</span>
-                            <span class="price">$ 250</span>
-                        </div>
-                    </li>
-
-                    <li class="products-item">
-                        <div class="item-img">
-                            <img src="../static/images/product-6.jpg">
-                        </div>
-                        <div class="item-info">
-                            <span class="name">Ottoman Turkish Turban</span>
-                            <span class="price">$ 18.99</span>
-                        </div>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
         </section>
