@@ -6,6 +6,7 @@ from models.country import Country
 from models.city import City
 from models.craft import Craft
 from models.artisan import Artisan
+from models.customer import Customer
 from models import storage
 
 
