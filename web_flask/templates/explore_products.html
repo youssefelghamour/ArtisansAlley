@@ -35,15 +35,18 @@
                     <a href = "{{ url_for('about') }}" class = "nav-link">About</a>
                     {% if current_user.is_authenticated %}
                         <div class="dropdown">
-                            <button class="nav-link navbar-nav-right">Welcome, {{ current_user.first_name }}</button>
-                            <div class="dropdown-content">
-                                {% if current_user.__class__.__name__ == 'Customer' %}
+                            {% if current_user.__class__.__name__ == 'Customer' %}
+                                <button class="nav-link navbar-nav-right">Welcome, {{ current_user.first_name }}</button>
+                                <div class="dropdown-content">
                                     <a href="{{ url_for('order') }}">Orders</a>
-                                {% elif current_user.__class__.__name__ == 'Artisan' %}
-                                    <a class="artisan-profile-redirection">Profile</a>
-                                {% endif %}
-                                <a href="{{ url_for('logout') }}">Logout</a>
-                            </div>
+                                </div>
+                            {% elif current_user.__class__.__name__ == 'Artisan' %}
+                                <button class="nav-link navbar-nav-right">Account</button>
+                                <div class="dropdown-content">
+                                    <a href="{{ url_for('artisan', artisan_id=current_user.id) }}" class="artisan-profile-redirection">Profile</a>
+                                    <a href="{{ url_for('logout') }}">Logout</a>
+                                </div>
+                            {% endif %}
                         </div>
                     {% else %}
                         <a href="{{ url_for('sign_in') }}" class="nav-link">Sign In</a>
