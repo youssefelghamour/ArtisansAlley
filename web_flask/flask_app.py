@@ -13,7 +13,7 @@ from models.order import Order
 from web_flask.forms import SignUpForm, SellWithUsForm, SignInForm
 from flask_bcrypt import Bcrypt
 from werkzeug.utils import secure_filename
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager, login_user, logout_user
 
 
 
@@ -162,11 +162,20 @@ def order():
     return render_template('order.html')
 
 
+@app.route('/logout', strict_slashes=False)
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
+
 @login_manager.user_loader
 def load_user(user_id):
-    from models import storage
     customer = storage.get(Customer, user_id)
-    return customer
+    if customer:
+        return customer
+    else:
+        artisan = storage.get(Artisan, user_id)
+        return artisan
 
 
 if __name__ == "__main__":

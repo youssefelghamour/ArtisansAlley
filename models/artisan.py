@@ -4,6 +4,7 @@ from sqlalchemy import Column, String, event, ForeignKey, Table
 from models.base_model import BaseModel, Base
 from models.craft import Craft
 from sqlalchemy.orm import relationship
+from flask_login import UserMixin
 
 
 artisan_craft = Table('artisan_craft', Base.metadata,
@@ -15,7 +16,7 @@ artisan_craft = Table('artisan_craft', Base.metadata,
                                  nullable=False))
 
 
-class Artisan(BaseModel, Base):
+class Artisan(BaseModel, Base, UserMixin):
     """ Artisan class """
     __tablename__ = 'artisans'
 

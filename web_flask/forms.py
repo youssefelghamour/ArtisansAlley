@@ -5,6 +5,7 @@ from wtforms_sqlalchemy.fields import QuerySelectField
 from models.country import Country
 from models.city import City
 from models.craft import Craft
+from models.artisan import Artisan
 from models import storage
 
 
