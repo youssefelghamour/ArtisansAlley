@@ -106,13 +106,13 @@ def sign_in():
             if customer.email == form.email.data and customer.check_password(form.password.data):
                 login_user(customer)
                 flash('Signed in successfully as : {} {}'.format(customer.first_name, customer.last_name))
-                return redirect(url_for('explore_products'))
+                return redirect(url_for('home'))
         artisans = storage.all(Artisan).values()
         for artisan in artisans:
             if artisan.email == form.email.data and artisan.check_password(form.password.data):
                 login_user(artisan)
                 flash('Signed in successfully as : {}'.format(artisan.name))
-                return redirect(url_for('explore_products'))
+                return redirect(url_for('home'))
         flash('Email and password are invalid')
     flash_messages = get_flashed_messages(with_categories=True)
     return render_template('sign_in.html', flash_messages=flash_messages, form=form)
