@@ -32,7 +32,9 @@ def app_teardown(exception):
 @app.route('/', strict_slashes=False)
 def home():
     """ displays the home page """
-    return render_template('home.html')
+    products = storage.all(Product).values()
+    artisans = storage.all(Artisan).values()
+    return render_template('home.html', products=products, artisans=artisans)
 
 
 @app.route('/sell_with_us', methods=['GET', 'POST'], strict_slashes=False)

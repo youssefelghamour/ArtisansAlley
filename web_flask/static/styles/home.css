@@ -307,6 +307,7 @@ button{
     flex-direction: column;
     max-width: 270px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 .item-img{
     position: relative;
@@ -326,19 +327,6 @@ button{
 }
 .item-img:hover::after{
     opacity: 1;
-}
-.view-icon{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    opacity: 0;
-    transition: var(--trans);
-}
-.item-img:hover .view-icon{
-    opacity: 1;
-    z-index: 2;
 }
 .item-info{
     margin-top: auto; /* Push item-info to the bottom */
@@ -377,6 +365,7 @@ button{
 }
 .collection-item{
     max-width: 270px;
+    cursor: pointer;
 }
 .collection-item .item-img{
     height: 200px;
@@ -427,65 +416,29 @@ button{
 
 /* about us */
 #about-us{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    justify-content: center;
+    /*grid-template-columns: repeat(2, 1fr);*/
     /*background-color: var(--snow);*/
-}
-.about-us-left {
-    padding: 65px 125px;
-    background-color: var(--snow);
-}
-
-.about-us-left .login-content {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 20px;
+    margin: 30px 100px 30px 100px;
+    padding: 0 300px;
+    text-align-last: center;
 }
 
-.about-us-left h4 {
+#about-us h4 {
     font-size: 25px;
     font-weight: 500;
+    text-align: center;
 }
 
-.about-us-left form {
-    /* Styling for the login form */
-    margin-top: 20px;
+#about-us .text {
+    margin-top: 25px;
+    text-align: justify;
 }
 
-.about-us-left form label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.about-us-left form input[type="text"],
-.about-us-left form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-.about-us-left form input[type="submit"] {
-    background-color: var(--primary);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-}
-
-.about-us-left form input[type="submit"]:hover {
-    background-color: var(--secondary);
-}
-
-.about-us-right{
-    padding: 65px 125px;
-}
-.about-us-right h4{
-    font-size: 25px;
-    font-weight: 500;
-    margin-bottom: 20px;
-}
-.about-us-right .navbar-brand{
-    display: block;
-    margin: 45px 0 40px 0;
+#learn-more {
+    margin: 0 auto;
+    text-align: center;
 }
 
 /* footer */
