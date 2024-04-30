@@ -9,6 +9,9 @@
 		<link rel="stylesheet" href="../static/styles/artisan.css">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 		<link rel="icon" href="../static/images/logo.png" />
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<!-- Import JavaScript file -->
+		<script type="text/javascript" src="../static/scripts/artisan.js"></script>
 	</head>
 	<body>
 
@@ -67,7 +70,7 @@
             <div class="container">
                 <ul class="products-grid grid">
                     {% for product in artisan.products %}
-                    <li class="products-item">
+                    <li class="products-item" data-product-id="{{ product.id }}">
                         <div class="item-img">
                             <img src="{{ product.picture }}">
                         </div>
