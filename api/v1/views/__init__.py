@@ -10,3 +10,4 @@ from api.v1.views.countries import *
 from api.v1.views.cities import *
 from api.v1.views.artisans import *
 from api.v1.views.products import *
+from api.v1.views.order import *

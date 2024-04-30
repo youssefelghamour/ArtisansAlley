@@ -26,7 +26,8 @@ class DBStorage:
             'City': City,
             'Review': Review,
             'Craft': Craft,
-            'Product': Product
+            'Product': Product,
+            'Order': Order
             }
 
     def __init__(self):

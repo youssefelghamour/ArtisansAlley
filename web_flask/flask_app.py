@@ -13,7 +13,7 @@ from models.order import Order
 from web_flask.forms import SignUpForm, SellWithUsForm, SignInForm
 from flask_bcrypt import Bcrypt
 from werkzeug.utils import secure_filename
-from flask_login import LoginManager, login_user, logout_user
+from flask_login import LoginManager, login_user, logout_user, current_user
 
 
 
@@ -159,7 +159,8 @@ def about():
 @app.route('/order', strict_slashes=False)
 def order():
     """ displays the order Page """
-    return render_template('order.html')
+    order = current_user.order
+    return render_template('order.html', order=order)
 
 
 @app.route('/logout', strict_slashes=False)

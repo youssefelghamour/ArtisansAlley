@@ -34,7 +34,7 @@
                     <div class="dropdown">
                         <button class="nav-link navbar-nav-right">Welcome, {{ current_user.first_name }}</button>
                         <div class="dropdown-content">
-                            <a href="#">Account Settings</a>
+                            <a href="{{ url_for('order') }}">Orders</a>
                             <a href="#">Profile</a>
                             <a href="{{ url_for('logout') }}">Logout</a>
                         </div>

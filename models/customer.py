@@ -17,6 +17,7 @@ class Customer(BaseModel, Base, UserMixin):
     address = Column(String(128), nullable=False)
     reviews = relationship("Review", cascade="all, delete-orphan",
                           backref="customer")
+    order = relationship("Order", uselist=False, backref="customer")
 
 
     @property
