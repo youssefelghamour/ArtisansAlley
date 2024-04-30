@@ -7,6 +7,7 @@ from models.city import City
 from models.craft import Craft
 from models.artisan import Artisan
 from models.customer import Customer
+from models.product import Product
 from models import storage
 
 
@@ -51,3 +52,12 @@ class SignInForm(FlaskForm):
     email = StringField(label='Email:', validators=[DataRequired()])
     password = PasswordField(label='Password:', validators=[DataRequired()])
     submit = SubmitField(label='Sign In')
+
+
+class AddProductForm(FlaskForm):
+    name = StringField(label='Name', validators=[DataRequired(), Length(min=2, max=30)])
+    description = StringField('Description', validators=[DataRequired(), Length(min=2, max=600)])
+    price = StringField('Price', validators=[DataRequired(), Length(min=2, max=6)])
+    craft = QuerySelectField('Craft', query_factory=lambda: storage.all(Craft).values(), get_label="name")
+    picture = FileField('Picture', validators=[DataRequired()])
+    submit = SubmitField(label='Add Product')

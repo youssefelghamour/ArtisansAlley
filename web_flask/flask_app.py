@@ -10,7 +10,7 @@ from models.product import Product
 from models.review import Review
 from models.craft import Craft
 from models.order import Order
-from web_flask.forms import SignUpForm, SellWithUsForm, SignInForm
+from web_flask.forms import SignUpForm, SellWithUsForm, SignInForm, AddProductForm
 from flask_bcrypt import Bcrypt
 from werkzeug.utils import secure_filename
 from flask_login import LoginManager, login_user, logout_user, current_user
@@ -161,6 +161,37 @@ def order():
     """ displays the order Page """
     order = current_user.order
     return render_template('order.html', order=order)
+
+
+@app.route('/add_product', methods=['GET', 'POST'], strict_slashes=False)
+def add_product():
+    """ displays the Sign-up page for artisan """
+    form = AddProductForm()
+
+    if form.validate_on_submit():
+        # Store the image
+        file = form.picture.data
+        # Formats the name of the file (ex: from "logo 15.jpg" to "logol_15.jpg")
+        file_name = secure_filename(file.filename)
+        # Store it in /web_flask/static/images/
+        file_path = "./web_flask/static/images/{}".format(file_name)
+        file.save(file_path)
+        # The value of the picture attribute will be the path so it can be accessed from the JS and HTML files with artisan.picture
+        new_file_path = "../static/images/{}".format(file_name)
+        new_product = Product(
+            name=form.name.data,
+            description=form.description.data,
+            price=form.price.data,
+            picture=new_file_path,
+            artisan_id=current_user.id,
+            craft_id=form.craft.data.id
+        )
+        new_product.save()
+
+        flash('Product added successfully')
+        return redirect(url_for('artisan', artisan_id=current_user.id))
+
+    return render_template('add_product.html', form=form)
 
 
 @app.route('/logout', strict_slashes=False)

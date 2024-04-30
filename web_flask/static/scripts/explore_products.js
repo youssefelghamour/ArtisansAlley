@@ -25,7 +25,7 @@ $(document).ready(function () {
                 $('ul.products-grid').append(`
                 <li class="products-item" data-product-id="${product.id}">
                     <div class="item-img">
-                        <img src="../static/images/popular-1.jpg">
+                        <img src="${product.picture}">
                     </div>
                     <div class="item-info">
                         <span class="name">${product.name}</span>
@@ -50,7 +50,7 @@ $(document).ready(function () {
                 $('ul.products-grid').append(`
                     <li class="products-item" data-product-id="${product.id}">
                     <div class="item-img">
-                        <img src="../static/images/popular-1.jpg">
+                        <img src="${product.picture}">
                     </div>
                     <div class="item-info">
                         <span class="name">${product.name}</span>

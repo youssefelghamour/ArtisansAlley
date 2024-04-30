@@ -27,7 +27,7 @@
 					<ul class = "navbar-nav-right flex">
 						<a href = "{{ url_for('home') }}" class = "nav-link">Home</a>
                         <a href = "{{ url_for('explore_artisans') }}" class = "nav-link">Artisans</a>
-                        <a href = "#" class = "nav-link active" >Products</a>
+                        <a href = "{{ url_for('explore_products') }}" class = "nav-link" >Products</a>
                         {% if not current_user.is_authenticated %}
                             <a href = "{{ url_for('artisan_sign_up') }}" class = "nav-link">Sell With Us</a>
                         {% endif %}
@@ -61,7 +61,7 @@
 		<!-- product -->
         <div class="product-container">
             <div class="product-image">
-                <img src="../static/images/popular-3.jpg" alt="Product Image">
+                <img src="{{ product.picture }}" alt="Product Image">
             </div>
             <div class="product-details">
                 <h1>{{ craft.name }}</h1>

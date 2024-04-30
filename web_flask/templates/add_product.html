@@ -3,15 +3,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{{ artisan.name }}</title>
+		<title>Sign Up</title>
 		<link rel = "stylesheet" href = "../static/styles/home.css">
-        <link rel = "stylesheet" href = "../static/styles/explore_products.css">
-		<link rel="stylesheet" href="../static/styles/artisan.css">
+		<link rel="stylesheet" href="../static/styles/sign_up.css">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 		<link rel="icon" href="../static/images/logo.png" />
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<!-- Import JavaScript file -->
-		<script type="text/javascript" src="../static/scripts/artisan.js"></script>
 	</head>
 	<body>
 
@@ -29,11 +25,9 @@
 					<!-- end of logo -->
 					<ul class = "navbar-nav-right flex">
 						<a href = "{{ url_for('home') }}" class = "nav-link">Home</a>
-                        <a href = "{{ url_for('explore_artisans') }}" class = "nav-link active">Artisans</a>
+                        <a href = "{{ url_for('explore_artisans') }}" class = "nav-link">Artisans</a>
                         <a href = "{{ url_for('explore_products') }}" class = "nav-link">Products</a>
-                        {% if not current_user.is_authenticated %}
-                            <a href = "{{ url_for('artisan_sign_up') }}" class = "nav-link">Sell With Us</a>
-                        {% endif %}
+                        <a href = "{{ url_for('artisan_sign_up') }}" class = "nav-link">Sell With Us</a>
                         <a href = "{{ url_for('about') }}" class = "nav-link">About</a>
                         {% if current_user.is_authenticated %}
                             <div class="dropdown">
@@ -61,60 +55,63 @@
 		</header>
 		<!-- end of header -->
 
-		<!-- artisan -->
-        <div class="artisan-container">
-            <div class="artisan-image">
-                <img src="{{ artisan.picture }}" alt="Artisan Image">
-                <!--<button class="update-button">Update Your picture</button>-->
-            </div>
-            <div class="artisan-details">
-                <h2 class="artisan_name">{{ artisan.name }}</h2>
-                <h1 class="artisan_crafts">
-                    {% for craft in artisan.crafts %}
-                        {{ craft.name }}{% if not loop.last %}, {% endif %}
-                    {% endfor %}
-                </h1>
-				<!--<p class="description">description</p>-->
-                <p class="description">{{ artisan.description }}</p>
-            </div>
-        </div>
-		<!-- end of artisan -->
-
-
-        <!-- products section -->
-        <section id="products">
-            <div class="container">
-                <ul class="products-grid grid">
-                    {% for product in artisan.products %}
-                    <li class="products-item" data-product-id="{{ product.id }}">
-                        <div class="item-img">
-                            <img src="{{ product.picture }}">
-                        </div>
-                        <div class="item-info">
-                            <span class="name">{{ product.name }}</span>
-                            {% for crft in artisan.crafts %}
-                                {% if crft.id == product.craft_id %}
-                                    <section class="craft-name"><h4 class="craft-name">{{ crft.name }}</h4></section>
-                                {% endif %}
-                            {% endfor %}
-                            <span class="price">${{ product.price }}</span>
-                        </div>
-                    </li>
-                    {% endfor %}
-					{% if current_user == artisan %}
-						<a href="{{ url_for('add_product') }}" class="add-item">
-							<div class="add-product">
-								<img src="../static/images/add-icon.png">
-							</div>
-							<div class="add-label">
-								<span class="add-text">Add Product</span>
-							</div>
-						</a>
+		<!-- form -->
+		<div class="form-container">
+			<h2>Sign Up</h2>
+			<form method="post" enctype="multipart/form-data">
+				{{ form.hidden_tag() }}
+				<div class="form-group">
+					<label for="name">Product's Name:</label>
+					{{ form.name }}
+					{% if form.name.errors %}
+						{% for error in form.name.errors %}
+							<div class="error">{{ error }}</div>
+						{% endfor %}
 					{% endif %}
-                </ul>
-            </div>
-        </section>
-        <!-- end of products section -->
+				</div>
+				<div class="form-group">
+					<label for="description">Description:</label>
+					{{ form.description }}
+					{% if form.description.errors %}
+						{% for error in form.description.errors %}
+							<div class="error">{{ error }}</div>
+						{% endfor %}
+					{% endif %}
+				</div>
+                <div class="form-group">
+					<label for="price">Price:</label>
+					{{ form.price }}
+					{% if form.price.errors %}
+						{% for error in form.price.errors %}
+							<div class="error">{{ error }}</div>
+						{% endfor %}
+					{% endif %}
+				</div>
+                <div class="form-group">
+                    <label for="craft">Craft:</label>
+                    {{ form.craft }}
+                    {% for error in form.craft.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="picture">Add Image</label>
+                    {{ form.picture }}
+                    {% for error in form.picture.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+				<div class="form-group">
+					{{ form.submit }}
+				</div>
+				<div>
+					<label>Already have an Account?</label>
+					<a href = "{{ url_for('sign_in') }}" class="nav-link-sign">Sign In</a>
+				</div>
+			</form>
+		</div>
+		<!-- end of form -->
+
 
 		<!-- footer -->
 		<footer id = "footer">
@@ -143,3 +140,4 @@
 		<!-- end of footer -->
 	</body>
 </html>
+
