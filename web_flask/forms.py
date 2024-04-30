@@ -1,13 +1,11 @@
 from flask_wtf import FlaskForm
-from models import storage
 from wtforms import StringField, PasswordField, SubmitField, FileField
 from wtforms.validators import DataRequired, Length, EqualTo, Email, ValidationError
 from wtforms_sqlalchemy.fields import QuerySelectField
-from models.customer import Customer
 from models.country import Country
 from models.city import City
 from models.craft import Craft
-from models.artisan import Artisan
+from models import storage
 
 
 class SignUpForm(FlaskForm):
@@ -45,3 +43,9 @@ class SellWithUsForm(FlaskForm):
     password2 = PasswordField(label='password2', validators=[EqualTo('password')])
     picture = FileField('Picture', validators=[DataRequired()])
     submit = SubmitField(label='Sign Up')
+
+
+class SignInForm(FlaskForm):
+    email = StringField(label='Email:', validators=[DataRequired()])
+    password = PasswordField(label='Password:', validators=[DataRequired()])
+    submit = SubmitField(label='Sign In')

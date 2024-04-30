@@ -2,23 +2,25 @@
 """ Flask app """
 from flask import Flask, flash, get_flashed_messages, render_template, redirect, url_for, request
 from models import storage
-from models.artisan import Artisan
-from models.customer import Customer
 from models.country import Country
-from models.city import City
+from models.artisan import Artisan
+from models.craft import Craft
+from models.customer import Customer
 from models.product import Product
 from models.review import Review
 from models.craft import Craft
 from models.order import Order
-from .forms import SignUpForm
-from .forms import SellWithUsForm
+from web_flask.forms import SignUpForm, SellWithUsForm, SignInForm
 from flask_bcrypt import Bcrypt
 from werkzeug.utils import secure_filename
+from flask_login import LoginManager, login_user
+
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'just a random key'
+app.config['SECRET_KEY'] = '420d61563971313761f2e61f'
 bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
 
 
 @app.teardown_appcontext
@@ -94,11 +96,26 @@ def customer_sign_up():
     return render_template('sign_up.html', form=form)
 
 
-@app.route('/sign_in', strict_slashes=False)
+@app.route('/sign_in', methods=['GET', 'POST'], strict_slashes=False)
 def sign_in():
     """ displays the Sign in page """
+    form = SignInForm()
+    if form.validate_on_submit():
+        customers = storage.all(Customer).values()
+        for customer in customers:
+            if customer.email == form.email.data and customer.check_password(form.password.data):
+                login_user(customer)
+                flash('Signed in successfully as : {} {}'.format(customer.first_name, customer.last_name))
+                return redirect(url_for('explore_products'))
+        artisans = storage.all(Artisan).values()
+        for artisan in artisans:
+            if artisan.email == form.email.data and artisan.check_password(form.password.data):
+                login_user(artisan)
+                flash('Signed in successfully as : {}'.format(artisan.name))
+                return redirect(url_for('explore_products'))
+        flash('Email and password are invalid')
     flash_messages = get_flashed_messages(with_categories=True)
-    return render_template('sign_in.html', flash_messages=flash_messages)
+    return render_template('sign_in.html', flash_messages=flash_messages, form=form)
 
 
 @app.route('/explore_artisans', strict_slashes=False)
@@ -143,6 +160,13 @@ def about():
 def order():
     """ displays the order Page """
     return render_template('order.html')
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    from models import storage
+    customer = storage.get(Customer, user_id)
+    return customer
 
 
 if __name__ == "__main__":

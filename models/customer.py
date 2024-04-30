@@ -3,9 +3,10 @@
 from sqlalchemy import Column, String, ForeignKey
 from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
+from flask_login import UserMixin
 
 
-class Customer(BaseModel, Base):
+class Customer(BaseModel, Base, UserMixin):
     """ Customer class """
     __tablename__ = 'customers'
 
@@ -26,3 +27,7 @@ class Customer(BaseModel, Base):
     def password(self, text_password):
         from web_flask.flask_app import bcrypt
         self.password_hash = bcrypt.generate_password_hash(text_password).decode('utf-8')
+
+    def check_password(self, password_to_check):
+        from web_flask.flask_app import bcrypt
+        return bcrypt.check_password_hash(self.password_hash, password_to_check)
