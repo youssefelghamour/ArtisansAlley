@@ -12,10 +12,32 @@ import json
 @app_views.route('/artisans', methods=['GET'], strict_slashes=False)
 def get_all_artisans():
     """ returns all astisans """
+    """ this commented code was used to get all the artisan without adding the crafts to their dictionary
     artisans = []
     for artisan in storage.all(Artisan).values():
         artisans.append(artisan.to_dict())
     return jsonify(artisans)
+    """
+    # list of artisan instances with ALL the artisans
+    artisans = []
+    for artisan in storage.all(Artisan).values():
+        artisans.append(artisan)
+    
+    # list of artisan instances to_dict
+    lst_artisans = []
+    for artis in artisans:
+        # convert the instance to a dictionary
+        artis_dict = artis.to_dict()
+
+        # add the list of artisan crafts to the dict representation of the instance
+        artis_dict['crafts'] = [craft.to_dict() for craft in artis.crafts]
+
+        # add the dictionary representation of the instance (with crafts now) to the list
+        lst_artisans.append(artis_dict)
+    
+    # returns a list of dictionaries of all the artisans, after adding the list of crafts to each artisan,
+    # so that the javascript can access the crafts and displays them
+    return jsonify(lst_artisans)
 
 
 @app_views.route('/artisans/<artisan_id>', methods=['GET'], strict_slashes=False)
@@ -129,14 +151,31 @@ def artisans_search():
         cities = data.get('cities', None)
         crafts = data.get('crafts', None)
 
-    # in case no city is selected, display all the artisans
+    # in case no city or artisan is selected, display all the artisans
     if not data or not len(data) or (
             not cities and not crafts):
-        artisans = storage.all(Artisan).values()
+        # Get all the artisans
+        all_artisans = storage.all(Artisan).values()
+        # list of artisan instances
         list_artisans = []
-        for artisan in artisans:
-            list_artisans.append(artisan.to_dict())
-        return jsonify(list_artisans)
+        for artisan in all_artisans:
+            list_artisans.append(artisan)
+        
+        # list of artisan instances to_dict
+        lst_artisans = []
+        for artis in list_artisans:
+            # convert the instance to a dictionary
+            artis_dict = artis.to_dict()
+
+            # add the list of artisan crafts to the dict representation of the instance
+            artis_dict['crafts'] = [craft.to_dict() for craft in artis.crafts]
+
+            # add the dictionary representation of the instance (with crafts now) to the list
+            lst_artisans.append(artis_dict)
+
+        # returns a list of dictionaries of all the artisans, after adding the list of crafts to each artisan,
+        # so that the javascript can access the crafts and displays them
+        return jsonify(lst_artisans)
 
     list_artisans = []
 

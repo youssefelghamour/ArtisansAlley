@@ -96,7 +96,7 @@
                         </div>
                         <div class="item-info">
                             <span class="name">{{ product.name }}</span>
-                            {% for crft in artisan.crafts %}
+                            {% for crft in crafts %}
                                 {% if crft.id == product.craft_id %}
                                     <section class="craft-name"><h4 class="craft-name">{{ crft.name }}</h4></section>
                                 {% endif %}

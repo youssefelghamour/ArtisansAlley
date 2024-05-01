@@ -35,17 +35,31 @@ $(document).ready(function () {
         dataType: 'json',*/
         success: function (response) {
             response.forEach(function (artisan) {
+                // make a new section for the crafts se we can add it to the artisan info card
+                const newSection = $('<section class="craft-name"><h4 data-tooltip="Full craft name"></h4></section>');
+
+                // make a string and add to it the craft names one by one and join them with commas
+                const craftsHtml = artisan.crafts ? artisan.crafts.map(craft => `${craft.name}`).join(', ') : '';
+
+                // select the new section and add to it the string of craft names
+                newSection.find('h4').html(craftsHtml); // Set HTML content of <h4> element
+
+                // add the tooltip hover hint attribute and populate it with the names of the crafts
+                newSection.find('h4').attr('data-tooltip', craftsHtml);
+
+                // add each artisan and add the newSection with the crafts to it
                 $('section.artisans').append(`
-                        <ul>
-                            <li class="products-item" data-artisan-id="${artisan.id}">
-                                <div class="item-img">
-                                    <img src="${artisan.picture}">
-                                </div>
-                                <div class="item-info">
-                                    <span class="name">${artisan.name}</span>
-                                </div>
-                            </li>
-                        </ul>`);
+                    <ul>
+                        <li class="products-item" data-artisan-id="${artisan.id}">
+                            <div class="item-img">
+                                <img src="${artisan.picture}">
+                            </div>
+                            <div class="item-info">
+                                <span class="name">${artisan.name}</span>
+                            </div>
+                        </li>
+                    </ul>`);
+                $('section.artisans .item-info').last().append(artisan.crafts ? newSection : '');
             });
         }
     });
@@ -62,10 +76,19 @@ $(document).ready(function () {
             success: function (response) {
             $('section.artisans').empty();
             response.forEach(function (artisan) {
+                // make a new section for the crafts se we can add it to the artisan info card
                 const newSection = $('<section class="craft-name"><h4 data-tooltip="Full craft name"></h4></section>');
+
+                // make a string and add to it the craft names one by one and join them with commas
                 const craftsHtml = artisan.crafts ? artisan.crafts.map(craft => `${craft.name}`).join(', ') : '';
+
+                // select the new section and add to it the string of craft names
                 newSection.find('h4').html(craftsHtml); // Set HTML content of <h4> element
+
+                // add the tooltip hover hint attribute and populate it with the names of the crafts
                 newSection.find('h4').attr('data-tooltip', craftsHtml);
+
+                // add each artisan and add the newSection with the crafts to it
                 $('section.artisans').append(`
                     <ul>
                         <li class="products-item" data-artisan-id="${artisan.id}">

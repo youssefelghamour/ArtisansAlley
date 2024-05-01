@@ -9,7 +9,11 @@ $(document).ready(function () {
         data: '{}',
         dataType: 'json',*/
         success: function (response) {
+            let totalItems = 0;
+            let totalPrice = 0;
             response.forEach(function (product) {
+                totalItems++;
+                totalPrice += product.price;
                 $('.order-items').append(`
                     <div class="order-item">
 						<img src="${product.picture}" alt="Product Image">
@@ -23,6 +27,8 @@ $(document).ready(function () {
 						<button class="remove-btn" data-product-id="${product.id}">Remove</button>
 					</div>`);
             });
+            $('.total-items').text(totalItems);
+            $('.total-price').text(`$${totalPrice.toFixed(2)}`);
         }
     });
 
@@ -45,7 +51,11 @@ $(document).ready(function () {
             type: 'GET',
             success: function (response) {
                 $('.order-items').empty(); // Clear existing items
+                let totalItems = 0;
+                let totalPrice = 0;
                 response.forEach(function (product) {
+                    totalItems++;
+                    totalPrice += product.price;
                     $('.order-items').append(`
                         <div class="order-item" data-product-id="${product.id}">
                             <img src="${product.picture}" alt="Product Image">
@@ -59,6 +69,8 @@ $(document).ready(function () {
                             <button class="remove-btn" data-product-id="${product.id}">Remove</button>
                         </div>`);
                 });
+                $('.total-items').text(totalItems);
+                $('.total-price').text(`$${totalPrice.toFixed(2)}`);
             },
         });
     }
