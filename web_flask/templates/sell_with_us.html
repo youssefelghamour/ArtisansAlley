@@ -101,13 +101,6 @@
             {% endfor %}
         </div>
         <div class="form-group">
-            <label for="description">Description:</label>
-            {{ form.description }}
-            {% for error in form.description.errors %}
-                <span class="error">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="form-group">
             <label for="password">Password:</label>
             {{ form.password }}
             {% for error in form.password.errors %}
@@ -118,13 +111,6 @@
             <label for="password">Confirm your Password:</label>
             {{ form.password2 }}
             {% for error in form.password2.errors %}
-                <span class="error">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="form-group">
-            <label for="password">Add Image</label>
-            {{ form.picture }}
-            {% for error in form.picture.errors %}
                 <span class="error">{{ error }}</span>
             {% endfor %}
         </div>

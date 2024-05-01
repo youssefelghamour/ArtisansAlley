@@ -45,6 +45,7 @@ def artisan_sign_up():
     form = SellWithUsForm()
 
     if form.validate_on_submit():
+        """
         # Store the image
         file = form.picture.data
         # Formats the name of the file (ex: from "logo 15.jpg" to "logol_15.jpg")
@@ -54,13 +55,13 @@ def artisan_sign_up():
         file.save(file_path)
         # The value of the picture attribute will be the path so it can be accessed from the JS and HTML files with artisan.picture
         new_file_path = "../static/images/{}".format(file_name)
+        """
         new_artisan = Artisan(
             name=form.name.data,
             email=form.email.data,
             description=form.description.data,
             city_id=form.city.data.id,
-            password=form.password.data,
-            picture=new_file_path
+            password=form.password.data
         )
         new_artisan.crafts.append(form.craft.data)
         new_artisan.save()
@@ -157,6 +158,24 @@ def artisan(artisan_id):
     retrieved_artisan = storage.get(Artisan, artisan_id)
     crafts = storage.all(Craft).values()
     return render_template('artisan.html', artisan=retrieved_artisan, crafts=crafts)
+
+
+"""
+@app.route('/artisan/profile_update/<artisan_id>', strict_slashes=False)
+def artisan(artisan_id):
+    updates the artisan's info
+    artisan = storage.get(Artisan, artisan_id)
+    form = UpdateProfileForm()
+
+    if current_user.id == artisan.id:
+
+        if form.validate_on_submit():
+            artisan.picture = form.picture.data
+            artisan.description = form.description.data
+            return render_template(url_for('artisan', artisan_id=current_user.id))
+        
+        return render_template('update_profile.html', form=form, artisan=artisan)
+"""
 
 
 @app.route('/about', strict_slashes=False)

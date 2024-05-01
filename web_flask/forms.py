@@ -41,10 +41,10 @@ class SellWithUsForm(FlaskForm):
     city = QuerySelectField('City', query_factory=lambda: storage.all(City).values(), get_label="name")
     country = QuerySelectField('Country', query_factory=lambda: storage.all(Country).values(), get_label="name")
     craft = QuerySelectField('Craft', query_factory=lambda: storage.all(Craft).values(), get_label="name")
-    description = StringField('Description', validators=[DataRequired(), Length(min=2, max=600)])
+    description = StringField('Description', validators=[DataRequired(), Length(min=2, max=600)], default="___")
     password = PasswordField(label='password', validators=[DataRequired(), Length(min=6, max=40)])
     password2 = PasswordField(label='password2', validators=[EqualTo('password')])
-    picture = FileField('Picture', validators=[DataRequired()])
+    picture = FileField('Picture', validators=[DataRequired()], default="../static/images/avatar.png")
     submit = SubmitField(label='Sign Up')
 
 
