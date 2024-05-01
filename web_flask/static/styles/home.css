@@ -308,6 +308,7 @@ button{
     max-width: 270px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    height: -webkit-fill-available;
 }
 .item-img{
     position: relative;
@@ -467,6 +468,9 @@ button{
     border-color: var(--primary);
     margin: 0;
     transition: var(--trans);
+    text-align: center;
+    align-content: center;
+    padding-right: 0;
 }
 .footer-item.one .navbar-brand:hover{
     background-color: #fff;
