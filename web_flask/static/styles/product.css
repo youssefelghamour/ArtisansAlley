@@ -4,6 +4,22 @@ body {
     padding: 0;
 }
 
+#message-box {
+    inset: 50px 20px 20px 50%;
+    position: fixed;
+    transform: translateX(-50%);
+    background: #7e9fc3 !important;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 9999;
+    max-height: 100px;
+    overflow-y: auto;
+    font-size: 14px;
+    height: fit-content;
+    text-align: center;
+}
+
 .product-container {
     display: flex;
     align-items: center;
@@ -54,7 +70,17 @@ body {
 }
 
 .order-button {
-    position: absolute;
+    /*position: absolute;*/
+    bottom: 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+}
+#order-signin-button {
     bottom: 0;
     padding: 10px 20px;
     font-size: 16px;

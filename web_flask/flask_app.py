@@ -142,6 +142,12 @@ def product(product_id):
     retrieved_product = storage.get(Product, product_id)
     craft = storage.get(Craft, retrieved_product.craft_id)
     artisan = storage.get(Artisan, retrieved_product.artisan_id)
+    if current_user.__class__.__name__ == "Customer":
+        if not current_user.order:
+            current_user.order = Order(customer_id=current_user.id)
+            storage.save()
+        order = current_user.order
+        return render_template('product.html', product=retrieved_product, craft=craft, artisan=artisan, order=order)
     return render_template('product.html', product=retrieved_product, craft=craft, artisan=artisan)
 
 

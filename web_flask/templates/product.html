@@ -9,6 +9,10 @@
 		<link rel="stylesheet" href="../static/styles/product.css">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 		<link rel="icon" href="../static/images/logo.png" />
+		<!-- Import JQuery -->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<!-- Import JavaScript file -->
+		<script type="text/javascript" src="../static/scripts/product.js"></script>
 	</head>
 	<body>
 
@@ -38,6 +42,7 @@
 									<button class="nav-link navbar-nav-right">Welcome, {{ current_user.first_name }}</button>
 									<div class="dropdown-content">
 										<a href="{{ url_for('order') }}">Orders</a>
+										<a href="{{ url_for('logout') }}">Logout</a>
 									</div>
 								{% elif current_user.__class__.__name__ == 'Artisan' %}
 									<button class="nav-link navbar-nav-right">Account</button>
@@ -63,6 +68,9 @@
 
 		<!-- product -->
         <div class="product-container">
+			<div id="message-box" style="display:none; position: fixed; bottom: 20px; right: 20px; background: green; color: white; padding: 10px; border-radius: 5px;">
+				<!-- Message will be inserted here -->
+			</div>
             <div class="product-image">
                 <img src="{{ product.picture }}" alt="Product Image">
             </div>
@@ -73,7 +81,13 @@
                 <p class="price">${{ product.price }}</p>
 				<p class="description">{{ product.description }}</p>
                 <!--<p class="description">Transport yourself to ancient Egypt with our exquisite handmade necklace, crafted with care by skilled artisans. Each bead whispers tales of the Nile's mysteries, while the intricate design pays homage to the timeless beauty of Egyptian artistry. Elevate your style with this timeless piece that echoes the elegance of a bygone era.</p>-->
-                <button class="order-button">Order Now</button>
+                {% if current_user.is_authenticated %}
+					{% if current_user.__class__.__name__ == 'Customer' %}
+						<button class="order-button" data-product-id="{{ product.id }}" data-order-id="{{ order.id }}">Order Now</button>
+					{% endif %}
+				{% else %}
+					<button id="order-signin-button" data-url="{{ url_for('sign_in') }}">Order Now</button>
+				{% endif %}
             </div>
         </div>
 		<!-- end of product -->

@@ -40,8 +40,8 @@ def get_products(order_id):
 @app_views.route('/orders/<order_id>/products/<product_id>',
                  methods=['DELETE'], strict_slashes=False)
 def delete_order_product(order_id, product_id):
-    """ deletes a link between a place and an amenity
-        removes a certain amenity from a certain place
+    """ deletes a link between an order and a product
+        removes a certain product from a certain order
     """
     order = storage.get(Order, order_id)
     if not order:
@@ -55,6 +55,29 @@ def delete_order_product(order_id, product_id):
         abort(404)
 
     order.products.remove(product)
+
+    storage.save()
+    return make_response(jsonify({}), 200)
+
+
+@app_views.route('/orders/<order_id>/product/<product_id>',
+                 methods=['POST'], strict_slashes=False)
+def add_order_product(order_id, product_id):
+    """ adds a link between an order and a product
+        customer.orders will now contain this product
+    """
+    order = storage.get(Order, order_id)
+    if not order:
+        abort(404)
+
+    product = storage.get(Product, product_id)
+    if not product:
+        abort(404)
+
+    if product in order.products:
+        abort(404)
+
+    order.products.append(product)
 
     storage.save()
     return make_response(jsonify({}), 200)

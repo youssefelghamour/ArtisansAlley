@@ -41,6 +41,7 @@
 									<button class="nav-link navbar-nav-right">Welcome, {{ current_user.first_name }}</button>
 									<div class="dropdown-content">
 										<a href="{{ url_for('order') }}">Orders</a>
+										<a href="{{ url_for('logout') }}">Logout</a>
 									</div>
 								{% elif current_user.__class__.__name__ == 'Artisan' %}
 									<button class="nav-link navbar-nav-right">Account</button>

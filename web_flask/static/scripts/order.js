@@ -14,7 +14,7 @@ $(document).ready(function () {
                     <div class="order-item">
 						<img src="${product.picture}" alt="Product Image">
 						<div class="item-details">
-							<h2>${product.description}</h2>
+							<h2>${product.name}</h2>
 							<div class="price-line">
 								<p class="prc">Price: </p>
 								<p class="product-price">$${product.price}</p>
@@ -50,7 +50,7 @@ $(document).ready(function () {
                         <div class="order-item" data-product-id="${product.id}">
                             <img src="${product.picture}" alt="Product Image">
                             <div class="item-details">
-                                <h2>${product.description}</h2>
+                                <h2>${product.name}</h2>
                                 <div class="price-line">
                                     <p class="prc">Price: </p>
                                     <p class="product-price">$${product.price}</p>
