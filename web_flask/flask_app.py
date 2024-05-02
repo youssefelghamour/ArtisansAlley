@@ -156,6 +156,7 @@ def explore_products():
 @app.route('/product/<product_id>', strict_slashes=False)
 def product(product_id):
     """ displays the Product Page """
+    products = storage.all(Product).values()
     retrieved_product = storage.get(Product, product_id)
     craft = storage.get(Craft, retrieved_product.craft_id)
     artisan = storage.get(Artisan, retrieved_product.artisan_id)
@@ -164,8 +165,8 @@ def product(product_id):
             current_user.order = Order(customer_id=current_user.id)
             storage.save()
         order = current_user.order
-        return render_template('product.html', product=retrieved_product, craft=craft, artisan=artisan, order=order)
-    return render_template('product.html', product=retrieved_product, craft=craft, artisan=artisan)
+        return render_template('product.html', product=retrieved_product, craft=craft, artisan=artisan, order=order, products=products)
+    return render_template('product.html', product=retrieved_product, craft=craft, artisan=artisan, products=products)
 
 
 @app.route('/artisan/<artisan_id>', strict_slashes=False)

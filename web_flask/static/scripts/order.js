@@ -81,4 +81,18 @@ $(document).ready(function () {
         });
     }
 
+    // get the current date
+    const currentDate = new Date();
+
+    // format the date as desired (e.g., "Friday 26/04/2024")
+    const formattedDate = currentDate.toLocaleDateString('en-US', {
+        weekday: 'long',
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+
+    // populate the date into the HTML element
+    document.getElementById('current-date').textContent = formattedDate;
+
 });

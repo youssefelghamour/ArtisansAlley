@@ -120,45 +120,20 @@
                 </div>
 
                 <ul class="products-grid grid">
-                    <li class="products-item">
-                        <div class="item-img">
-                            <img src="../static/images/popular-1.jpg">
-                        </div>
-                        <div class="item-info">
-                            <span class="name">Handmade Wooden Chair</span>
-                            <span class="price">$ 99.99</span>
-                        </div>
-                    </li>
-
-                    <li class="products-item">
-                        <div class="item-img">
-                            <img src="../static/images/product-5.jpg">
-                        </div>
-                        <div class="item-info">
-                            <span class="name">Brass Pot</span>
-                            <span class="price">$ 99.56</span>
-                        </div>
-                    </li>
-        
-                    <li class="products-item">
-                        <div class="item-img">
-                            <img src="../static/images/popular-2.jpg">
-                        </div>
-                        <div class="item-info">
-                            <span class="name">Traditional Rug</span>
-                            <span class="price">$ 250</span>
-                        </div>
-                    </li>
-
-                    <li class="products-item">
-                        <div class="item-img">
-                            <img src="../static/images/product-6.jpg">
-                        </div>
-                        <div class="item-info">
-                            <span class="name">Ottoman Turkish Turban</span>
-                            <span class="price">$ 18.99</span>
-                        </div>
-                    </li>
+					{% set limit = 4 %}
+                    {% for product in products %}
+                        {% if loop.index <= limit %}
+							<li class="products-item">
+								<div class="item-img">
+									<img src="{{ product.picture }}">
+								</div>
+								<div class="item-info">
+									<span class="name">{{ product.name }}</span>
+									<span class="price">${{ product.price }}</span>
+								</div>
+							</li>
+						{% endif %}
+                    {% endfor %}
                 </ul>
             </div>
         </section>
