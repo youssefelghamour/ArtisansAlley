@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, FileField
+from wtforms import StringField, PasswordField, SubmitField, FileField, TextAreaField
 from wtforms.validators import DataRequired, Length, EqualTo, Email, ValidationError
 from wtforms_sqlalchemy.fields import QuerySelectField
 from models.country import Country
@@ -61,3 +61,9 @@ class AddProductForm(FlaskForm):
     craft = QuerySelectField('Craft', query_factory=lambda: storage.all(Craft).values(), get_label="name")
     picture = FileField('Picture', validators=[DataRequired()])
     submit = SubmitField(label='Add Product')
+
+
+class UpdateProfileForm(FlaskForm):
+    description = TextAreaField('Description', validators=[DataRequired(), Length(min=60, max=600)])
+    picture = FileField('Picture', validators=[DataRequired()])
+    submit = SubmitField(label='Update Your Profile')

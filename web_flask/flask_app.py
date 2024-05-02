@@ -10,7 +10,7 @@ from models.product import Product
 from models.review import Review
 from models.craft import Craft
 from models.order import Order
-from web_flask.forms import SignUpForm, SellWithUsForm, SignInForm, AddProductForm
+from web_flask.forms import SignUpForm, SellWithUsForm, SignInForm, AddProductForm, UpdateProfileForm
 from flask_bcrypt import Bcrypt
 from werkzeug.utils import secure_filename
 from flask_login import LoginManager, login_user, logout_user, current_user
@@ -44,81 +44,97 @@ def artisan_sign_up():
     crafts = storage.all(Craft).values()
     form = SellWithUsForm()
 
-    if form.validate_on_submit():
-        """
-        # Store the image
-        file = form.picture.data
-        # Formats the name of the file (ex: from "logo 15.jpg" to "logol_15.jpg")
-        file_name = secure_filename(file.filename)
-        # Store it in /web_flask/static/images/
-        file_path = "./web_flask/static/images/{}".format(file_name)
-        file.save(file_path)
-        # The value of the picture attribute will be the path so it can be accessed from the JS and HTML files with artisan.picture
-        new_file_path = "../static/images/{}".format(file_name)
-        """
-        new_artisan = Artisan(
-            name=form.name.data,
-            email=form.email.data,
-            description=form.description.data,
-            city_id=form.city.data.id,
-            password=form.password.data
-        )
-        new_artisan.crafts.append(form.craft.data)
-        new_artisan.save()
+    if not current_user.is_authenticated:
+        if form.validate_on_submit():
+            """
+            # Store the image
+            file = form.picture.data
+            # Formats the name of the file (ex: from "logo 15.jpg" to "logol_15.jpg")
+            file_name = secure_filename(file.filename)
+            # Store it in /web_flask/static/images/
+            file_path = "./web_flask/static/images/{}".format(file_name)
+            file.save(file_path)
+            # The value of the picture attribute will be the path so it can be accessed from the JS and HTML files with artisan.picture
+            new_file_path = "../static/images/{}".format(file_name)
+            """
+            new_artisan = Artisan(
+                name=form.name.data,
+                email=form.email.data,
+                description=form.description.data,
+                city_id=form.city.data.id,
+                password=form.password.data
+            )
+            new_artisan.crafts.append(form.craft.data)
+            new_artisan.save()
 
-        flash('Account created successfully. You can now sign in.')
-        return redirect(url_for('sign_in'))
+            flash('Account created successfully. You can now sign in.')
+            return redirect(url_for('sign_in'))
 
-    return render_template('sell_with_us.html', form=form, countries=countries, crafts=crafts)
+        return render_template('sell_with_us.html', form=form, countries=countries, crafts=crafts)
+    
+    else:
+        flash('You are already Signed In')
+        return redirect(url_for('home'))
 
 
 @app.route('/sign_up', methods=['GET', 'POST'], strict_slashes=False)
 def customer_sign_up():
     """ displays the Sign-up page for the customer """
     form = SignUpForm()
-    # If all the fields that the user inputted are correct based on the SignUpForm validators
-    if form.validate_on_submit():
-        
-        # Create a new customer with the data
-        new_customer = Customer(first_name = form.first_name.data,
-                                last_name = form.last_name.data,
-                                email = form.email.data,
-                                address = form.address.data,
-                                password = form.password.data
-                                )
-        new_customer.save()
-        
-        flash('Account created successfully. You can now sign in.')
-        return redirect(url_for('sign_in'))
-    # Otherwise, If the data inputted had errors (ex: name too long)
-    """ # You can uncomment this to print them in the terminal if you want, but they're displayed on the page
-    if form.errors != {}: 
-        for err_msg in form.errors.values():
-            print("error: {}".format(err_msg))
-    """
-    return render_template('sign_up.html', form=form)
 
+    if not current_user.is_authenticated:
+        # If all the fields that the user inputted are correct based on the SignUpForm validators
+        if form.validate_on_submit():
+            
+            # Create a new customer with the data
+            new_customer = Customer(first_name = form.first_name.data,
+                                    last_name = form.last_name.data,
+                                    email = form.email.data,
+                                    address = form.address.data,
+                                    password = form.password.data
+                                    )
+            new_customer.save()
+            
+            flash('Account created successfully. You can now sign in.')
+            return redirect(url_for('sign_in'))
+        # Otherwise, If the data inputted had errors (ex: name too long)
+        """ # You can uncomment this to print them in the terminal if you want, but they're displayed on the page
+        if form.errors != {}: 
+            for err_msg in form.errors.values():
+                print("error: {}".format(err_msg))
+        """
+        return render_template('sign_up.html', form=form)
+
+    else:
+        flash('You are already Signed In')
+        return redirect(url_for('home'))
 
 @app.route('/sign_in', methods=['GET', 'POST'], strict_slashes=False)
 def sign_in():
     """ displays the Sign in page """
     form = SignInForm()
-    if form.validate_on_submit():
-        customers = storage.all(Customer).values()
-        for customer in customers:
-            if customer.email == form.email.data and customer.check_password(form.password.data):
-                login_user(customer)
-                flash('Signed in successfully as : {} {}'.format(customer.first_name, customer.last_name))
-                return redirect(url_for('home'))
-        artisans = storage.all(Artisan).values()
-        for artisan in artisans:
-            if artisan.email == form.email.data and artisan.check_password(form.password.data):
-                login_user(artisan)
-                flash('Signed in successfully as : {}'.format(artisan.name))
-                return redirect(url_for('home'))
-        flash('Email and password are invalid')
-    flash_messages = get_flashed_messages(with_categories=True)
-    return render_template('sign_in.html', flash_messages=flash_messages, form=form)
+
+    if not current_user.is_authenticated:
+        if form.validate_on_submit():
+            customers = storage.all(Customer).values()
+            for customer in customers:
+                if customer.email == form.email.data and customer.check_password(form.password.data):
+                    login_user(customer)
+                    flash('Signed in successfully as : {} {}'.format(customer.first_name, customer.last_name))
+                    return redirect(url_for('home'))
+            artisans = storage.all(Artisan).values()
+            for artisan in artisans:
+                if artisan.email == form.email.data and artisan.check_password(form.password.data):
+                    login_user(artisan)
+                    flash('Signed in successfully as : {}'.format(artisan.name))
+                    return redirect(url_for('home'))
+            flash('Email and password are invalid')
+        flash_messages = get_flashed_messages(with_categories=True)
+        return render_template('sign_in.html', flash_messages=flash_messages, form=form)
+    
+    else:
+        flash('You are already Signed In')
+        return redirect(url_for('home'))
 
 
 @app.route('/explore_artisans', strict_slashes=False)
@@ -160,22 +176,36 @@ def artisan(artisan_id):
     return render_template('artisan.html', artisan=retrieved_artisan, crafts=crafts)
 
 
-"""
-@app.route('/artisan/profile_update/<artisan_id>', strict_slashes=False)
-def artisan(artisan_id):
-    updates the artisan's info
+@app.route('/update_profile/<artisan_id>', methods=['GET', 'POST'], strict_slashes=False)
+def update_profile(artisan_id):
+    """ updates the artisan's info """
     artisan = storage.get(Artisan, artisan_id)
     form = UpdateProfileForm()
 
-    if current_user.id == artisan.id:
+    if current_user.is_authenticated:
+        if current_user.id == artisan.id:
 
-        if form.validate_on_submit():
-            artisan.picture = form.picture.data
-            artisan.description = form.description.data
-            return render_template(url_for('artisan', artisan_id=current_user.id))
-        
-        return render_template('update_profile.html', form=form, artisan=artisan)
-"""
+            if form.validate_on_submit():
+                # Store the image
+                file = form.picture.data
+                # Formats the name of the file (ex: from "logo 15.jpg" to "logol_15.jpg")
+                file_name = secure_filename(file.filename)
+                # Store it in /web_flask/static/images/
+                file_path = "./web_flask/static/images/{}".format(file_name)
+                file.save(file_path)
+                # The value of the picture attribute will be the path so it can be accessed from the JS and HTML files with artisan.picture
+                new_file_path = "../static/images/{}".format(file_name)
+
+                artisan.picture = new_file_path
+                artisan.description = form.description.data
+                artisan.save()
+                return redirect(url_for('artisan', artisan_id=current_user.id))
+            
+            form.description.data = artisan.description
+            return render_template('update_profile.html', form=form, artisan=artisan)
+    
+    else:
+        return redirect(url_for('home'))
 
 
 @app.route('/about', strict_slashes=False)
@@ -215,6 +245,9 @@ def add_product():
             craft_id=form.craft.data.id
         )
         new_product.save()
+
+        #if form.craft.data not in current_user.crafts:
+        #    current_user.crafts.append(form.craft.data)
 
         flash('Product added successfully')
         return redirect(url_for('artisan', artisan_id=current_user.id))

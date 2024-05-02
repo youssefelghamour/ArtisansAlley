@@ -66,7 +66,7 @@
     <form method="post" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <div class="form-group">
-            <label for="username">Username:</label>
+            <label for="username">Full Name:</label>
             {{ form.name }}
             {% for error in form.name.errors %}
                 <span class="error">{{ error }}</span>

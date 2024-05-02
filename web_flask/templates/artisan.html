@@ -72,6 +72,11 @@
                 <!--<button class="update-button">Update Your picture</button>-->
             </div>
             <div class="artisan-details">
+				{% if current_user == artisan %}
+					<a href="{{ url_for('update_profile', artisan_id=current_user.id) }}" class="update-profile">
+						<button id="update-profile-button" style="float: inline-end;">Update your profile</button>
+					</a>
+				{% endif %}
                 <h2 class="artisan_name">{{ artisan.name }}</h2>
                 <h1 class="artisan_crafts">
                     {% for craft in artisan.crafts %}
@@ -89,6 +94,16 @@
         <section id="products">
             <div class="container">
                 <ul class="products-grid grid">
+					{% if current_user == artisan %}
+						<a href="{{ url_for('add_product') }}" class="add-item">
+							<div class="add-product">
+								<img src="../static/images/add-icon.png">
+							</div>
+							<div class="add-label">
+								<span class="add-text">Add Product</span>
+							</div>
+						</a>
+					{% endif %}
                     {% for product in artisan.products %}
                     <li class="products-item" data-product-id="{{ product.id }}">
                         <div class="item-img">
@@ -105,16 +120,6 @@
                         </div>
                     </li>
                     {% endfor %}
-					{% if current_user == artisan %}
-						<a href="{{ url_for('add_product') }}" class="add-item">
-							<div class="add-product">
-								<img src="../static/images/add-icon.png">
-							</div>
-							<div class="add-label">
-								<span class="add-text">Add Product</span>
-							</div>
-						</a>
-					{% endif %}
                 </ul>
             </div>
         </section>

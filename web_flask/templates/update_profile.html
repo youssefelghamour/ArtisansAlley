@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Update Your Profile</title>
+        <link rel="stylesheet" href="../static/styles/home.css">
+        <link rel="stylesheet" href="../static/styles/sign_up.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+        <link rel="icon" href="../static/images/logo.png" />
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    </head>
+    <body>
+
+    <!-- header -->
+    <header id="header">
+
+        <!-- top navbar -->
+        <nav class="top-navbar flex">
+            <div class="container flex">
+                <!-- logo -->
+                <a href = "{{ url_for('home') }}" class = "navbar-brand flex">
+                    <div class="logo"></div>
+                    <span class="brand-text">Artisans Alley</span>
+                </a>
+                <!-- end of logo -->
+                <ul class="navbar-nav-right flex">
+                    <a href = "{{ url_for('home') }}" class = "nav-link">Home</a>
+                            <a href = "{{ url_for('explore_artisans') }}" class = "nav-link">Artisans</a>
+                            <a href = "{{ url_for('explore_products') }}" class = "nav-link">Products</a>
+                            <a href = "{{ url_for('about') }}" class = "nav-link">About</a>
+                            {% if current_user.is_authenticated %}
+                                <div class="dropdown">
+                                    {% if current_user.__class__.__name__ == 'Customer' %}
+                                        <button class="nav-link navbar-nav-right">Welcome, {{ current_user.first_name }}</button>
+                                        <div class="dropdown-content">
+                                            <a href="{{ url_for('order') }}">Orders</a>
+                                            <a href="{{ url_for('logout') }}">Logout</a>
+                                        </div>
+                                    {% elif current_user.__class__.__name__ == 'Artisan' %}
+                                        <button class="nav-link navbar-nav-right">Account</button>
+                                        <div class="dropdown-content">
+                                            <a href="{{ url_for('artisan', artisan_id=current_user.id) }}" class="artisan-profile-redirection">Profile</a>
+                                            <a href="{{ url_for('logout') }}">Logout</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% else %}
+                                <a href="{{ url_for('sign_in') }}" class="nav-link">Sign In</a>
+                            {% endif %}
+                </ul>
+                <!-- hamburger menu icon -->
+                <button type="button" class="navbar-toggler">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <!-- end of hamburger menu icon -->
+            </div>
+        </nav>
+    </header>
+    <!-- end of header -->
+
+    <!-- form -->
+    <div class="form-container">
+        <div class="image-container" style="display: flex; justify-content: center;">
+            <img id="image-preview" src="{{ artisan.picture }}" style="width: 200px; height: 200px; margin: 15px; border-radius: 50%;">
+        </div>
+        <h2>{{ artisan.name }}</h2>
+        <form method="post" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                <label for="description">Description:</label>
+                {{ form.description }}
+                {% for error in form.description.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                <label for="password">Add Image</label>
+                {{ form.picture }}
+                {% for error in form.picture.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.submit }}
+            </div>
+        </form>
+    </div>
+    <!-- end of form -->
+
+
+    <!-- footer -->
+    <footer id="footer">
+        <div class="container footer-grid">
+            <div class="footer-item one">
+                <a href="#" class="navbar-brand"><span class="brand-text">Artisans Alley</span></a>
+                <p class="text">Welcome to the digital home of local makers and artisans, The place to find unique and beautiful items to treat yourself, enhance your home decor, or find a memorable gift.</p>
+            </div>
+
+            <div class="footer-item">
+                <ul class="footer-links">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('explore_artisans') }}">Artisans</a></li>
+                    <li><a href="{{ url_for('explore_products') }}">Products</a></li>
+                    <li><a href="{{ url_for('artisan_sign_up') }}">Sell With Us</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-item four">
+                <h4>Contact Us</h4>
+                <span>   ArtisansAlley@gmail.com   </span>
+            </div>
+        </div>
+    </footer>
+    <!-- end of footer -->
+
+    </body>
+
+    <script>
+        // Function that updates the image preview
+        // Attach event listener to file input
+        document.getElementById('picture').addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                // Create a FileReader object
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    // Update image preview
+                    document.getElementById('image-preview').src = e.target.result;
+                    document.getElementById('image-preview').style.display = 'block';
+                };
+                
+                // Read the file as a data URL
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    </script>
+</html>
