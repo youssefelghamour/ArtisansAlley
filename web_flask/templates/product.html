@@ -100,7 +100,7 @@
 				</div>
 				<div class="review_list">
 				</div>
-			{% if current_user.is_authenticated %}
+			{% if current_user.is_authenticated and current_user.__class__.__name__ == 'Customer'%}
 				<h3 class="user_name">{{ current_user.first_name }} {{ current_user.last_name }}</h3>
 				<textarea rows="2" cols="10"></textarea>
 				<button class="showMoreBtn">Show More</button>
