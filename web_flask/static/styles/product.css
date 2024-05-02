@@ -169,3 +169,54 @@ body {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.showMoreBtn:hover {
+    color:#d2985e;
+    text-decoration: underline;
+}
+
+.showMoreBtn {
+    font-size: 16px;
+    display: none;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-right: 15px;
+    float: right;
+    font-weight: 600;
+}
+
+.addReviewBtn {
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 15px;
+    float: left;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+.user_name {
+    margin-left: 15px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    display: none;
+}
+
+.addReviewBtn:hover {
+    background-color: #0056b3;
+}
+
+textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    resize: none;
+    display: none;
+}

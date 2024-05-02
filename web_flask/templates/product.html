@@ -74,7 +74,7 @@
             <div class="product-image">
                 <img src="{{ product.picture }}" alt="Product Image">
             </div>
-            <div class="product-details">
+            <div class="product-details" data-product-id="{{ product.id }}">
                 <h1>{{ craft.name }}</h1>
                 <h2 class="product_name">{{ product.name }}</h2>
                 <h1>Artisan: {{ artisan.name }}</h1>
@@ -98,20 +98,16 @@
 				<div class="reviews-section-title">
 					<h2>Customer Reviews</h2>
 				</div>
-				<div class="review">
-					<div class="user-info">
-						<p><strong>John Doe</strong></p>
-						<p class="review-date">Date: April 28, 2024</p>
-					</div>
-					<p class="user-review">Good Quality, highly recommend it :) affordable and stylish</p>
+				<div class="review_list">
 				</div>
-				<div class="review">
-					<div class="user-info">
-						<p><strong>Jane Smith</strong></p>
-						<p class="review-date">Date: April 30, 2024</p>
-					</div>
-					<p class="user-review">5 Stars!! Absolutely thrilled with this purchase! It's durable and has held up well with everyday use, keeping its pristine look. Very pleased with the sustainability aspect.</p>
-				</div>
+			{% if current_user.is_authenticated %}
+				<h3 class="user_name">{{ current_user.first_name }} {{ current_user.last_name }}</h3>
+				<textarea rows="2" cols="10"></textarea>
+				<button class="showMoreBtn">Show More</button>
+				<button class="addReviewBtn" data-user-id="{{ current_user.id }}">Leave a review</button>
+			{% else %}
+				<button class="showMoreBtn">Show More</button>
+			{% endif %}
 			</div>
 		</section>
 		<!-- end of reviews -->

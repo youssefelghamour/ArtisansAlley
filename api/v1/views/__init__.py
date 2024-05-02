@@ -11,3 +11,4 @@ from api.v1.views.cities import *
 from api.v1.views.artisans import *
 from api.v1.views.products import *
 from api.v1.views.orders import *
+from api.v1.views.reviews import *
