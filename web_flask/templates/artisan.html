@@ -74,7 +74,7 @@
             <div class="artisan-details">
 				{% if current_user == artisan %}
 					<a href="{{ url_for('update_profile', artisan_id=current_user.id) }}" class="update-profile">
-						<button id="update-profile-button" style="float: inline-end;">Update your profile</button>
+						<button id="update-profile-button"">Update your profile</button>
 					</a>
 				{% endif %}
                 <h2 class="artisan_name">{{ artisan.name }}</h2>
@@ -107,6 +107,9 @@
                     {% for product in artisan.products %}
                     <li class="products-item" data-product-id="{{ product.id }}">
                         <div class="item-img">
+							{% if current_user == artisan %}
+								<div class="remove-btn" data-tooltip="Remove">X</div>
+							{% endif %}
                             <img src="{{ product.picture }}">
                         </div>
                         <div class="item-info">

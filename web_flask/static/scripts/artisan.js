@@ -8,4 +8,24 @@ $(document).ready(function () {
         window.location.href = `/product/${product_id}`;
     });
 
+    $(document).on('click', '.remove-btn', function (event) {
+        event.stopPropagation();
+        const productId = $(this).closest('.products-item').data('product-id');
+        const $itemToRemove = $(`.products-item[data-product-id="${productId}"]`);
+        var confirmation = confirm("Are you sure you want to remove this product?");
+        if (confirmation) {
+            $.ajax({
+                url: `http://localhost:5001/api/v1/products/${productId}`,
+                type: 'DELETE',
+                success: function (response) {
+                    $itemToRemove.remove();
+                    location.reload();
+                },
+            });
+        } else {
+            // Close the confirmation box without performing any action
+            return;
+        }
+    });
+
 });

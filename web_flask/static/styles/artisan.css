@@ -166,3 +166,34 @@ body {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.remove-btn {
+    position: absolute;
+    top: 4%;
+    right: 6%;
+    z-index: 10;
+    background-color: white;
+    padding: 2px 7px;
+    border-radius: 50%;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
+}
+/* Style for tooltip */
+.remove-btn::after {
+    content: attr(data-tooltip); /* Display the value of the 'data-tooltip' attribute */
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #b6778c;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1;
+    width: fit-content;
+}
+
+.remove-btn:hover::after {
+    opacity: 1; /* Show on hover */
+}

@@ -35,14 +35,20 @@ $(document).ready(function () {
     $(document).on('click', '.remove-btn', function () {
         const productId = $(this).data('product-id');
         const $itemToRemove = $(`.order-item[data-product-id="${productId}"]`);
-        $.ajax({
-            url: `http://localhost:5001/api/v1/orders/${orderId}/products/${productId}`,
-            type: 'DELETE',
-            success: function (response) {
-                $itemToRemove.remove();
-                reloadOrderItems();
-            },
-        });
+        var confirmation = confirm("Are you sure you want to remove this order?");
+        if (confirmation) {
+            $.ajax({
+                url: `http://localhost:5001/api/v1/orders/${orderId}/products/${productId}`,
+                type: 'DELETE',
+                success: function (response) {
+                    $itemToRemove.remove();
+                    reloadOrderItems();
+                },
+            });
+        } else {
+            // Close the confirmation box without performing any action
+            return;
+        }
     });
 
     function reloadOrderItems() {
