@@ -246,10 +246,11 @@ button{
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     border-radius: 25px;
+    box-shadow: 23px 23px 36px -34px gray;
 }
 .item-img{
     position: relative;
-    height: 360px;
+    height: 270px;
     width: 100%;
 }
 .item-img::after{
@@ -343,6 +344,7 @@ button{
     border-radius: 2px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 60px;
+    box-shadow: 0px 23px 36px -32px black;
 }
 .button {
     position: absolute;
@@ -460,6 +462,7 @@ button{
     background-color: var(--secondary);
     color: #fff;
     padding: 65px 0;
+    background: linear-gradient(139deg, rgba(20,15,15,1) 0%, rgba(119,108,97,1) 67%, rgba(119,108,97,0.7898809181875875) 100%);
 }
 #footer .container{
     align-items: flex-start;
@@ -488,6 +491,7 @@ button{
 }
 .footer-item.one .text{
     margin: 32px 0 50px 0;
+    font-family: inherit;
 }
 .footer-item.one span{
     font-size: 13px;

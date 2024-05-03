@@ -64,7 +64,7 @@
         <div class="container">
             <section class="filters">
                 <div class="crafts">
-                    <h3>Crafts</h3>
+                    <h3>▾ Filter by Crafts</h3>
                     <h4>&nbsp;</h4>
                     <div class="popover">
                         <ul>
@@ -94,7 +94,7 @@
 
             <div class = "footer-item">
                 <ul class = "footer-links">
-                    <li><a href = "#">Home</a></li>
+                    <li><a href = "{{ url_for('home') }}">Home</a></li>
                     <li><a href = "{{ url_for('explore_artisans') }}">Artisans</a></li>
                     <li><a href = "#">Products</a></li>
                     <li><a href = "{{ url_for('artisan_sign_up') }}">Sell With Us</a></li>

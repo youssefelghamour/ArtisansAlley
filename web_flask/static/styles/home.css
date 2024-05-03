@@ -230,6 +230,7 @@ button{
 
 .cover-pic {
     border-radius: 125px;
+    box-shadow: 24px 27px 29px -19px gray;
 }
 .header-banner{
     background-color: white;
@@ -248,6 +249,7 @@ button{
     border-radius: 50%;
     margin: 15px 0;
     margin-left: 30px;
+    box-shadow: 24px 27px 29px -19px gray;
 }
 .header-banner .container{
     justify-content: space-between;
@@ -378,6 +380,8 @@ button{
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     height: -webkit-fill-available;
+    box-shadow: 23px 23px 36px -34px gray;
+    border-radius: 21px;
 }
 .item-img{
     position: relative;
@@ -423,9 +427,13 @@ button{
     padding: 65px 0;
     background-color: var(--snow);
 }
+#collection .section-title .collection-title {
+    margin-bottom: 12px;
+}
 #collection .section-title .text{
     margin: 0 auto 40px auto;
     max-width: 570px;
+    font-family: inherit;
 }
 #collection .section-title .btn-sm{
     margin: 0 auto;
@@ -444,14 +452,16 @@ button{
     width: 200px;
     display: block;
     object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 23px 23px 36px -34px gray;
 }
 .collection-item .item-info .name{
     margin-bottom: 0;
 }
-.collection-item .item-info{
+/*.collection-item .item-info{
     display: flex;
     justify-content: space-between;
-}
+}*/
 #collection .btn-sm {
     margin: 25px auto 0 auto;
 }
@@ -508,6 +518,7 @@ button{
 #about-us .text {
     margin-top: 25px;
     text-align: justify;
+    font-family: inherit;
 }
 
 #learn-more {
@@ -520,6 +531,7 @@ button{
     background-color: var(--secondary);
     color: #fff;
     padding: 65px 0;
+    background: linear-gradient(139deg, rgba(20,15,15,1) 0%, rgba(119,108,97,1) 67%, rgba(119,108,97,0.7898809181875875) 100%);
 }
 #footer .container{
     align-items: flex-start;
@@ -551,6 +563,7 @@ button{
 }
 .footer-item.one .text{
     margin: 32px 0 50px 0;
+    font-family: inherit;
 }
 .footer-item.one span{
     font-size: 13px;
