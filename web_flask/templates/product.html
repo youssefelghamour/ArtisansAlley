@@ -123,7 +123,7 @@
 					{% set limit = 4 %}
                     {% for product in products %}
                         {% if loop.index <= limit %}
-							<li class="products-item">
+							<li class="products-item" data-product-id="{{ product.id }}">
 								<div class="item-img">
 									<img src="{{ product.picture }}">
 								</div>
