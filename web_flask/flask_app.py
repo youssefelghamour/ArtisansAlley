@@ -10,7 +10,7 @@ from models.product import Product
 from models.review import Review
 from models.craft import Craft
 from models.order import Order
-from web_flask.forms import SignUpForm, SellWithUsForm, SignInForm, AddProductForm, UpdateProfileForm
+from web_flask.forms import SignUpForm, SellWithUsForm, SignInForm, AddProductForm, UpdateProfileForm, UpdateProductForm
 from flask_bcrypt import Bcrypt
 from werkzeug.utils import secure_filename
 from flask_login import LoginManager, login_user, logout_user, current_user
@@ -205,6 +205,44 @@ def update_profile(artisan_id):
             form.description.data = artisan.description
             return render_template('update_profile.html', form=form, artisan=artisan)
     
+    else:
+        return redirect(url_for('home'))
+
+
+@app.route('/update_product/<product_id>', methods=['GET', 'POST'], strict_slashes=False)
+def update_product(product_id):
+    "update a product if it's artisan is the current_user"
+    product = storage.get(Product, product_id)
+    form = UpdateProductForm()
+
+    if current_user.is_authenticated:
+        if current_user.id == product.artisan_id:
+
+            if form.validate_on_submit():
+
+                file = form.picture.data
+                file_name = secure_filename(file.filename)
+                file_path = "./web_flask/static/images/{}".format(file_name)
+                file.save(file_path)
+                new_file_path = "../static/images/{}".format(file_name)
+
+                product.picture = new_file_path
+                product.name = form.name.data
+                product.description = form.description.data
+                product.price = form.price.data
+                product.craft_id = form.craft.data.id
+
+                storage.save()
+
+                return redirect(url_for('product', product_id=product_id))
+
+            form.name.data = product.name
+            form.description.data = product.description
+            form.price.data = product.price
+
+            return render_template('update_product.html', form=form, product=product)
+        else:
+            return redirect(url_for('home'))
     else:
         return redirect(url_for('home'))
 

@@ -73,6 +73,13 @@
 			</div>
             <div class="product-image">
                 <img src="{{ product.picture }}" alt="Product Image">
+				{% if current_user.id == product.artisan_id %}
+				<div class="edit-button">
+					<a href="{{ url_for('update_product', product_id=product.id) }}">
+						<button>Edit</button>
+					</a>
+				</div>
+				{% endif %}
             </div>
             <div class="product-details" data-product-id="{{ product.id }}">
                 <h1>{{ craft.name }}</h1>

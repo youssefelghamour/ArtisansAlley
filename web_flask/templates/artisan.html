@@ -109,6 +109,11 @@
                         <div class="item-img">
 							{% if current_user == artisan %}
 								<div class="remove-btn" data-tooltip="Remove">X</div>
+								<div class="edit-button">
+									<a href="{{ url_for('update_product', product_id=product.id) }}">
+										<button>Edit</button>
+									</a>
+								</div>
 							{% endif %}
                             <img src="{{ product.picture }}">
                         </div>

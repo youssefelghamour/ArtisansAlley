@@ -57,13 +57,22 @@ class SignInForm(FlaskForm):
 class AddProductForm(FlaskForm):
     name = StringField(label='Name', validators=[DataRequired(), Length(min=2, max=30)])
     description = StringField('Description', validators=[DataRequired(), Length(min=2, max=600)])
-    price = StringField('Price', validators=[DataRequired(), Length(min=2, max=6)])
+    price = StringField('Price', validators=[DataRequired()])
     craft = QuerySelectField('Craft', query_factory=lambda: storage.all(Craft).values(), get_label="name")
     picture = FileField('Picture', validators=[DataRequired()])
     submit = SubmitField(label='Add Product')
 
 
 class UpdateProfileForm(FlaskForm):
-    description = TextAreaField('Description', validators=[DataRequired(), Length(min=60, max=600)])
+    description = TextAreaField('Description', validators=[DataRequired(), Length(min=10, max=600)])
     picture = FileField('Picture', validators=[DataRequired()])
     submit = SubmitField(label='Update Your Profile')
+
+
+class UpdateProductForm(FlaskForm):
+    name = StringField(label='Name', validators=[DataRequired(), Length(min=2, max=30)])
+    description = StringField('Description', validators=[DataRequired(), Length(min=2, max=600)])
+    price = StringField('Price', validators=[DataRequired()])
+    craft = QuerySelectField('Craft', query_factory=lambda: storage.all(Craft).values(), get_label="name")
+    picture = FileField('Picture', validators=[DataRequired()])
+    submit = SubmitField(label='Update Product')
