@@ -184,7 +184,7 @@ body {
     bottom: 125%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #b6778c;
+    background-color: #292929;
     color: white;
     padding: 5px;
     border-radius: 3px;
@@ -198,14 +198,19 @@ body {
     opacity: 1; /* Show on hover */
 }
 
+.remove-btn:hover {
+    background-color: #292929;
+    color: white;
+}
+
 .edit-button {
     position: absolute;
-    top: 20%;
-    right: 4%;
+    top: 3%;
+    left: 6%;
     z-index: 2;
 }
 
-.edit-button button {
+.edit-button img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -215,10 +220,84 @@ body {
     background-color: #f9f9f9;
     color: #292929;
     font-weight: 600;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    padding: 5px;
 }
 
-.edit-button button:hover {
+.edit-button img:hover {
     border-radius: 50%;
+    background-color: #ebebeb;
+    color: white;
+}
+
+.edit-button::after {
+    content: attr(data-tooltip); /* Display the value of the 'data-tooltip' attribute */
+    position: absolute;
+    bottom: 112%;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: #292929;
     color: white;
+    padding: 5px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1;
+    width: fit-content;
+}
+
+.edit-button:hover::after {
+    opacity: 1; /* Show on hover */
+}
+
+.update-div {
+    position: relative;
+    top: -222px;
+    right: 14%;
+}
+.update-profile {
+    position: absolute;
+    top: 112px;
+    right: 27%;
+}
+
+.update-profile-button {
+    height: 35px;
+    width: 35px;
+    position: relative;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    text-decoration: none;
+    background-color: white;
+    color: #292929;
+    font-weight: 600;
+    /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);*/
+    padding: 5px;
+}
+
+.update-profile-button:hover {
+    border-radius: 50%;
+    background-color: #ebebeb;
+    color: white;
+}
+
+.update-profile::after {
+    content: attr(data-tooltip); /* Display the value of the 'data-tooltip' attribute */
+    position: absolute;
+    bottom: 127%;
+    right: -150px;
+    transform: translateX(-50%);
+    background-color: #292929;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1;
+    width: fit-content;
+}
+
+.update-profile:hover::after {
+    opacity: 1; /* Show on hover */
 }

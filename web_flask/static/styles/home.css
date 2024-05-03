@@ -152,6 +152,18 @@ button{
 }
 
 /* header - top navbar */
+
+/*top-navbar-home is specific to the home page only, to make a gradient background*/
+.top-navbar-home{
+    height: 110px;
+    background-image: linear-gradient(to right, #fff, #d0b99a5e);
+    /*background-image: linear-gradient(to right, #fff, #d0b99a);*/
+}
+.top-navbar-home .container{
+    max-width: 1005px;
+    width: 100%;
+    justify-content: space-between;
+}
 .top-navbar{
     height: 110px;
 }
@@ -183,6 +195,8 @@ button{
     border-color: #d3ad7c;
     margin-right: 300px;
     margin-left: 0px;
+    /*background-color: var(--secondary);
+    color: white*/
 }
 .logo {
     background: url("../images/logo.png") no-repeat;
@@ -199,6 +213,7 @@ button{
     text-align: center;
 }
 .navbar-brand:hover{
+    /*background-color: #7e9fc3;*/
     background-color: var(--secondary);
     color: #fff;
 }
@@ -213,8 +228,26 @@ button{
     color: var(--primary);
 }
 
+.cover-pic {
+    border-radius: 125px;
+}
 .header-banner{
-    background-color: var(--snow);
+    background-color: white;
+    height: 681px;
+    background-image: url("../images/header-background-pic.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    align-content: center;
+}
+.carousel-pic {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 15px 0;
+    margin-left: 30px;
 }
 .header-banner .container{
     justify-content: space-between;
@@ -222,12 +255,12 @@ button{
 }
 .header-banner-left{
     flex-direction: column;
-    align-items: flex-start;
+    align-items: end;
     flex: 1;
     margin-right: 50px;
 }
 .header-banner-left h1{
-    color: var(--primary);
+    color: white;
     margin-left: 0;
     line-height: 1.3;
     font-size: 40px;
@@ -235,6 +268,14 @@ button{
     text-transform: uppercase;
     font-weight: 400;
     letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-align: end;
+}
+#top-text {
+    margin-bottom: 40px;
+    font-family: inherit;
+    text-align: end;
+    margin-left: 33px;
 }
 .header-banner-right{
     width: 400px;

@@ -72,14 +72,7 @@
 				<!-- Message will be inserted here -->
 			</div>
             <div class="product-image">
-                <img src="{{ product.picture }}" alt="Product Image">
-				{% if current_user.id == product.artisan_id %}
-				<div class="edit-button">
-					<a href="{{ url_for('update_product', product_id=product.id) }}">
-						<button>Edit</button>
-					</a>
-				</div>
-				{% endif %}
+				<img src="{{ product.picture }}" alt="Product Image">				
             </div>
             <div class="product-details" data-product-id="{{ product.id }}">
                 <h1>{{ craft.name }}</h1>
@@ -96,6 +89,13 @@
 					<button id="order-signin-button" data-url="{{ url_for('sign_in') }}">Order Now</button>
 				{% endif %}
             </div>
+			{% if current_user.id == product.artisan_id %}
+			<div class="edit-button" data-tooltip="Edit">
+				<a href="{{ url_for('update_product', product_id=product.id) }}">
+					<img src="../static/images/edit-icon.png" alt="edit" class="edit-icon">
+				</a>
+			</div>
+			{% endif %}
         </div>
 		<!-- end of product -->
 

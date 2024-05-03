@@ -20,7 +20,7 @@
         <header id = "header">
 
             <!-- top navbar -->
-            <nav class = "top-navbar flex">
+            <nav class = "top-navbar-home flex">
                 <div class = "container flex">
                     <!-- logo -->
                     <a href = "#" class = "navbar-brand flex">
@@ -79,11 +79,16 @@
                 <div class = "container flex">
                     <div class = "header-banner-left flex">
                         <h1>A Digital Gateway to Traditional Crafts</h1>
-                        <p class = "text">Welcome to the digital home of local makers and artisans, The place to find unique and beautiful items to treat yourself, enhance your home decor, or find a memorable gift.</p>
+                        <p class = "text" id="top-text">Welcome to the digital home of local makers and artisans, The place to find unique and beautiful items to treat yourself, enhance your home decor, or find a memorable gift.</p>
                         <a href = "{{ url_for('explore_products') }}" class = "btn btn-lg">Explore Products</a>
                     </div>
                     <div class = "header-banner-right">
-                        <img src = "../static/images/header-banner-1.jpg" alt = "">
+                        <img src = "../static/images/cover-pic.jpg" class="cover-pic" alt = "">
+                    </div>
+                    <div class = "h">
+                        <img src = "../static/images/header-pic-1.png" class="carousel-pic" alt = "">
+                        <img src = "../static/images/header-pic-2.png" class="carousel-pic" alt = "">
+                        <img src = "../static/images/header-pic-3.png" class="carousel-pic" alt = "">
                     </div>
                 </div>
             </div>
