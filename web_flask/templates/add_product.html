@@ -61,7 +61,7 @@
 
 		<!-- form -->
 		<div class="form-container">
-			<h2>Sign Up</h2>
+			<h2>Create a product</h2>
 			<form method="post" enctype="multipart/form-data">
 				{{ form.hidden_tag() }}
 				<div class="form-group">
@@ -107,10 +107,6 @@
                 </div>
 				<div class="form-group">
 					{{ form.submit }}
-				</div>
-				<div>
-					<label>Already have an Account?</label>
-					<a href = "{{ url_for('sign_in') }}" class="nav-link-sign">Sign In</a>
 				</div>
 			</form>
 		</div>
