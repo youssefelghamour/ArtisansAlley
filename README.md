@@ -1,4 +1,4 @@
-![ArtisansAlley](web_flask/static/images/README_cover.jpg)
+![ArtisansAlley](./web_flask/static/images/README_cover.png)
 
 # ArtisansAlley
 
