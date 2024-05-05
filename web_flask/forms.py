@@ -64,6 +64,7 @@ class AddProductForm(FlaskForm):
 
 
 class UpdateProfileForm(FlaskForm):
+    name = StringField(label='Full Name', validators=[Length(min=2, max=30)])
     description = TextAreaField('Description', validators=[DataRequired(), Length(min=10, max=600)])
     picture = FileField('Picture', validators=[DataRequired()])
     submit = SubmitField(label='Update Your Profile')

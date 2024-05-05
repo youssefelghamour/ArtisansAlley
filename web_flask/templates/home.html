@@ -160,6 +160,9 @@
             <div class = "container">
                 <h4>About Us</h4>
                 <p class = "text">At Artisans Alley, our passion lies in connecting customers with skilled artisans worldwide. We believe in celebrating craftsmanship and supporting local communities by providing a platform for artisans to showcase their talents. Through our project, we aim to foster appreciation for handmade goods and promote sustainable, ethical shopping practices. Join us on this journey to discover the beauty of artisanal creations and make a positive impact on the world.</p>
+                <video class="video-pres" controls autoplay>
+                    <source src="../static/images/vid.mp4" type="video/mp4">
+                </video>
                 <a href = "{{ url_for('about') }}" class = "btn btn-sm" id="learn-more">Learn More</a>
             </div>
         </section>
@@ -184,8 +187,17 @@
                 </div>
 
                 <div class = "footer-item four">
-                    <h4>Contact Us</h4>
-                    <span>   ArtisansAlley@gmail.com   </span>
+                    <h4><img src="../static/images/github-icon.png" id="github-icon">Developed by:</h4>
+                    <ul class = "footer-links">
+                        <li id="github-li"><a href = "https://github.com/MahmoudHammam0">Mahmoud Hammam</a></li>
+                        <li><a href = "https://github.com/youssefelghamour">Youssef El Ghamour</a></li>
+                    </ul>
+                    <h4 id="github-title"><img src="../static/images/github-icon.png" id="github-icon">Github Repository:</h4>
+                    <ul class = "footer-links">
+                        <li>
+                            <a href = "https://github.com/youssefelghamour/ArtisansAlley">ArtisansAlley</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </footer>

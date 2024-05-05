@@ -198,11 +198,13 @@ def update_profile(artisan_id):
                 new_file_path = "../static/images/{}".format(file_name)
 
                 artisan.picture = new_file_path
+                artisan.name = form.name.data
                 artisan.description = form.description.data
                 artisan.save()
                 return redirect(url_for('artisan', artisan_id=current_user.id))
             
             form.description.data = artisan.description
+            form.name.data = artisan.name
             return render_template('update_profile.html', form=form, artisan=artisan)
     
     else:

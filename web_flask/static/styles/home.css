@@ -593,6 +593,29 @@ button{
     margin: 40px 0 50px 0;
 }
 
+.video-pres {
+    width: 720px;
+    height: 405px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    box-shadow: 24px 27px 29px -19px gray;
+}
+
+#github-li {
+    margin-bottom: 5px;
+}
+#github-title {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+#github-icon {
+    height: 20px;
+    width: 20px;
+    position: relative;
+    top: 19px;
+    right: 28px;
+}
+
 
 
 
