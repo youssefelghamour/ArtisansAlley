@@ -29,6 +29,11 @@ def app_teardown(exception):
     storage.close()
 
 
+@app.errorhandler(404) 
+def not_found(e): 
+    return render_template("404.html") 
+
+
 @app.route('/', strict_slashes=False)
 def home():
     """ displays the home page """
@@ -108,6 +113,7 @@ def customer_sign_up():
     else:
         flash('You are already Signed In')
         return redirect(url_for('home'))
+
 
 @app.route('/sign_in', methods=['GET', 'POST'], strict_slashes=False)
 def sign_in():
