@@ -39,7 +39,7 @@
                         {% if current_user.is_authenticated %}
 							<div class="dropdown">
 								{% if current_user.__class__.__name__ == 'Customer' %}
-									<button class="nav-link navbar-nav-right">Welcome, {{ current_user.first_name }}</button>
+									<button class="nav-link navbar-nav-right">{{ current_user.first_name }}</button>
 									<div class="dropdown-content">
 										<a href="{{ url_for('order') }}">Orders</a>
 										<a href="{{ url_for('logout') }}">Logout</a>

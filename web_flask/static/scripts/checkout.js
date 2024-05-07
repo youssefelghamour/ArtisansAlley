@@ -47,5 +47,20 @@ $(document).ready(function () {
 
         updateTotalPrice(shippingCost);
     });
+
+    const orderIdNumber = $('.cart').data('order-id');
+    if (orderIdNumber) {
+            $.ajax({
+            url: `http://localhost:5001/api/v1/orders/${orderIdNumber}/products`,
+            type: 'GET',
+            success: function (response) {
+                let totalItems = 0;
+                response.forEach(function (product) {
+                    totalItems++;
+                });
+                $('.cart-total').text(totalItems);
+            }
+        });
+    }
     
 });

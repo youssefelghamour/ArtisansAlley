@@ -30,12 +30,11 @@
 						<a href = "{{ url_for('home') }}" class = "nav-link">Home</a>
                         <a href = "{{ url_for('explore_artisans') }}" class = "nav-link">Artisans</a>
                         <a href = "{{ url_for('explore_products') }}" class = "nav-link">Products</a>
-                        <a href = "{{ url_for('artisan_sign_up') }}" class = "nav-link">Sell With Us</a>
                         <a href = "{{ url_for('about') }}" class = "nav-link">About</a>
                         {% if current_user.is_authenticated %}
 							<div class="dropdown">
 								{% if current_user.__class__.__name__ == 'Customer' %}
-									<button class="nav-link navbar-nav-right">Welcome, {{ current_user.first_name }}</button>
+									<button class="nav-link navbar-nav-right">{{ current_user.first_name }}</button>
 									<div class="dropdown-content">
 										<a href="{{ url_for('order') }}">Orders</a>
 										<a href="{{ url_for('logout') }}">Logout</a>
@@ -51,6 +50,16 @@
                         {% else %}
                             <a href="{{ url_for('sign_in') }}" class="nav-link">Sign In</a>
                         {% endif %}
+						{% if current_user.is_authenticated %}
+							{% if current_user.__class__.__name__ == 'Customer' %}
+								<a href = "{{ url_for('order') }}" class = "cart" data-order-id="{{ order.id }}">
+									<img src="../static/images/cart-icon.png" class="cart-icon" style="height:17px">
+									<div class="number-items">
+										<h6 class="cart-total"></h6>
+									</div>
+								</a>
+							{% endif %}
+						{% endif %}
 					</ul>
 					<!-- hamburger menu icon -->
 					<button type = "button" class = "navbar-toggler">

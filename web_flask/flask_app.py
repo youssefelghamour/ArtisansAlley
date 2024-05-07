@@ -155,6 +155,12 @@ def explore_artisans():
     countries = storage.all(Country).values()
     artisans = storage.all(Artisan).values()
     crafts = storage.all(Craft).values()
+
+    if current_user.is_authenticated:
+        if current_user.__class__.__name__ == "Customer":
+            order = current_user.order
+            return render_template('explore_artisans.html', countries=countries, artisans=artisans, crafts=crafts, order=order)
+
     return render_template('explore_artisans.html', countries=countries, artisans=artisans, crafts=crafts)
 
 
@@ -162,6 +168,12 @@ def explore_artisans():
 def explore_products():
     """ displays the Explore Products Page """
     crafts = storage.all(Craft).values()
+
+    if current_user.is_authenticated:
+        if current_user.__class__.__name__ == "Customer":
+            order = current_user.order
+            return render_template('explore_products.html', crafts=crafts, order=order)
+
     return render_template('explore_products.html', crafts=crafts)
 
 
@@ -186,6 +198,12 @@ def artisan(artisan_id):
     """ displays the artisan Page """
     retrieved_artisan = storage.get(Artisan, artisan_id)
     crafts = storage.all(Craft).values()
+
+    if current_user.is_authenticated:
+        if current_user.__class__.__name__ == "Customer":
+            order = current_user.order
+            return render_template('artisan.html', artisan=retrieved_artisan, crafts=crafts, order=order)
+
     return render_template('artisan.html', artisan=retrieved_artisan, crafts=crafts)
 
 
@@ -264,14 +282,24 @@ def update_product(product_id):
 @app.route('/about', strict_slashes=False)
 def about():
     """ displays the About Page """
+    if current_user.is_authenticated:
+        if current_user.__class__.__name__ == "Customer":
+            order = current_user.order
+            return render_template('about.html', order=order)
+
     return render_template('about.html')
 
 
 @app.route('/order', strict_slashes=False)
 def order():
     """ displays the order Page """
-    order = current_user.order
-    return render_template('order.html', order=order)
+    if current_user.is_authenticated:
+        if current_user.__class__.__name__ == "Customer":
+            order = current_user.order
+            return render_template('order.html', order=order)
+    
+    flash('You are not signed in as a Customer')
+    return redirect(url_for('home'))
 
 
 @app.route('/add_product', methods=['GET', 'POST'], strict_slashes=False)
@@ -310,14 +338,20 @@ def add_product():
 
 @app.route('/checkout', strict_slashes=False)
 def checkout():
-    order = current_user.order
-    form = CheckOutForm()
-    return render_template('checkout.html', form=form, order=order)
+    if current_user.is_authenticated:
+        if current_user.__class__.__name__ == "Customer":
+            order = current_user.order
+            form = CheckOutForm()
+            return render_template('checkout.html', form=form, order=order)
+    
+    flash('You are not signed in as a Customer')
+    return redirect(url_for('home'))
 
 
 @app.route('/logout', strict_slashes=False)
 def logout():
     logout_user()
+    flash('You have been successfully logged out!')
     return redirect(url_for('home'))
 
 

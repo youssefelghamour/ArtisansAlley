@@ -8,6 +8,7 @@
         <link rel = "stylesheet" href = "../static/styles/about.css">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 		<link rel="icon" href="../static/images/logo.png" />
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	</head>
 	<body>
 
@@ -50,6 +51,16 @@
                         {% else %}
                             <a href="{{ url_for('sign_in') }}" class="nav-link">Sign In</a>
                         {% endif %}
+						{% if current_user.is_authenticated %}
+							{% if current_user.__class__.__name__ == 'Customer' %}
+								<a href = "{{ url_for('order') }}" class = "cart" data-order-id="{{ order.id }}">
+									<img src="../static/images/cart-icon.png" class="cart-icon" style="height:17px">
+									<div class="number-items">
+										<h6 class="cart-total"></h6>
+									</div>
+								</a>
+							{% endif %}
+						{% endif %}
 					</ul>
 					<!-- hamburger menu icon -->
 					<button type = "button" class = "navbar-toggler">
@@ -103,4 +114,19 @@
 		</footer>
 		<!-- end of footer -->
 	</body>
+
+	<script>
+		const orderId = $('.cart').data('order-id');
+		$.ajax({
+			url: `http://localhost:5001/api/v1/orders/${orderId}/products`,
+			type: 'GET',
+			success: function (response) {
+				let totalItems = 0;
+				response.forEach(function (product) {
+					totalItems++;
+				});
+				$('.cart-total').text(totalItems);
+			}
+		});
+	</script>
 </html>

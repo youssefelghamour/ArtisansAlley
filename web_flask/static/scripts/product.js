@@ -48,6 +48,18 @@ $(document).ready(function () {
         orderButton.click(function() {
             var orderId = $(this).data('order-id');
             var productId = $(this).data('product-id');
+            const orderIdNumber = $('.cart').data('order-id');
+            $.ajax({
+                url: `http://localhost:5001/api/v1/orders/${orderIdNumber}/products`,
+                type: 'GET',
+                success: function (response) {
+                    let totalItems = 0;
+                    response.forEach(function (product) {
+                        totalItems++;
+                    });
+                    $('.cart-total').text(totalItems);
+                }
+            });
             
             // AJAX request
             $.ajax({
@@ -166,16 +178,18 @@ $(document).ready(function () {
     });
 
     const orderIdNumber = $('.cart').data('order-id');
-    $.ajax({
-        url: `http://localhost:5001/api/v1/orders/${orderIdNumber}/products`,
-        type: 'GET',
-        success: function (response) {
-            let totalItems = 0;
-            response.forEach(function (product) {
-                totalItems++;
-            });
-            $('.cart-total').text(totalItems);
-        }
-    });
+    if (orderIdNumber) {
+            $.ajax({
+            url: `http://localhost:5001/api/v1/orders/${orderIdNumber}/products`,
+            type: 'GET',
+            success: function (response) {
+                let totalItems = 0;
+                response.forEach(function (product) {
+                    totalItems++;
+                });
+                $('.cart-total').text(totalItems);
+            }
+        });
+    }
 
 });
