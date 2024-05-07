@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, FileField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, FileField, TextAreaField, RadioField
 from wtforms.validators import DataRequired, Length, EqualTo, Email, ValidationError
 from wtforms_sqlalchemy.fields import QuerySelectField
 from models.country import Country
@@ -77,3 +77,18 @@ class UpdateProductForm(FlaskForm):
     craft = QuerySelectField('Craft', query_factory=lambda: storage.all(Craft).values(), get_label="name")
     picture = FileField('Picture', validators=[DataRequired()])
     submit = SubmitField(label='Update Product')
+
+
+class CheckOutForm(FlaskForm):
+    fullname = StringField('Full Name', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    address = StringField('Address', validators=[DataRequired()])
+    city = StringField('City', validators=[DataRequired()])
+    state = StringField('State', validators=[DataRequired()])
+    zipcode = StringField('Zip Code', validators=[DataRequired()])
+    shipping_method = RadioField('Shipping Method', choices=[('standard', 'Standard Shipping - $5.00 (3-5 business days)'), ('express', 'Express Shipping - $10.00 (1-2 business days)')], validators=[DataRequired()])
+    cardnumber = StringField('Credit Card Number', validators=[DataRequired()])
+    expmonth = StringField('Expiration Month', validators=[DataRequired()])
+    expyear = StringField('Expiration Year', validators=[DataRequired()])
+    cvv = StringField('CVV', validators=[DataRequired()])
+    cardname = StringField('Name on Card', validators=[DataRequired()])

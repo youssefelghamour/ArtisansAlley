@@ -10,7 +10,7 @@ from models.product import Product
 from models.review import Review
 from models.craft import Craft
 from models.order import Order
-from web_flask.forms import SignUpForm, SellWithUsForm, SignInForm, AddProductForm, UpdateProfileForm, UpdateProductForm
+from web_flask.forms import SignUpForm, SellWithUsForm, SignInForm, AddProductForm, UpdateProfileForm, UpdateProductForm, CheckOutForm
 from flask_bcrypt import Bcrypt
 from werkzeug.utils import secure_filename
 from flask_login import LoginManager, login_user, logout_user, current_user
@@ -300,6 +300,13 @@ def add_product():
         return redirect(url_for('artisan', artisan_id=current_user.id))
 
     return render_template('add_product.html', form=form)
+
+
+@app.route('/checkout', strict_slashes=False)
+def checkout():
+    order = current_user.order
+    form = CheckOutForm()
+    return render_template('checkout.html', form=form, order=order)
 
 
 @app.route('/logout', strict_slashes=False)

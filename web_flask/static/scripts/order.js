@@ -95,4 +95,8 @@ $(document).ready(function () {
     // populate the date into the HTML element
     document.getElementById('current-date').textContent = formattedDate;
 
+    $(document).on('click', '.checkout-btn', function() {
+        window.location.href = `/checkout`;
+    });
+
 });
