@@ -4,6 +4,42 @@ body {
     padding: 0;
 }
 
+
+
+.cart {
+    bottom: -6px;
+    position: relative;
+}
+.number-items {
+    position: relative;
+    top: -24px;
+    right: -15px;
+    background-color: burlywood;
+    border-radius: 50%;
+    padding: 1px 2px;
+    min-width: 12px;
+    text-align: center;
+    align-content: center;
+    width: 14px;
+}
+.cart:hover .number-items {
+    background-color: burlywood;
+    color: white;
+    height: 15px;
+    width: 15px;
+    font-size: 20px;
+    top: -24px;
+    right: -12px;
+    align-content: center;
+}
+.cart-icon {
+    height: 17px;
+}
+.cart:hover .cart-icon{
+    opacity: 0.5;
+}
+
+
 #message-box {
     inset: 50px 20px 20px 50%;
     position: fixed;

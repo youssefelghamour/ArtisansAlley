@@ -39,6 +39,12 @@ def home():
     """ displays the home page """
     products = storage.all(Product).values()
     artisans = storage.all(Artisan).values()
+
+    if current_user.is_authenticated:
+        if current_user.__class__.__name__ == "Customer":
+            order = current_user.order
+            return render_template('home.html', products=products, artisans=artisans, order=order)
+    
     return render_template('home.html', products=products, artisans=artisans)
 
 

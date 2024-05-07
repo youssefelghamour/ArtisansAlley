@@ -55,6 +55,16 @@
                         {% else %}
                             <a href="{{ url_for('sign_in') }}" class="nav-link">Sign In</a>
                         {% endif %}
+                        {% if current_user.is_authenticated %}
+							{% if current_user.__class__.__name__ == 'Customer' %}
+								<a href = "{{ url_for('order') }}" class = "cart" data-order-id="{{ order.id }}">
+									<img src="../static/images/cart-icon.png" class="cart-icon" style="height:17px">
+									<div class="number-items">
+										<h6 class="cart-total"></h6>
+									</div>
+								</a>
+							{% endif %}
+						{% endif %}
                     </ul>
                     <!-- hamburger menu icon -->
                     <button type = "button" class = "navbar-toggler">

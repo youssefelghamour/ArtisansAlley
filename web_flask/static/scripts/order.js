@@ -29,6 +29,7 @@ $(document).ready(function () {
             });
             $('.total-items').text(totalItems);
             $('.total-price').text(`$${totalPrice.toFixed(2)}`);
+            $('.cart-total').text(totalItems);
         }
     });
 
@@ -77,6 +78,7 @@ $(document).ready(function () {
                 });
                 $('.total-items').text(totalItems);
                 $('.total-price').text(`$${totalPrice.toFixed(2)}`);
+                $('.cart-total').text(totalItems);
             },
         });
     }
