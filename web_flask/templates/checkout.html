@@ -8,6 +8,9 @@
 		<link rel="stylesheet" href="../static/styles/checkout.css">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 		<link rel="icon" href="../static/images/logo.png" />
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<!-- Import JavaScript file -->
+		<script type="text/javascript" src="../static/scripts/checkout.js"></script>
 	</head>
 	<body>
 
@@ -129,16 +132,11 @@
 			<div class="col-25">
 			  <div class="form-container">
 				<h3>Order Summary</h3>
-				<ul class="Products">
-					{% for product in order.products %}
-					<li>
-						<a href="{{ url_for('product', product_id=product.id) }}">{{ product.name }}<div class="price">${{ product.price }}</div></a>
-					</li>
-					{% endfor %}
+				<ul class="Products" data-order-id="{{ order.id }}">
 					<hr>
-					<li>Shipping<div class="price">$5.00</div></li>
+					<li id="shipping">Shipping<div class="price">$0.00</div></li>
 					<hr>
-					<li><strong>Total</strong><div class="price">$750.00</div></li>
+					<li><strong>Total</strong><div class="price total-price">$750.00</div></li>
 				</ul>
 			  </div>
 			</div>

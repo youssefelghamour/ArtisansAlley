@@ -86,7 +86,10 @@ class CheckOutForm(FlaskForm):
     city = StringField('City', validators=[DataRequired()])
     state = StringField('State', validators=[DataRequired()])
     zipcode = StringField('Zip Code', validators=[DataRequired()])
-    shipping_method = RadioField('Shipping Method', choices=[('standard', 'Standard Shipping - $5.00 (3-5 business days)'), ('express', 'Express Shipping - $10.00 (1-2 business days)')], validators=[DataRequired()])
+    shipping_method = RadioField('Shipping Method', choices=[
+    ('standard', 'Standard Shipping - $5.00 (3-5 business days)'),
+    ('express', 'Express Shipping - $10.00 (1-2 business days)')
+    ], validators=[DataRequired()])
     cardnumber = StringField('Credit Card Number', validators=[DataRequired()])
     expmonth = StringField('Expiration Month', validators=[DataRequired()])
     expyear = StringField('Expiration Year', validators=[DataRequired()])
