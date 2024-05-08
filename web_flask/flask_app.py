@@ -105,6 +105,8 @@ def customer_sign_up():
                                     password = form.password.data
                                     )
             new_customer.save()
+            new_customer.order = Order(customer_id=new_customer.id)
+            storage.save()
             
             flash('Account created successfully. You can now sign in.')
             return redirect(url_for('sign_in'))
