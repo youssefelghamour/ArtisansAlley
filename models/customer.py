@@ -18,6 +18,8 @@ class Customer(BaseModel, Base, UserMixin):
     reviews = relationship("Review", cascade="all, delete-orphan",
                           backref="customer")
     order = relationship("Order", uselist=False, backref="customer")
+    archives = relationship("Archive", cascade="all, delete-orphan",
+                          backref="customer")
 
 
     @property

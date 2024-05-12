@@ -11,16 +11,30 @@ body {
     margin-bottom: 60px;
 }
 .form-container {
-    width: 40%;
+    width: 700px;
     padding: 30px 30px;
     background-color: #fff;
     border-radius: 8px;
-    position: sticky;
-    height: fit-content;
-    top: 0;
+    margin: auto auto;
+}
+pre {
+    text-align: center;
+    color: #292929;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
 }
 
-input, select, textarea {
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
+}
+.form-group input, select, textarea {
     width: 100%;
     padding: 15px;
     border: 1px solid #ccc;
@@ -29,10 +43,22 @@ input, select, textarea {
     font-size: 16px;
     resize: none;
 }
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
+.form-group input[type="submit"] {
+    background-color: #d2985e;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+.form-group input[type="submit"]:hover {
+    background-color: #292929;
+    color: #d2985e;
+}
+.form-group input[type="submit"]:focus {
+    outline: none;
+}
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
@@ -107,126 +133,51 @@ input[type="password"]:focus {
     display: block;
 }
 
-.btn {
-    background-color: #d2985e;
-    color: white;
-    padding: 12px;
-    margin: 10px 0;
-    border: none;
+.form-container img {
+    height: 200px;
+    width: 200px;
+    margin: 30px auto;
+}
+
+h4 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.info-container {
     width: 100%;
+    padding: 30px 30px 20px 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-weight: 500;
+    margin: auto auto;
+}
+
+.info {
+    float: right;
+}
+
+.info-container div {
+    margin-bottom: 20px;
+}
+
+.home-btn {
+    background-color: #007bff;
+    color: #f9f9f9;
+    padding: 12px;
+    margin: 30px auto;
+    border: none;
+    width: 40%;
     border-radius: 3px;
     cursor: pointer;
     font-size: 17px;
+    display: block;
 }
 
-.btn:hover {
-    background-color: #292929;
-    color: #d2985e;
-}
-
-.order-items {
-    padding: 30px 30px;
-    background-color: #fff;
-    border-radius: 8px;
-    border-right: 1px solid #DDDDDD;
-    display: inline-block;
-    width: 650px;
-}
-
-.order-item {
-    display: flex;
-    margin-bottom: 20px;
-    border-radius: 20px;
-}
-
-.order-item img {
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    display: inline;
-}
-
-.item-details {
-    flex-grow: 1;
-    margin-left: 10px;
-}
-
-
-.product-price {
-    display: inline;
-    float: right;
-}
-
-h2 {
-    color: #292929;
-    margin-bottom: 15px;
-    margin-top: 10px;
-    font-weight: 500;
-    font-size: 14px;
-    text-align: left;
-    display: inline;
-}
-
-.price {
-    float: right;
-}
-
-.total {
-    margin-top: 20px;
-}
-
-input[type="text"] {
-    width: 48%;
-    margin-top: 20px;
-    display: inline-block;
-}
-
-input[type="address"] {
-    margin-top: 20px;
-}
-
-.shipping_method {
-    background-color: #ddddddfd;
-    height: 50px;
-    text-align: center;
-    padding: 17px;
-    font-size: 14px;
-    margin: 20px 20px;
-    border-radius: 8px;
-    font-weight: 500;
-}
-
-.Shipment h3 {
-    margin-top: 20px;
-}
-
-.right {
-    margin-right: 19px;
-}
-
-h3 {
-    margin-bottom: 20px;
-}
-
-.parent-container {
-    padding-left: 250px;
-    display: flex;
-}
-
-#shipping {
-    margin: 20px 0;
-}
-
-button:disabled {
-    color: #888;
-    background-color: #f4f4f4;
-    cursor: not-allowed;
-}
-
-.correct {
-    background-color: #007bff;
-    text-align: left;
-    color: #f9f9f9;
-    font-size: 16px;
-    font-weight: 500;
+.home-btn:hover {
+    background-color: var(--secondary);
 }

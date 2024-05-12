@@ -12,6 +12,7 @@ from models.review import Review
 from models.craft import Craft
 from models.order import Order
 from models.product import Product
+from models.archive import Archive
 
 
 class DBStorage:
@@ -27,7 +28,8 @@ class DBStorage:
             'Review': Review,
             'Craft': Craft,
             'Product': Product,
-            'Order': Order
+            'Order': Order,
+            'Archive': Archive
             }
 
     def __init__(self):
@@ -112,3 +114,14 @@ class DBStorage:
                 return 0
         else:
             return len(self.all())
+
+    def check_email(self, email):
+        user = self.__session.query(Customer).filter(Customer.email==email).first()
+        if user:
+            return user
+        else:
+            user = self.__session.query(Artisan).filter(Artisan.email==email).first()
+            if user:
+                return user
+            else:
+                return None

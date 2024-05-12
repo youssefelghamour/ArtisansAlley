@@ -14,10 +14,9 @@ from models import storage
 class SignUpForm(FlaskForm):
 
     def validate_email(self, email_to_check):
-        customers = storage.all(Customer).values()
-        for customer in customers:
-            if customer.email == email_to_check.data:
-                raise ValidationError('Email Address already exists')
+        customer = storage.check_email(email_to_check.data)
+        if customer:
+            raise ValidationError('Email Address already exists')
 
     first_name = StringField(label='first_name', validators=[DataRequired(), Length(min=2, max=30)])
     last_name = StringField(label='last_name', validators=[DataRequired(), Length(max=30)])
@@ -31,10 +30,9 @@ class SignUpForm(FlaskForm):
 class SellWithUsForm(FlaskForm):
 
     def validate_email(self, email_to_check):
-        artisans = storage.all(Artisan).values()
-        for artisan in artisans:
-            if artisan.email == email_to_check.data:
-                raise ValidationError('Email Address already exists')
+        artisan = storage.check_email(email_to_check.data)
+        if artisan:
+            raise ValidationError('Email Address already exists')
 
     name = StringField(label='Full Name', validators=[DataRequired(), Length(min=2, max=30)])
     email = StringField(label='email', validators=[DataRequired(), Email()])
@@ -77,21 +75,3 @@ class UpdateProductForm(FlaskForm):
     craft = QuerySelectField('Craft', query_factory=lambda: storage.all(Craft).values(), get_label="name")
     picture = FileField('Picture', validators=[DataRequired()])
     submit = SubmitField(label='Update Product')
-
-
-class CheckOutForm(FlaskForm):
-    fullname = StringField('Full Name', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    address = StringField('Address', validators=[DataRequired()])
-    city = StringField('City', validators=[DataRequired()])
-    state = StringField('State', validators=[DataRequired()])
-    zipcode = StringField('Zip Code', validators=[DataRequired()])
-    shipping_method = RadioField('Shipping Method', choices=[
-    ('standard', 'Standard Shipping - $5.00 (3-5 business days)'),
-    ('express', 'Express Shipping - $10.00 (1-2 business days)')
-    ], validators=[DataRequired()])
-    cardnumber = StringField('Credit Card Number', validators=[DataRequired()])
-    expmonth = StringField('Expiration Month', validators=[DataRequired()])
-    expyear = StringField('Expiration Year', validators=[DataRequired()])
-    cvv = StringField('CVV', validators=[DataRequired()])
-    cardname = StringField('Name on Card', validators=[DataRequired()])

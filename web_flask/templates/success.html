@@ -3,14 +3,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Checkout</title>
+		<title>Success</title>
 		<link rel = "stylesheet" href = "../static/styles/home.css">
-		<link rel="stylesheet" href="../static/styles/checkout.css">
+		<link rel="stylesheet" href="../static/styles/success.css">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 		<link rel="icon" href="../static/images/logo.png" />
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<!-- Import JavaScript file -->
-		<script type="text/javascript" src="../static/scripts/checkout.js"></script>
+		<script type="text/javascript" src="../static/scripts/success.js"></script>
 		<script src="https://js.stripe.com/v3/"></script>
 
 	</head>
@@ -74,48 +74,17 @@
 		<!-- end of header -->
 
 		<!-- form -->
-		<div class="parent-container">
-			<div class="order-items">
-				<div class="Delivery">
-					<h3>Delivery</h3>
-					<select id="country" required>
-						<option disabled selected>Country/Region</option>
-						{% for country in countries %}
-						<option value="{{ country.name }}">{{ country.name }}</option>
-						{% endfor %}
-					</select>
-					<input type="text" placeholder="First Name" class="right first_name" value="{{ current_user.first_name }}">
-					<input type="text" placeholder="Last Name" class="last_name" value="{{ current_user.last_name }}">
-					<input type="address" placeholder="Address" class="address" value="{{ current_user.address }}">
-					<input type="address" placeholder="Apartment, room, etc.(optional)" class="apartment">
-					<input type="text" placeholder="Postal code" class="right postal_code">
-					<input type="text" placeholder="City" class="city">
-					<input type="address" placeholder="Phone (optional)" class="phone">
-				</div>
-				<div class="Shipment">
-					<h3>Shipment</h3>
-					<div class="grey shipping_method">
-						<p>Enter your shipping address to view available shipping methods</p>
-					</div>
-				</div>
-				<h3>Payments</h3>
-				<form id="payment">
-					<div class="form-group">
-					</div>
-					<button class="btn" disabled>Pay now</button>
-					<div id="error"></div>
-				</form>
+		<div class="form-container">
+			<img src="../static/images/success-green-check-mark-icon.png">
+			<pre id="payment-intent"></pre>
+			<h4>Thank you for your purchase!</h4>
+			<div class="info-container">
+				<div>Customer Name: <div class="info">{{ current_user.first_name + ' ' + current_user.last_name }}</div></div>
+				<div id="paymentDate">Date & Time: <div class="info">January 22, 2024, 10:30 AM</div></div>
+				<div id="amount">Amount Paid: <div class="info">$5000</div></div>
+				<div id="order">Order id: <div class="info">#{{ order.id }}</div></div>
 			</div>
-			<div class="form-container" data-order-id="{{ order.id }}">
-				<div class="products">
-				</div>
-				<hr>
-				<div class="total">
-					<div class="subtotal">Subtotal<div class="price total-price">$750.00</div></div>
-					<div id="shipping">Shipment<div class="price">Enter delivery address</div></div>
-					<strong>In total</strong><div class="price total-price">$750.00</div>
-				</div>
-			</div>
+			<button class="home-btn">Return to Homepage</button>
 		</div>
 		<!-- end of form -->
 

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Flask app """
-from flask import Flask, flash, get_flashed_messages, render_template, redirect, url_for, request
+from flask import Flask, flash, get_flashed_messages, render_template, redirect, url_for, request, jsonify
 from models import storage
 from models.country import Country
 from models.artisan import Artisan
@@ -10,10 +10,13 @@ from models.product import Product
 from models.review import Review
 from models.craft import Craft
 from models.order import Order
-from web_flask.forms import SignUpForm, SellWithUsForm, SignInForm, AddProductForm, UpdateProfileForm, UpdateProductForm, CheckOutForm
+from models.archive import Archive
+from web_flask.forms import SignUpForm, SellWithUsForm, SignInForm, AddProductForm, UpdateProfileForm, UpdateProductForm
 from flask_bcrypt import Bcrypt
 from werkzeug.utils import secure_filename
 from flask_login import LoginManager, login_user, logout_user, current_user
+import stripe
+import json
 
 
 
@@ -21,6 +24,9 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '420d61563971313761f2e61f'
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
+app.config['STRIPE_PUPLIC_KEY'] = 'pk_test_51PE2BH00iKDOAQfh0WWsB1XBA20NdM4v5KbJVa9zMTU7cBJoXlX5pmxsbDYTMNbBJ5nvMBjSttf7KPIMDItSfp3a00I3NTuhwb'
+app.config['STRIPE_SECRET_KEY'] = 'sk_test_51PE2BH00iKDOAQfhwAKNSy0fr6HUINHLmM2U5fG8M4aywAHJKR9rWXI3wBA7Yw5NyPJ1kMSVxdDL41YYnHfTOKs600dqwwAwIy'
+stripe.api_key = app.config['STRIPE_SECRET_KEY']
 
 
 @app.teardown_appcontext
@@ -105,6 +111,8 @@ def customer_sign_up():
                                     password = form.password.data
                                     )
             new_customer.save()
+            new_customer.archives.append(Archive(customer_id=new_customer.id))
+            storage.save()
             new_customer.order = Order(customer_id=new_customer.id)
             storage.save()
             
@@ -130,18 +138,23 @@ def sign_in():
 
     if not current_user.is_authenticated:
         if form.validate_on_submit():
-            customers = storage.all(Customer).values()
-            for customer in customers:
-                if customer.email == form.email.data and customer.check_password(form.password.data):
-                    login_user(customer)
-                    flash('Signed in successfully as : {} {}'.format(customer.first_name, customer.last_name))
-                    return redirect(url_for('home'))
-            artisans = storage.all(Artisan).values()
-            for artisan in artisans:
-                if artisan.email == form.email.data and artisan.check_password(form.password.data):
-                    login_user(artisan)
-                    flash('Signed in successfully as : {}'.format(artisan.name))
-                    return redirect(url_for('home'))
+            user = storage.check_email(form.email.data)
+            if user and user.check_password(form.password.data):
+                login_user(user)
+                if isinstance(user, Customer):
+                    flash('Signed in successfully as : {} {}'.format(user.first_name, user.last_name))
+                else:
+                    flash('Signed in successfully as : {}'.format(user.name))
+                return redirect(url_for('home'))
+            # if customer and customer.check_password(form.password.data):
+            #     login_user(customer)
+            #     flash('Signed in successfully as : {} {}'.format(customer.first_name, customer.last_name))
+            #     return redirect(url_for('home'))
+            # artisan = storage.check_email(form.email.data)
+            # if artisan and artisan.check_password(form.password.data):
+            #     login_user(artisan)
+            #     flash('Signed in successfully as : {}'.format(artisan.name))
+            #     return redirect(url_for('home'))
             flash('Email and password are invalid')
         flash_messages = get_flashed_messages(with_categories=True)
         return render_template('sign_in.html', flash_messages=flash_messages, form=form)
@@ -338,14 +351,54 @@ def add_product():
     return render_template('add_product.html', form=form)
 
 
-@app.route('/checkout', strict_slashes=False)
+@app.route('/checkout', methods=['GET', 'POST'], strict_slashes=False)
 def checkout():
     if current_user.is_authenticated:
         if current_user.__class__.__name__ == "Customer":
+            countries = storage.all(Country).values()
             order = current_user.order
-            form = CheckOutForm()
-            return render_template('checkout.html', form=form, order=order)
+            return render_template('checkout.html', order=order, countries=countries)
     
+    flash('You are not signed in as a Customer')
+    return redirect(url_for('home'))
+
+
+@app.route('/create_payment_intent', methods=['POST'])
+def create_payment_intent():
+    customer = stripe.Customer.create(
+        email=current_user.email,
+        name=current_user.first_name + ' ' + current_user.last_name,
+    )
+    total = 0
+    order = current_user.order
+    if order.products != []:
+        for product in order.products:
+            total += product.price
+        total *= 100 #convert the total to cents
+        total += 699 #added shipping costs
+    else:
+        total = 100
+    payment_intent = stripe.PaymentIntent.create(
+        amount=total,
+        currency='usd',
+        customer=customer,
+        automatic_payment_methods={'enabled': True}
+    )
+    return jsonify(clientSecret=payment_intent.client_secret)
+
+
+@app.route('/success', strict_slashes=False)
+def success():
+    if current_user.is_authenticated:
+        if current_user.__class__.__name__ == "Customer":
+            order = current_user.order
+            for product in order.products:
+                current_user.archives[-1].products.append(product)
+            current_user.archives.append(Archive(customer_id=current_user.id))
+            storage.save()
+            current_user.order.products = []
+            storage.save()
+            return render_template('success.html', order=order)
     flash('You are not signed in as a Customer')
     return redirect(url_for('home'))
 
