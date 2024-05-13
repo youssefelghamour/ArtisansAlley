@@ -51,10 +51,9 @@ def get_customer_orders(customer_id):
     lst_products = []
     for archive in retrieved_customer.archives:
         for product in archive.products:
-            for product in archive.products:
-                product_info = product.to_dict()
-                product_info['date'] = archive.updated_at
-                lst_products.append(product_info)
+            product_info = product.to_dict()
+            product_info['date'] = archive.updated_at
+            lst_products.append(product_info)
 
         
     if not lst_products:
