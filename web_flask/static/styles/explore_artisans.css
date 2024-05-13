@@ -196,6 +196,9 @@ button{
     bottom: -6px;
     position: relative;
 }
+.cart img {
+    border-radius: 0;
+}
 .number-items {
     position: relative;
     top: -24px;

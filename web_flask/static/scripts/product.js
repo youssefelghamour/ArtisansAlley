@@ -45,7 +45,8 @@ $(document).ready(function () {
 
     var orderButton = $('.order-button');
     if (orderButton) {
-        orderButton.click(function() {
+        // orderButton.click(function() {
+        $(document).on('click', '.order-button', function() {
             var orderId = $(this).data('order-id');
             var productId = $(this).data('product-id');
             const orderIdNumber = $('.cart').data('order-id');

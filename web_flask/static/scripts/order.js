@@ -16,9 +16,11 @@ $(document).ready(function () {
                 totalPrice += product.price;
                 $('.order-items').append(`
                     <div class="order-item">
-						<img src="${product.picture}" alt="Product Image">
+                        <div class="order-img" data-product-id="${product.id}">
+						    <img src="${product.picture}" alt="Product Image">
+                        </div>
 						<div class="item-details">
-							<h2>${product.name}</h2>
+							<h2 data-product-id="${product.id}">${product.name}</h2>
 							<div class="price-line">
 								<p class="prc">Price: </p>
 								<p class="product-price">$${product.price}</p>
@@ -65,9 +67,11 @@ $(document).ready(function () {
                     totalPrice += product.price;
                     $('.order-items').append(`
                         <div class="order-item" data-product-id="${product.id}">
-                            <img src="${product.picture}" alt="Product Image">
+                            <div class="order-img" data-product-id="${product.id}">
+                                <img src="${product.picture}" alt="Product Image">
+                            </div>
                             <div class="item-details">
-                                <h2>${product.name}</h2>
+                                <h2 data-product-id="${product.id}">${product.name}</h2>
                                 <div class="price-line">
                                     <p class="prc">Price: </p>
                                     <p class="product-price">$${product.price}</p>
@@ -99,6 +103,22 @@ $(document).ready(function () {
 
     $(document).on('click', '.checkout-btn', function() {
         window.location.href = `/checkout`;
+    });
+
+    // redirects the customer to the product page when the image is clicked
+    $(document).on('click', '.order-img', function() {
+        // Get the product_id from the data-product-id when the image is clicked
+        const product_id = $(this).data('product-id');
+        // Redirect the customer to the product page with the specified product ID
+        window.location.href = `/product/${product_id}`;
+    });
+
+    // redirects the customer to the product page when the name is clicked
+    $(document).on('click', '.item-details h2', function() {
+        // Get the product_id from the data-product-id when the image is clicked
+        const product_id = $(this).data('product-id');
+        // Redirect the customer to the product page with the specified product ID
+        window.location.href = `/product/${product_id}`;
     });
 
 });

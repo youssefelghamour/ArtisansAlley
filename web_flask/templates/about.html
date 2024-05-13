@@ -31,7 +31,7 @@
                         {% if not current_user.is_authenticated %}
                             <a href = "{{ url_for('artisan_sign_up') }}" class = "nav-link">Sell With Us</a>
                         {% endif %}
-                        <a href = "{{ url_for('about') }}" class = "nav-link">About</a>
+                        <a href = "{{ url_for('about') }}" class = "nav-link active">About</a>
                         {% if current_user.is_authenticated %}
 							<div class="dropdown">
 								{% if current_user.__class__.__name__ == 'Customer' %}
@@ -44,6 +44,7 @@
 									<button class="nav-link navbar-nav-right">Account</button>
 									<div class="dropdown-content">
 										<a href="{{ url_for('artisan', artisan_id=current_user.id) }}" class="artisan-profile-redirection">Profile</a>
+										<a href="{{ url_for('artisan_orders', artisan_id=current_user.id) }}" class="artisan-profile-redirection">Orders</a>
 										<a href="{{ url_for('logout') }}">Logout</a>
 									</div>
 								{% endif %}

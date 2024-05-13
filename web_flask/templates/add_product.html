@@ -41,6 +41,7 @@
 									<button class="nav-link navbar-nav-right">Account</button>
 									<div class="dropdown-content">
 										<a href="{{ url_for('artisan', artisan_id=current_user.id) }}" class="artisan-profile-redirection">Profile</a>
+										<a href="{{ url_for('artisan_orders', artisan_id=current_user.id) }}" class="artisan-profile-redirection">Orders</a>
 										<a href="{{ url_for('logout') }}">Logout</a>
 									</div>
 								{% endif %}

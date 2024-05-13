@@ -307,7 +307,7 @@ def about():
 
 @app.route('/order', strict_slashes=False)
 def order():
-    """ displays the order Page """
+    """ displays the customer order Page """
     if current_user.is_authenticated:
         if current_user.__class__.__name__ == "Customer":
             order = current_user.order
@@ -353,6 +353,7 @@ def add_product():
 
 @app.route('/checkout', methods=['GET', 'POST'], strict_slashes=False)
 def checkout():
+    """ displays the checkout page for the payement """
     if current_user.is_authenticated:
         if current_user.__class__.__name__ == "Customer":
             countries = storage.all(Country).values()
@@ -400,6 +401,17 @@ def success():
             storage.save()
             return render_template('success.html', order=order)
     flash('You are not signed in as a Customer')
+    return redirect(url_for('home'))
+
+
+@app.route('/artisan_orders/<artisan_id>', strict_slashes=False)
+def artisan_orders(artisan_id):
+    """ displays a page for the artisan conating orders to his products """
+    if current_user.is_authenticated:
+        if current_user.__class__.__name__ == "Artisan":
+            artisan = storage.get(Artisan, artisan_id)
+            return render_template('artisan_orders.html', artisan=artisan)
+    flash('You are not signed in as an Artisan')
     return redirect(url_for('home'))
 
 

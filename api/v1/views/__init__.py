@@ -12,3 +12,4 @@ from api.v1.views.artisans import *
 from api.v1.views.products import *
 from api.v1.views.orders import *
 from api.v1.views.reviews import *
+from api.v1.views.archives import *

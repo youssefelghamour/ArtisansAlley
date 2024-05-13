@@ -46,10 +46,31 @@
     border-radius: 20px;
 }
 
-.order-item img {
+.order-img img {
     width: 100px;
     height: 100px;
-    margin-right: 20px;
+    /*margin-right: 20px;*/
+}
+
+.order-img {
+    position: relative;
+    height: fit-content;
+    width: fit-content;
+    cursor: pointer;
+}
+.order-img::after {
+    content: '';  /* Required for the pseudo-element to display */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0); /* Starts fully transparent */
+    transition: var(--trans);
+}
+
+.order-img:hover::after {
+    background-color: rgba(0, 0, 0, 0.2); /* Dark overlay when hovered */
 }
 
 .item-details {
@@ -63,6 +84,7 @@ h2 {
     margin-top: 10px;
     font-weight: 500;
     font-size: 17px;
+    cursor: pointer;
 }
 
 .remove-btn {
@@ -70,6 +92,76 @@ h2 {
     font-weight: 500;
     margin-right: 15px;
 }
+.remove-btn:hover {
+    color: rgb(181, 5, 5);
+}
+/*
+<button class="remove-btn" data-product-id="${product.id}">
+    <span class="text">Delete</span>
+    <span class="icon">X</span>
+</button>
+
+.remove-btn {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: red;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+    background: #e62222;
+    position: relative;
+    align-self: center;
+    color: white;
+}
+
+.remove-btn, .remove-btn span {
+    transition: 200ms;
+}
+
+.remove-btn .text {
+    transform: translateX(35px);
+    font-family: inherit;
+    color: white;
+    margin-bottom: 0;
+}
+
+.remove-btn .icon {
+    position: absolute;
+    border-left: 1px solid #c41b1b;
+    transform: translateX(110px);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.remove-btn:hover {
+    background: #ff3636;
+}
+
+.remove-btn:hover .text {
+    color: transparent;
+}
+
+.remove-btn:hover .icon {
+    width: 150px;
+    border-left: none;
+    transform: translateX(0);
+}
+
+.remove-btn:focus {
+    outline: none;
+}
+
+.remove-btn:active .icon svg {
+    transform: scale(0.8);
+}
+*/
 
 .price-line {
     display: flex;
@@ -199,4 +291,56 @@ h2 {
 }
 .cart:hover .cart-icon{
     opacity: 0.5;
+}
+
+
+
+
+#artisan_orders {
+    min-height: 400px;
+    text-align: center;
+    text-align: -webkit-center;
+}
+
+#a-orders {
+    width: 900px;
+    align-items: center;
+}
+
+#a-h2 {
+    text-align: left;
+    margin-top: 0;
+}
+
+.customer-detail {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 15px;
+    color: #d2985e;
+}
+
+.status-btn {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    align-items: center;
+    background: #adadad;
+    border-radius: 5px;
+    background: #adadad;
+    align-self: center;
+    justify-content: center;
+    color: white;
+}
+.status-btn:hover {
+    background-color: #6ca172;
+}
+
+
+
+.order-product-detail {
+    font-size: 15px;
+    margin-left: 15px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #a0a0a0;
 }
