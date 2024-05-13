@@ -39,3 +39,25 @@ def get_artisan_orders(artisan_id):
         return jsonify([])
     
     return jsonify(lst_products)
+
+
+@app_views.route('/customer_archives/<customer_id>', methods=['GET'], strict_slashes=False)
+def get_customer_orders(customer_id):
+    """ returns the products that have been ordered by the customer """
+    retrieved_customer = storage.get(Customer, customer_id)
+    if retrieved_customer is None:
+        abort(404)
+    
+    lst_products = []
+    for archive in retrieved_customer.archives:
+        for product in archive.products:
+            for product in archive.products:
+                product_info = product.to_dict()
+                product_info['date'] = archive.updated_at
+                lst_products.append(product_info)
+
+        
+    if not lst_products:
+        return jsonify([])
+    
+    return jsonify(lst_products)

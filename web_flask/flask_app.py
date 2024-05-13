@@ -406,12 +406,22 @@ def success():
 
 @app.route('/artisan_orders/<artisan_id>', strict_slashes=False)
 def artisan_orders(artisan_id):
-    """ displays a page for the artisan conating orders to his products """
+    """ displays a page for the artisan containing orders to his products """
     if current_user.is_authenticated:
         if current_user.__class__.__name__ == "Artisan":
             artisan = storage.get(Artisan, artisan_id)
             return render_template('artisan_orders.html', artisan=artisan)
     flash('You are not signed in as an Artisan')
+    return redirect(url_for('home'))
+
+
+@app.route('/archive', strict_slashes=False)
+def customer_archive():
+    """ displays a page for the customer containing his previous orders """
+    if current_user.is_authenticated:
+        if current_user.__class__.__name__ == "Customer":
+            return render_template('archive.html', customer=current_user)
+    flash('You are not signed in as a Customer')
     return redirect(url_for('home'))
 
 

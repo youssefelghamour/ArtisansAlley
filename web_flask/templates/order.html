@@ -41,7 +41,8 @@
 								{% if current_user.__class__.__name__ == 'Customer' %}
 									<button class="nav-link navbar-nav-right">{{ current_user.first_name }}</button>
 									<div class="dropdown-content">
-										<a href="{{ url_for('order') }}">Orders</a>
+										<a href="#">Cart</a>
+                                        <a href="{{ url_for('customer_archive') }}">Orders</a>
 										<a href="{{ url_for('logout') }}">Logout</a>
 									</div>
 								{% elif current_user.__class__.__name__ == 'Artisan' %}
@@ -57,7 +58,7 @@
                         {% endif %}
 						{% if current_user.is_authenticated %}
 							{% if current_user.__class__.__name__ == 'Customer' %}
-								<a href = "{{ url_for('order') }}" class = "cart">
+								<a href = "#" class = "cart">
 									<img src="../static/images/cart-icon.png" class="cart-icon" style="height:17px">
 									<div class="number-items">
 										<h6 class="cart-total"></h6>

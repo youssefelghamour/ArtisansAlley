@@ -26,7 +26,10 @@ $(document).ready(function () {
 								<p class="product-price">$${product.price}</p>
 							</div>
 						</div>
-						<button class="remove-btn" data-product-id="${product.id}">Remove</button>
+						<button class="remove-btn" data-product-id="${product.id}">
+                            <span class="text">Delete</span>
+                            <span class="icon">X</span>
+                        </button>
 					</div>`);
             });
             $('.total-items').text(totalItems);
@@ -77,7 +80,10 @@ $(document).ready(function () {
                                     <p class="product-price">$${product.price}</p>
                                 </div>
                             </div>
-                            <button class="remove-btn" data-product-id="${product.id}">Remove</button>
+                            <button class="remove-btn" data-product-id="${product.id}">
+                                <span class="text">Delete</span>
+                                <span class="icon">X</span>
+                            </button>
                         </div>`);
                 });
                 $('.total-items').text(totalItems);

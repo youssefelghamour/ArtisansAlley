@@ -86,7 +86,8 @@ h2 {
     font-size: 17px;
     cursor: pointer;
 }
-
+/*
+<button class="remove-btn" data-product-id="${product.id}">Remove</button>
 .remove-btn {
     color: red;
     font-weight: 500;
@@ -95,15 +96,11 @@ h2 {
 .remove-btn:hover {
     color: rgb(181, 5, 5);
 }
-/*
-<button class="remove-btn" data-product-id="${product.id}">
-    <span class="text">Delete</span>
-    <span class="icon">X</span>
-</button>
+*/
 
 .remove-btn {
     width: 150px;
-    height: 50px;
+    height: 36px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -111,7 +108,7 @@ h2 {
     border: none;
     border-radius: 5px;
     box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-    background: #e62222;
+    background: #e84d4d;
     position: relative;
     align-self: center;
     color: white;
@@ -132,7 +129,7 @@ h2 {
     position: absolute;
     border-left: 1px solid #c41b1b;
     transform: translateX(110px);
-    height: 40px;
+    height: 26px;
     width: 40px;
     display: flex;
     align-items: center;
@@ -161,7 +158,7 @@ h2 {
 .remove-btn:active .icon svg {
     transform: scale(0.8);
 }
-*/
+
 
 .price-line {
     display: flex;
@@ -321,7 +318,7 @@ h2 {
 
 .status-btn {
     width: 150px;
-    height: 50px;
+    height: 32px;
     cursor: pointer;
     align-items: center;
     background: #adadad;
@@ -343,4 +340,14 @@ h2 {
     margin-top: 0px;
     margin-bottom: 0px;
     color: #a0a0a0;
+}
+
+#product-status {
+    pointer-events: none;
+    width: 100px;
+    height: 30px;
+}
+
+#customer-orders {
+    justify-content: center;
 }

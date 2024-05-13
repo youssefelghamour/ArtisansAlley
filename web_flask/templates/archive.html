@@ -3,15 +3,16 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{{ artisan.name }}</title>
+		<title>Cart</title>
 		<link rel = "stylesheet" href = "../static/styles/home.css">
-        <link rel = "stylesheet" href = "../static/styles/explore_products.css">
-		<link rel="stylesheet" href="../static/styles/artisan.css">
+        <link rel = "stylesheet" href = "../static/styles/product.css">
+        <link rel = "stylesheet" href = "../static/styles/order.css">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 		<link rel="icon" href="../static/images/logo.png" />
+		<!-- Import JQuery -->
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<!-- Import JavaScript file -->
-		<script type="text/javascript" src="../static/scripts/artisan.js"></script>
+		<script type="text/javascript" src="../static/scripts/archive.js"></script>
 	</head>
 	<body>
 
@@ -36,29 +37,29 @@
                         {% endif %}
                         <a href = "{{ url_for('about') }}" class = "nav-link">About</a>
                         {% if current_user.is_authenticated %}
-                            <div class="dropdown">
+							<div class="dropdown">
 								{% if current_user.__class__.__name__ == 'Customer' %}
 									<button class="nav-link navbar-nav-right">{{ current_user.first_name }}</button>
 									<div class="dropdown-content">
 										<a href="{{ url_for('order') }}">Cart</a>
-                                        <a href="{{ url_for('customer_archive') }}">Orders</a>
+                                        <a href="#">Orders</a>
 										<a href="{{ url_for('logout') }}">Logout</a>
 									</div>
 								{% elif current_user.__class__.__name__ == 'Artisan' %}
 									<button class="nav-link navbar-nav-right">Account</button>
 									<div class="dropdown-content">
 										<a href="{{ url_for('artisan', artisan_id=current_user.id) }}" class="artisan-profile-redirection">Profile</a>
-										<a href="{{ url_for('artisan_orders', artisan_id=current_user.id) }}" class="artisan-profile-redirection">Orders</a>
+                                        <a href="{{ url_for('artisan_orders', artisan_id=current_user.id) }}" class="artisan-profile-redirection">Orders</a>
 										<a href="{{ url_for('logout') }}">Logout</a>
-                                	</div>
+									</div>
 								{% endif %}
-                            </div>
+							</div>
                         {% else %}
                             <a href="{{ url_for('sign_in') }}" class="nav-link">Sign In</a>
                         {% endif %}
 						{% if current_user.is_authenticated %}
 							{% if current_user.__class__.__name__ == 'Customer' %}
-								<a href = "{{ url_for('order') }}" class = "cart" data-order-id="{{ order.id }}">
+								<a href = "{{ url_for('order') }}" class = "cart">
 									<img src="../static/images/cart-icon.png" class="cart-icon" style="height:17px">
 									<div class="number-items">
 										<h6 class="cart-total"></h6>
@@ -77,75 +78,21 @@
 		</header>
 		<!-- end of header -->
 
-		<!-- artisan -->
-        <div class="artisan-container">
-            <div class="artisan-image">
-                <img src="{{ artisan.picture }}" alt="Artisan Image">
-                <!--<button class="update-button">Update Your picture</button>-->
-            </div>
-            <div class="artisan-details">
-                <h2 class="artisan_name">{{ artisan.name }}</h2>
-                <h1 class="artisan_crafts">
-                    {% for craft in artisan.crafts %}
-                        {{ craft.name }}{% if not loop.last %}, {% endif %}
-                    {% endfor %}
-                </h1>
-				<!--<p class="description">description</p>-->
-                <p class="description">{{ artisan.description }}</p>
-            </div>
-			{% if current_user == artisan %}
-			<div class="update-div">
-				<a href="{{ url_for('update_profile', artisan_id=current_user.id) }}" class="update-profile"  data-tooltip="Update your profile">
-					<img src="../static/images/update-profile-icon.png" alt="edit" class="update-profile-button">
-				</a>
+
+        <!-- Orders section -->
+		<section id="cart">
+			<div class="container" id="artisan_orders">
+				<div class="order-info" id="customer-orders">
+					<div class="cart-info" data-customer-id="{{ customer.id }}" data-order-id="{{ customer.order.id }}">
+						<h1>Previous Orders</h1>
+					</div>
+				</div>
+				<div class="order-items" id="a-orders">
+				</div>
 			</div>
-			{% endif %}
-        </div>
-		<!-- end of artisan -->
+		</section>
+        <!-- end of Orders section -->
 
-
-        <!-- products section -->
-        <section id="products">
-            <div class="container">
-                <ul class="products-grid grid">
-					{% if current_user == artisan %}
-						<a href="{{ url_for('add_product') }}" class="add-item">
-							<div class="add-product">
-								<img src="../static/images/add-icon.png">
-							</div>
-							<div class="add-label">
-								<span class="add-text">Add Product</span>
-							</div>
-						</a>
-					{% endif %}
-                    {% for product in artisan.products %}
-                    <li class="products-item" data-product-id="{{ product.id }}">
-                        <div class="item-img">
-							{% if current_user == artisan %}
-								<div class="remove-btn" data-tooltip="Remove">X</div>
-								<div class="edit-button"  data-tooltip="Edit">
-									<a href="{{ url_for('update_product', product_id=product.id) }}">
-										<img src="../static/images/edit-icon.png" alt="edit" class="edit-icon">
-									</a>
-								</div>
-							{% endif %}
-                            <img src="{{ product.picture }}">
-                        </div>
-                        <div class="item-info">
-                            <span class="name">{{ product.name }}</span>
-                            {% for crft in crafts %}
-                                {% if crft.id == product.craft_id %}
-                                    <section class="craft-name"><h4 class="craft-name">{{ crft.name }}</h4></section>
-                                {% endif %}
-                            {% endfor %}
-                            <span class="price">${{ product.price }}</span>
-                        </div>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </section>
-        <!-- end of products section -->
 
 		<!-- footer -->
 		<footer id = "footer">

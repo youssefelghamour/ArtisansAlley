@@ -1,9 +1,10 @@
 const $ = window.$;
 $(document).ready(function () {
-    const artisanId = $('.cart-info').data('artisan-id');
+    const customerId = $('.cart-info').data('customer-id');
+    const orderId = $('.cart-info').data('order-id');
 
     $.ajax({
-        url: `http://localhost:5001/api/v1/archives/${artisanId}`,
+        url: `http://localhost:5001/api/v1/customer_archives/${customerId}`,
         type: 'GET',
         success: function (response) {
             response.forEach(function (product) {
@@ -15,44 +16,18 @@ $(document).ready(function () {
 						<div class="item-details">
 							<h2 id="a-h2" data-product-id="${product.id}">${product.name}</h2>
                             <div class="price-line">
-                                <h2  class="customer-detail">Ordered by: </h2>
-                                <p class="order-product-detail">${product.customer.first_name} ${product.customer.last_name}</p>
-                            </div>
+								<p class="prc">Price: </p>
+								<p class="product-price">$${product.price}</p>
+							</div>
                             <div  class="price-line">
-                                <h2 class="customer-detail">Address: &nbsp; &nbsp; &nbsp;</h2>
-                                <p class="order-product-detail">${product.customer.address}</p>
-                            </div>
-                            <div  class="price-line">
-                                <h2 class="customer-detail">Date: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h2>
+                                <p class="prc">Date: </p>
                                 <p class="order-product-detail">${product.date}</p>
                             </div>
 						</div>
-                        <button class="status-btn" data-product-id="${product.id}">Mark as Shipped</button>
+                        <button class="status-btn" id="product-status" data-product-id="${product.id}">Delivered</button>
 					</div>`);
             });
         }
-    });
-
-    // get the current date
-    const currentDate = new Date();
-
-    // format the date as desired (e.g., "Friday 26/04/2024")
-    const formattedDate = currentDate.toLocaleDateString('en-US', {
-        weekday: 'long',
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
-    });
-
-    // populate the date into the HTML element
-    document.getElementById('current-date').textContent = formattedDate;
-
-    $(document).on('click', '.status-btn', function() {
-        $(this).css({
-            'background-color': '#79de85',
-            'pointer-events': 'none'
-        }).prop('disabled', true)
-          .text('Shipped');
     });
 
     // redirects the artisan to the product page when the image is clicked
@@ -70,5 +45,19 @@ $(document).ready(function () {
         // Redirect the customer to the product page with the specified product ID
         window.location.href = `/product/${product_id}`;
     });
+
+    if (orderId) {
+            $.ajax({
+            url: `http://localhost:5001/api/v1/orders/${orderId}/products`,
+            type: 'GET',
+            success: function (response) {
+                let totalItems = 0;
+                response.forEach(function (product) {
+                    totalItems++;
+                });
+                $('.cart-total').text(totalItems);
+            }
+        });
+    }
 
 });
