@@ -128,4 +128,19 @@ $(document).ready(function () {
         });
     }
 
+    const artisanId = $('.cart').data('artisan-id');
+    if (artisanId) {
+        $.ajax({
+            url: `http://localhost:5001/api/v1/archives/${artisanId}`,
+            type: 'GET',
+            success: function (response) {
+                let totalOrders = 0;
+                response.forEach(function (product) {
+                    totalOrders++;
+                });
+                $('.cart-total').text(totalOrders);
+            }
+        });
+    }
+
 });

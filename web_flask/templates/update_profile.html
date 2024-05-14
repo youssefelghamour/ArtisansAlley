@@ -49,6 +49,16 @@
                             {% else %}
                                 <a href="{{ url_for('sign_in') }}" class="nav-link">Sign In</a>
                             {% endif %}
+                            {% if current_user.is_authenticated %}
+                                {% if current_user.__class__.__name__ == 'Artisan' %}
+                                    <a href = "{{ url_for('artisan_orders', artisan_id=current_user.id) }}" class = "cart" data-artisan-id="{{ current_user.id }}">
+                                        <img src="../static/images/bell-icon.png" class="cart-icon" style="height:17px">
+                                        <div class="number-items">
+                                            <h6 class="cart-total"></h6>
+                                        </div>
+                                    </a>
+                                {% endif %}
+                            {% endif %}
                 </ul>
                 <!-- hamburger menu icon -->
                 <button type="button" class="navbar-toggler">
@@ -142,5 +152,20 @@
                 reader.readAsDataURL(this.files[0]);
             }
         });
+
+        const artisanId = $('.cart').data('artisan-id');
+		if (artisanId) {
+			$.ajax({
+				url: `http://localhost:5001/api/v1/archives/${artisanId}`,
+				type: 'GET',
+				success: function (response) {
+					let totalOrders = 0;
+					response.forEach(function (product) {
+						totalOrders++;
+					});
+					$('.cart-total').text(totalOrders);
+				}
+			});
+		}
     </script>
 </html>

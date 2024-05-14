@@ -6,6 +6,18 @@ $(document).ready(function () {
         url: `http://localhost:5001/api/v1/archives/${artisanId}`,
         type: 'GET',
         success: function (response) {
+            let totalOrders = 0;
+            response.forEach(function (product) {
+                totalOrders++;
+            });
+            $('.cart-total').text(totalOrders);
+        }
+    });
+
+    $.ajax({
+        url: `http://localhost:5001/api/v1/archives/${artisanId}`,
+        type: 'GET',
+        success: function (response) {
             response.forEach(function (product) {
                 $('.order-items').append(`
                     <div class="order-item" id="a-orders">

@@ -55,6 +55,10 @@ Once ArtisansAlley is set up, you can use the following steps to interact with t
 2. As an artisan, create a profile with your info and list your handmade products with details.
 3. As a customer, browse products, add them to cart, and place orders, and write reviews to products.
 
+## Next Step
+
+As we look to the future, we envision expanding ArtisansAlley into a thriving community where artisans can connect, collaborate, and grow their businesses. We plan to incorporate features such as real-time messaging, personalized recommendations, and enhanced analytics to further enrich the user experience.
+
 ## Authors
 
 - Mahmoud Hammam - [Github](https://github.com/MahmoudHammam0)

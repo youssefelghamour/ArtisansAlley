@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Cart</title>
+		<title>Orders</title>
 		<link rel = "stylesheet" href = "../static/styles/home.css">
         <link rel = "stylesheet" href = "../static/styles/product.css">
         <link rel = "stylesheet" href = "../static/styles/order.css">
@@ -60,6 +60,13 @@
 							{% if current_user.__class__.__name__ == 'Customer' %}
 								<a href = "{{ url_for('order') }}" class = "cart">
 									<img src="../static/images/cart-icon.png" class="cart-icon" style="height:17px">
+									<div class="number-items">
+										<h6 class="cart-total"></h6>
+									</div>
+								</a>
+							{% elif current_user.__class__.__name__ == 'Artisan' %}
+								<a href = "{{ url_for('artisan_orders', artisan_id=current_user.id) }}" class = "cart" data-artisan-id="{{ current_user.id }}">
+									<img src="../static/images/bell-icon.png" class="cart-icon" style="height:17px">
 									<div class="number-items">
 										<h6 class="cart-total"></h6>
 									</div>

@@ -64,6 +64,13 @@
 										<h6 class="cart-total"></h6>
 									</div>
 								</a>
+							{% elif current_user.__class__.__name__ == 'Artisan' %}
+								<a href = "{{ url_for('artisan_orders', artisan_id=current_user.id) }}" class = "cart" data-artisan-id="{{ current_user.id }}">
+									<img src="../static/images/bell-icon.png" class="cart-icon" style="height:17px">
+									<div class="number-items">
+										<h6 class="cart-total"></h6>
+									</div>
+								</a>
 							{% endif %}
 						{% endif %}
 					</ul>

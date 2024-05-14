@@ -3,11 +3,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Update product</title>
+		<title>Update Your Product</title>
 		<link rel = "stylesheet" href = "../static/styles/home.css">
 		<link rel="stylesheet" href="../static/styles/sign_up.css">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 		<link rel="icon" href="../static/images/logo.png" />
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	</head>
 	<body>
 
@@ -27,7 +28,6 @@
 						<a href = "{{ url_for('home') }}" class = "nav-link">Home</a>
                         <a href = "{{ url_for('explore_artisans') }}" class = "nav-link">Artisans</a>
                         <a href = "{{ url_for('explore_products') }}" class = "nav-link">Products</a>
-                        <a href = "{{ url_for('artisan_sign_up') }}" class = "nav-link">Sell With Us</a>
                         <a href = "{{ url_for('about') }}" class = "nav-link">About</a>
                         {% if current_user.is_authenticated %}
 							<div class="dropdown">
@@ -49,6 +49,16 @@
                         {% else %}
                             <a href="{{ url_for('sign_in') }}" class="nav-link">Sign In</a>
                         {% endif %}
+						{% if current_user.is_authenticated %}
+							{% if current_user.__class__.__name__ == 'Artisan' %}
+								<a href = "{{ url_for('artisan_orders', artisan_id=current_user.id) }}" class = "cart" data-artisan-id="{{ current_user.id }}">
+									<img src="../static/images/bell-icon.png" class="cart-icon" style="height:17px">
+									<div class="number-items">
+										<h6 class="cart-total"></h6>
+									</div>
+								</a>
+							{% endif %}
+						{% endif %}
 					</ul>
 					<!-- hamburger menu icon -->
 					<button type = "button" class = "navbar-toggler">
@@ -140,5 +150,22 @@
 		</footer>
 		<!-- end of footer -->
 	</body>
+
+	<script>
+		const artisanId = $('.cart').data('artisan-id');
+		if (artisanId) {
+			$.ajax({
+				url: `http://localhost:5001/api/v1/archives/${artisanId}`,
+				type: 'GET',
+				success: function (response) {
+					let totalOrders = 0;
+					response.forEach(function (product) {
+						totalOrders++;
+					});
+					$('.cart-total').text(totalOrders);
+				}
+			});
+		}
+	</script>
 </html>
 
