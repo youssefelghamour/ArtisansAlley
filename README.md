@@ -57,7 +57,12 @@ Once ArtisansAlley is set up, you can use the following steps to interact with t
 
 ## Next Step
 
-As we look to the future, we envision expanding ArtisansAlley into a thriving community where artisans can connect, collaborate, and grow their businesses. We plan to incorporate features such as real-time messaging, personalized recommendations, and enhanced analytics to further enrich the user experience.
+As we look to the future, we envision expanding ArtisansAlley into a thriving community where artisans can connect, collaborate, and grow their businesses. We plan to incorporate features such as real-time messaging, especially between the Customer and Artisan when ordering an item to specify and agree on the preferences and details of the custom made product.
+
+## Demonstration Video
+From the Customer's perspective:
+
+https://github.com/youssefelghamour/ArtisansAlley/assets/138937650/23a18f2a-06c3-46e4-a27a-7bdb865eb276
 
 ## Authors
 
