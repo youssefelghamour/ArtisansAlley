@@ -266,6 +266,11 @@ def update_product(product_id):
         if current_user.id == product.artisan_id:
 
             if form.validate_on_submit():
+                artisan = storage.get(Artisan, current_user.id)
+                # Add the craft of the new product to the crafts of the artisan
+                craft = form.craft.data
+                if craft not in artisan.crafts:
+                    artisan.crafts.append(craft)
 
                 file = form.picture.data
                 file_name = secure_filename(file.filename)
@@ -323,6 +328,12 @@ def add_product():
     form = AddProductForm()
 
     if form.validate_on_submit():
+        artisan = storage.get(Artisan, current_user.id)
+        # Add the craft of the new product to the crafts of the artisan
+        craft = form.craft.data
+        if craft not in artisan.crafts:
+            artisan.crafts.append(craft)
+        
         # Store the image
         file = form.picture.data
         # Formats the name of the file (ex: from "logo 15.jpg" to "logol_15.jpg")

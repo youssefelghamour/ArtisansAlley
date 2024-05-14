@@ -90,6 +90,10 @@ body {
     margin: 0 0 10px;
 }
 
+.artisan-name {
+    cursor: pointer;
+}
+
 .price {
     font-size: 25px;
     color: #0056b3;

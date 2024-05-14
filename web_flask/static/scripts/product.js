@@ -178,6 +178,13 @@ $(document).ready(function () {
         window.location.href = `/product/${product_id}`;
     });
 
+    $(document).on('click', '.artisan-name', function() {
+        // Get the artisan id from the data-product-id when the product li is clicked
+        const artisanId = $('.artisan-name').data('artisan-id');
+        // Redirect the user to the artisan page with the specified artisan ID
+        window.location.href = `/artisan/${artisanId}`;
+    });
+
     const orderIdNumber = $('.cart').data('order-id');
     if (orderIdNumber) {
             $.ajax({

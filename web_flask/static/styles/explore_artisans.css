@@ -283,7 +283,7 @@ button{
 .products-item{
     display: flex; /* Set popular-item to flex container */
     flex-direction: column;
-    max-width: 270px;
+    width: 270px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     border-radius: 25px;
