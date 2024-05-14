@@ -76,7 +76,7 @@ $(document).ready(function () {
     });
 
     // redirects the artisan to the product page when the name is clicked
-    $(document).on('click', '.item-details h2', function() {
+    $(document).on('click', '#a-h2', function() {
         // Get the product_id from the data-product-id when the image is clicked
         const product_id = $(this).data('product-id');
         // Redirect the customer to the product page with the specified product ID

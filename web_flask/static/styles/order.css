@@ -314,6 +314,7 @@ h2 {
     margin-bottom: 0;
     font-size: 15px;
     color: #d2985e;
+    cursor: text;
 }
 
 .status-btn {
