@@ -83,6 +83,7 @@ body {
     margin-left: 35px;
     margin-right: 35px;
     height: 430px;
+    width: 23%;
 }
 
 .product-details h1 {
@@ -107,6 +108,8 @@ body {
     margin-bottom: 20px;
     margin-top: 35px;
     text-align: justify;
+    word-wrap: break-word;
+    width: 150%;
 }
 
 .order-button {

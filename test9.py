@@ -13,11 +13,8 @@ from models.engine.db_storage import DBStorage
 from models import *
 
 
-customers = storage.all(Customer).values()
+archive = storage.get(Archive, "e230761d-1e9c-4e8f-be6f-1757c6ec7c39")
 
-for customer in customers:
-    for archive in customer.archives:
-        for product in archive.products:
-            print(archive, product)
+print(archive.products[0].status)
 
 print("all good")

@@ -98,7 +98,7 @@
                 <h2 class="product_name">{{ product.name }}</h2>
                 <h1 class="artisan-name" data-artisan-id="{{ artisan.id }}">Artisan: {{ artisan.name }}</h1>
                 <p class="price">${{ product.price }}</p>
-				<p class="description">{{ product.description }}</p>
+				<div class="description">{{ product.description }}</div>
                 <!--<p class="description">Transport yourself to ancient Egypt with our exquisite handmade necklace, crafted with care by skilled artisans. Each bead whispers tales of the Nile's mysteries, while the intricate design pays homage to the timeless beauty of Egyptian artistry. Elevate your style with this timeless piece that echoes the elegance of a bygone era.</p>-->
                 {% if current_user.is_authenticated %}
 					{% if current_user.__class__.__name__ == 'Customer' %}
