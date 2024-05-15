@@ -86,6 +86,15 @@
 		<!-- end of header -->
 
 		<!-- product -->
+		{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+				{% for category, message in messages %}
+					<div class="alert">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
         <div class="product-container">
 			<div id="message-box" style="display:none; position: fixed; bottom: 20px; right: 20px; background: green; color: white; padding: 10px; border-radius: 5px;">
 				<!-- Message will be inserted here -->

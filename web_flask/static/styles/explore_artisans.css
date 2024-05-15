@@ -190,7 +190,33 @@ button{
 }
 
 
+.alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #7e9fc3;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 9999;
+    max-height: 100px;
+    overflow-y: auto;
+    font-size: 14px;
+    height: fit-content;
+    text-align: center;
+    opacity: 1;
+    animation: fadeOut 3s forwards;
+}
 
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 
 .cart {
     bottom: -6px;

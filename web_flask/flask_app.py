@@ -440,7 +440,29 @@ def customer_archive():
 def logout():
     logout_user()
     flash('You have been successfully logged out!')
-    return redirect(url_for('home'))
+
+    # Paths of the routes we want to keep the user in after logging out
+    valid_paths = [
+        '/explore_artisans',
+        '/explore_products',
+        '/artisan',  # part of a URL that includes an artisan ID
+        '/product'   # part of a URL that includes a product ID
+    ]
+
+    # Except this path (contains /artisan so it can match so we have to explicitly ignore it)
+    excluded_path = '/artisan_orders'
+    
+    # Get the referrer URL: the page the user was on before logging out, the page that sent the request
+    referrer = request.referrer
+    
+    # Check if the referrer contains any of the valid paths
+    # if the user logged out from one of those pages
+    if referrer and any(path in referrer for path in valid_paths) and excluded_path not in referrer:
+        # Redirect the user to the same page they were on (refresh)
+        return redirect(referrer)
+    else:
+        # Otherwise redirect the user to the home page
+        return redirect(url_for('home'))
 
 
 @login_manager.user_loader
