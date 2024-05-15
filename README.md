@@ -45,7 +45,7 @@ To set up ArtisansAlley locally, follow these steps:
 5. Run the Flask application: `python -m web_flask.flask_app`
 6. Run the API in a seperate terminal: `python -m api.v1.app`
 6. Access the application in your web browser at `http://localhost:5000`
-7. You can run the sql dump `echo dump8.sql | mysql -uroot -p artall_db` to generate some data.
+7. You can run the sql dump `echo dump.sql | mysql -uroot -p artall_db` or `python generate_data.py` to generate some data.
 
 ## Usage
 
